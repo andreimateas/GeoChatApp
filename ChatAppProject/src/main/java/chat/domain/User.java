@@ -1,6 +1,19 @@
 package chat.domain;
 
+import java.awt.image.BufferedImage;
+
 public class User{
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 
     ///id
     private String username;
