@@ -1,21 +1,19 @@
 package chat.domain;
 
-import java.awt.image.BufferedImage;
 
-public class User{
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", profilePicture='" + profilePicture + '\'' +
-                ", location='" + location + '\'' +
-                '}';
-    }
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 
-    ///id
+
+@Entity
+@Table(name="user")
+
+public class User implements Serializable {
+
+
+    @Id
     private String username;
 
     private String password;
@@ -26,6 +24,9 @@ public class User{
 
     private String location;
 
+    public User() {
+    }
+
     public User(String username, String password, String email, String name, String profilePicture, String location) {
         this.username = username;
         this.password = password;
@@ -33,6 +34,19 @@ public class User{
         this.name = name;
         this.profilePicture = profilePicture;
         this.location = location;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", location='" + location + '\'' +
+                '}';
     }
 
     public String getUsername() {

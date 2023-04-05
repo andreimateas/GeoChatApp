@@ -1,24 +1,14 @@
 package chat.repository;
 
 import chat.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IUserRepository{
+@Repository
+public interface IUserRepository extends JpaRepository<User,String> {
 
-    //add entity and return error code
-    int add(User entity) throws ClassNotFoundException, SQLException;
 
-    //get all entities
-    List<User> getAll() throws ClassNotFoundException, SQLException;
-
-    //find entity
-    User find(User entity);
-
-    //delete entity and return error code
-    int delete(User entity);
-
-    //modify entity and return error code
-    int modify(User oldEntity, User newEntity);
 }
