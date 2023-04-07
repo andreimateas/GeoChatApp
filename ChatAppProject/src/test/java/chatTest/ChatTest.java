@@ -32,6 +32,46 @@ public class ChatTest extends AbstractTest {
         Arrays.stream(userlist).forEach(x-> System.out.println(x));
     }
 
+    @Test
+    public void addUser() throws Exception {
+        String uri = "/chat/user";
+        User user = new User();
+        user.setUsername("ion123");
+        user.setPassword("ion!123");
+        String inputJson = super.mapToJson(user);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(201, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertEquals(content, "User added");
+    }
+    @Test
+    public void updateUser() throws Exception {
+        String uri = "/chat/user/ion123";
+        User user = new User();
+        user.setPassword("new!ion123");
+        String inputJson = super.mapToJson(user);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertEquals(content, "User pass updated");
+    }
+    @Test
+    public void deleteUser() throws Exception {
+        String uri = "/chat/user/ion123";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertEquals(content, "User deleted");
+    }
 
 
 }
