@@ -15,14 +15,26 @@ public class ChatController {
     @Autowired
     private  ChatService chatService;
 
-    @GetMapping("/user")
-    public String findUser(){
-        //return chatService.getUser(username,password);
-        return "dada";
+    @GetMapping("/login")
+    public String findUser(@RequestBody String username, @RequestBody String password){
+        User user=  chatService.getUser(username,password);
+        if(user!=null)
+            return user.getUsername();
+        else
+            return "User not found";
     }
     @GetMapping("/users")
     public List<User> getUsers(){
         return chatService.getUsers();
     }
+
+    @PostMapping("/adduser")
+    public String addUser(@RequestBody User user){
+        if(chatService.addUser(user)!=null)
+            return "User added";
+        else
+            return "Cannot add user";
+    }
+
 
 }
