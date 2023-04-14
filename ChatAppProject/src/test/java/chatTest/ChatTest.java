@@ -21,7 +21,7 @@ public class ChatTest extends AbstractTest {
     }
     @Test
     public void getUsers() throws Exception {
-        String uri = "/chat/users";
+        String uri = "/chat/getusers";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 

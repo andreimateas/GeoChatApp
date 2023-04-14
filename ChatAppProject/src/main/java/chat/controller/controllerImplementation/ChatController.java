@@ -23,7 +23,7 @@ public class ChatController {
         else
             return "User not found";
     }
-    @GetMapping("/users")
+    @GetMapping("/getusers")
     public List<User> getUsers(){
         return chatService.getUsers();
     }
