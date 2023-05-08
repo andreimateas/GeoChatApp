@@ -2,17 +2,38 @@ body{
 
 }
 
+.firstPage{
+
+}
+
+.register{
+
+    background-color: white;
+}
+
+.login{
+
+    background-color: white;
+}
+
 #buttonLogin{
+    horiz-align: center;
     background-color: darksalmon;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
-#login{
-
-
+#buttonRegister{
+    horiz-align: center;
+    background-color: cornflowerblue;
 }
+
+#welcomeHeader{
+    color: coral;
+    horiz-align: center;
+}
+
+label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+

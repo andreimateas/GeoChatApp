@@ -33,7 +33,7 @@ public class ChatTest extends AbstractTest {
         Arrays.stream(userlist).forEach(x-> System.out.println(x));
     }
 
-     @Test
+    @Test
     public void addUser() throws Exception {
         String uri = "/chat/adduser";
         User user = new User();
@@ -52,6 +52,7 @@ public class ChatTest extends AbstractTest {
         String content = mvcResult.getResponse().getContentAsString();
         assertEquals(content, "User added");
     }
+
    /*@Test
     public void updateUser() throws Exception {
         String uri = "/chat/user/ion123";
