@@ -1,5 +1,8 @@
+import {UserController} from "../../controller/UserController";
+import {User} from "../../controller/entities/User";
 
 export default function Register() {
+
     return (
 
     <div className={"firstPage register"}>

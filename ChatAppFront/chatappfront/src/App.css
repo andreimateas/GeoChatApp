@@ -2,38 +2,4 @@ body{
 
 }
 
-.firstPage{
-
-}
-
-.register{
-
-    background-color: white;
-}
-
-.login{
-
-    background-color: white;
-}
-
-#buttonLogin{
-    horiz-align: center;
-    background-color: darksalmon;
-}
-
-#buttonRegister{
-    horiz-align: center;
-    background-color: cornflowerblue;
-}
-
-#welcomeHeader{
-    color: coral;
-    horiz-align: center;
-}
-
-label{
-    display: inline-block;
-    width: 150px;
-    text-align: right;
-}
 
