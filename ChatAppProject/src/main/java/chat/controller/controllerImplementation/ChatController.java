@@ -7,21 +7,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 
 @RestController
-@RequestMapping("chat")
+
 public class ChatController {
     @Autowired
     private  ChatService chatService;
 
-    @GetMapping("/login")
-    public String findUser(@RequestBody String username, @RequestBody String password){
-        User user=  chatService.getUser(username,password);
-        if(user!=null)
-            return user.getUsername();
+    @PostMapping("/login")
+    public ResponseEntity<?> findUser(@RequestBody User user){
+        System.out.println("Entered login");
+        User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
+        if(foundUser!=null)
+            return new ResponseEntity<String>("User found",HttpStatus.OK);
         else
-            return "User not found";
+            return new ResponseEntity<String>("User not found",HttpStatus.NOT_FOUND);
     }
     @GetMapping("/getusers")
     public List<User> getUsers(){
