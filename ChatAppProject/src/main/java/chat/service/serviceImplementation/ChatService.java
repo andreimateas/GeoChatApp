@@ -5,18 +5,23 @@ import chat.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChatService {
     @Autowired
     private IUserRepository userRepository;
 
-    public User getUser(String username, String password){
+    public Optional<User> getUser(String username, String password){
+        Optional<User> user= Optional.of(new User());
 
-        User user=userRepository.getOne(username);
-        if(user!=null && user.getPassword().equals(password))
-            return user;
+        user = userRepository.findById(username);
+
+        if(user.isPresent())
+            if (user.get().getPassword().equals(password))
+                return user;
 
         return null;
     }

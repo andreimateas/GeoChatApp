@@ -15,7 +15,7 @@ function json(response) {
 }
 export class UserController{
 
-    login(user){
+     login(user){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
         myheaders.append('Content-Type', 'application/json');

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {UserController} from "../../controller/UserController";
 import {useState} from "react";
-import {User} from "../../controller/entities/User";
+import User from "../../controller/entities/User";
 import {useNavigate} from "react-router-dom";
 
 export default function Login(){
@@ -19,6 +19,9 @@ export default function Login(){
             navigate("/userPage");
         }catch(exception){
             console.log("error");
+        }
+        finally {
+            console.log("end login");
         }
     }
 

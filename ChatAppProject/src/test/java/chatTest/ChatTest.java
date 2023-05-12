@@ -19,6 +19,24 @@ public class ChatTest extends AbstractTest {
     public void setUp() {
         super.setUp();
     }
+
+    @Test
+    public void login() throws Exception{
+        String uri = "/login";
+        User user = new User();
+        user.setUsername("alex");
+        user.setPassword("yoyo1234");
+
+        String inputJson = super.mapToJson(user);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
+
+        int status = mvcResult.getResponse().getStatus();
+        Assertions.assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertEquals(content, "user not found");
+    }
     @Test
     public void getUsers() throws Exception {
         String uri = "/getusers";

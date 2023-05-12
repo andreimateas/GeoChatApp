@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.Console;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 
@@ -17,13 +18,13 @@ public class ChatController {
     private  ChatService chatService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> findUser(@RequestBody User user){
+    public String findUser(@RequestBody User user){
         System.out.println("Entered login");
-        User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
+        Optional<User> foundUser = chatService.getUser(user.getUsername(),user.getPassword());
         if(foundUser!=null)
-            return new ResponseEntity<String>("User found",HttpStatus.OK);
+            return "user found";
         else
-            return new ResponseEntity<String>("User not found",HttpStatus.NOT_FOUND);
+            return "user not found";
     }
     @GetMapping("/getusers")
     public List<User> getUsers(){
