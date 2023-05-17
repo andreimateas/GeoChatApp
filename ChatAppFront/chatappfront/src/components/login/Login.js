@@ -11,9 +11,9 @@ export default function Login(){
     const navigate = useNavigate();
     async function onLoginButtonClicked(){
         try{
-            console.log("start login");
+            console.log("start login:" +username+"++++");
             const controller =new UserController();
-            const user = new User(username, password, '','','','');
+            const user = new User("ion", "ion123", '','','','');
             const token= await controller.login(user);
             console.log("A mers: "+token)
             navigate("/userPage");
@@ -35,7 +35,7 @@ export default function Login(){
                 <input type="text" id={"inputUsernameLogin"} className={"inputLogin"} onChange={(text)=>setUsername(text.target.value)}/>
 
                 <label>password</label>
-                <input type="password" id={"inputPasswordLogin"} className={"inputLogin"} onChange={(text)=>setPassword(text.target.value)}/>
+                <input type="password" id={"inputPasswordLogin"} className={"inputLogin"}  onChange={(event) => setPassword(event.target.value)}/>
 
                 <p></p>
                 <button type={"submit"} id={"buttonLogin"} onClick={onLoginButtonClicked} >Login</button>

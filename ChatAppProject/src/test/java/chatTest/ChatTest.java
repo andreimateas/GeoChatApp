@@ -73,7 +73,7 @@ public class ChatTest extends AbstractTest {
 
    /*@Test
     public void updateUser() throws Exception {
-        String uri = "/chat/user/ion123";
+        String uri = "/user/ion123";
         User user = new User();
         user.setPassword("new!ion123");
         String inputJson = super.mapToJson(user);
