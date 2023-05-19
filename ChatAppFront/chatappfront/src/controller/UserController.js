@@ -39,6 +39,7 @@ export class UserController{
             })
             .catch(error=>{
                 console.error('Error:',error);
+                throw error;
             })
     }
 }
