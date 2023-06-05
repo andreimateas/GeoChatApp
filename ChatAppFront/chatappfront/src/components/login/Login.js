@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import React from 'react';
 import {useAuthContext} from "../../auth/AuthProvider";
 
+
 export default function Login(){
 
     const [username, setUsername] =useState('');
@@ -14,9 +15,9 @@ export default function Login(){
     const navigate = useNavigate();
 
     function parseJwt (token) {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
 
@@ -28,7 +29,20 @@ export default function Login(){
             const controller =new UserController();
             const user = new User(username, password, '','','','');
             const token= await controller.login(user);
-            console.log("A mers: "+token)
+            console.log("Received token from server: "+token.string);
+            try{
+                const jsonToken=parseJwt(token.string);
+                console.log("Parsed token: "+jsonToken);
+                console.log("User data as string: "+jsonToken["sub"]);
+                const fields= jsonToken["sub"].split(",");
+                const foundUser= new User(fields[0],"", fields[2], fields[1], fields[4], fields[3]);
+                console.log("User that logged in: "+ foundUser);
+            }
+            catch (exception){
+                console.log(exception);
+            }
+
+            console.log("A mers: "+user);
             login({username,token});
             console.log("go to user page");
             navigate("/userPage");

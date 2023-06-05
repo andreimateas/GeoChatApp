@@ -28,7 +28,7 @@ public class ChatController {
         System.out.println("Entered login");
         Optional<User> foundUser = chatService.getUser(user.getUsername(),user.getPassword());
         if(foundUser!=null)
-            return  new ResponseEntity<Token>(new Token(getJWTToken(user.getUsername())),HttpStatus.OK);
+            return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser.get())),HttpStatus.OK);
         else
             return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
     }
@@ -46,14 +46,14 @@ public class ChatController {
     }
 
 
-    private String getJWTToken(String username) {
+    private String getJWTToken(User user) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
-
+        String userString= user.getUsername()+","+user.getName()+","+user.getEmail()+","+user.getLocation()+","+user.getProfilePicture();
         String token = Jwts
                 .builder()
                 .setId("softtekJWT")
-                .setSubject(username)
+                .setSubject(userString)
                 .claim(
                         "authorities",
                         grantedAuthorities.stream()
