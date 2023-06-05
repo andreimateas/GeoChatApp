@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {UserController} from "../../controller/UserController";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import User from "../../controller/entities/User";
 import {useNavigate} from 'react-router-dom';
 import React from 'react';
@@ -11,6 +11,7 @@ export default function Login(){
 
     const [username, setUsername] =useState('');
     const [password, setPassword] =useState('');
+    const [userString, setUserString] =useState('');
     const { login } = useAuthContext();
     const navigate = useNavigate();
 
@@ -26,26 +27,26 @@ export default function Login(){
     async function onLoginButtonClicked(){
         try{
             console.log("start login:" +username+"++++");
+
             const controller =new UserController();
             const user = new User(username, password, '','','','');
             const token= await controller.login(user);
             console.log("Received token from server: "+token.string);
-            try{
-                const jsonToken=parseJwt(token.string);
-                console.log("Parsed token: "+jsonToken);
-                console.log("User data as string: "+jsonToken["sub"]);
-                const fields= jsonToken["sub"].split(",");
-                const foundUser= new User(fields[0],"", fields[2], fields[1], fields[4], fields[3]);
-                console.log("User that logged in: "+ foundUser);
-            }
-            catch (exception){
-                console.log(exception);
-            }
 
+            const jsonToken=parseJwt(token.string);
+            console.log("Parsed token: "+jsonToken);
+
+
+            console.log("User data as string: "+jsonToken["sub"]);
+
+            const fields= jsonToken["sub"].split(",");
+            const foundUser= new User(fields[0],"", fields[2], fields[1], fields[4], fields[3]);
+            console.log("User that logged in: "+ foundUser);
+
+            setUserString(jsonToken["sub"]);
             console.log("A mers: "+user);
-            login({username,token});
+
             console.log("go to user page");
-            navigate("/userPage");
             console.log("changed to user page");
 
         }catch(exception){
@@ -56,6 +57,13 @@ export default function Login(){
         }
 
     }
+
+    useEffect(() => {
+        if (userString !== '') {
+            login({ userString });
+            navigate('/userPage');
+        }
+    }, [userString, login, navigate]);
 
     return (
 

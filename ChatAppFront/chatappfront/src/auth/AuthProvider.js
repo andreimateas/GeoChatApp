@@ -5,25 +5,23 @@ export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
     const [userProfile, setUserProfile] = useState({
-        username: localStorage.getItem('userProfile') || '',
-        token: localStorage.getItem('token') || '',
+        userString: localStorage.getItem('userProfile') || '',
+
     });
 
     function login(userProfile) {
         setUserProfile(userProfile);
         console.log(userProfile);
-        localStorage.setItem('userProfile', userProfile.username);
-        localStorage.setItem('token', userProfile.token);
-        console.log(`user: ${userProfile.username} logged in ${userProfile}`);
+        localStorage.setItem('userProfile', userProfile.userString);
+        console.log(`user: ${userProfile.userString} logged in ${userProfile}`);
     }
 
     function logout() {
         setUserProfile({
-            username: '',
-            token: '',
+            userString: '',
         });
         localStorage.removeItem('userProfile');
-        localStorage.removeItem('token');
+
     }
 
     return (
