@@ -14,15 +14,14 @@ public class ChatService {
     @Autowired
     private IUserRepository userRepository;
 
-    public Optional<User> getUser(String username, String password){
-        Optional<User> user= Optional.of(new User());
-
-        user = userRepository.findById(username);
-
-        if(user.isPresent())
-            if (user.get().getPassword().equals(password))
+    public User getUser(String username, String password) {
+        try {
+            User user = userRepository.getOne(username);
+            if (password.equals(user.getPassword()))
                 return user;
-
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
         return null;
     }
 
@@ -32,7 +31,8 @@ public class ChatService {
 
     public User addUser(User user){
         try{
-            return userRepository.save(user);
+                return userRepository.save(user);
+
             }
         catch(IllegalArgumentException e){
             return null;

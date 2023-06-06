@@ -26,9 +26,9 @@ public class ChatController {
     @PostMapping(value="/login", produces="application/json")
     public ResponseEntity<?> login(@RequestBody User user){
         System.out.println("Entered login");
-        Optional<User> foundUser = chatService.getUser(user.getUsername(),user.getPassword());
+        User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
         if(foundUser!=null)
-            return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser.get())),HttpStatus.OK);
+            return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser)),HttpStatus.OK);
         else
             return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
     }
@@ -38,11 +38,11 @@ public class ChatController {
     }
 
     @PostMapping("/adduser")
-    public String addUser(@RequestBody User user){
+    public Token addUser(@RequestBody User user){
         if(chatService.addUser(user)!=null)
-            return "User added";
+            return new Token(getJWTToken(user));
         else
-            return "Cannot add user";
+            return new Token("");
     }
 
 
