@@ -1,7 +1,8 @@
 import { useAuthContext } from '../../auth/AuthProvider';
 import User from "../../controller/entities/User";
+import {navBarWrapper} from "../navbar/navBarWrapper";
 
-export default function UserMainPage() {
+const UserMainPage=()=> {
     const { userProfile } = useAuthContext();
 
     const fields= userProfile.userString.split(",");
@@ -18,3 +19,6 @@ export default function UserMainPage() {
         </div>
     );
 }
+
+const UserMainPageWrapped = navBarWrapper(UserMainPage);
+export default UserMainPageWrapped;
