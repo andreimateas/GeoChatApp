@@ -1,5 +1,13 @@
-body{
+/* body.css */
 
+/* Define a unique color palette */
+:root {
+    --background-color: #f5f1f1; /* Adjusted background color for the whole page */
 }
 
-
+body {
+    background-color: var(--background-color);
+    font-family: 'Poppins', sans-serif; /* Use 'Poppins' font or any other modern font */
+    margin: 0;
+    padding: 0;
+}

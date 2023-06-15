@@ -3,7 +3,7 @@ import {useAuthContext} from "../../auth/AuthProvider";
 import {Link, useNavigate} from "react-router-dom";
 import {UserController} from "../../controller/UserController";
 import User from "../../controller/entities/User";
-
+import "./Register.css";
 
 export default function Register() {
 
@@ -67,40 +67,76 @@ export default function Register() {
     }, [userString, login, navigate]);
 
     return (
+        <div className="registerDiv">
 
-    <div className={"firstPage register"}>
-        <h1 className={"inputRegister"} id={"registerHeader"} >Don't have an account yet?</h1>
+            <div className="inputDiv">
 
-            <div className={"inputDiv"}>
-                <label className={"inputRegister"}>username</label>
-                <input type="text" id={"inputUsername"} className={"inputRegister"} onChange={(text)=>setUsername(text.target.value)}/>
+                <input required placeholder={"Username"}
+                    type="text"
+                    id="inputUsername"
+                    className="inputField"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
             </div>
-            <div>
-                <label className={"inputRegister"}>password</label>
-                <input type="password" id={"inputPassword"} className={"inputRegister"} onChange={(text)=>setPassword(text.target.value)}/>
-            </div>
-            <div>
-                <label className={"inputRegister"}>email</label>
-                <input type="email" id={"inputEmail"} className={"inputRegister"} onChange={(text)=>setEmail(text.target.value)}/>
-            </div>
-            <div>
-                <label className={"inputRegister"}>name</label>
-                <input type="text" id={"inputName"} className={"inputRegister"} onChange={(text)=>setName(text.target.value)}/>
-            </div>
-            <div>
-                <label className={"inputRegister"}>profile picture</label>
-                <input type="file" id={"inputProfilePicture"} className={"inputRegister"} onChange={(text)=>setProfilePicture(text.target.value)}/>
-            </div>
-            <div>
-                <label className={"inputRegister"}>location</label>
-                <input type="text" id={"inputLocation"} className={"inputRegister"} onChange={(text)=>setLocation(text.target.value)}/>
-            </div>
-            <p></p>
+            <div className="inputDiv">
 
-            <button type={"submit"} id ={"buttonRegister"} onClick={onRegisterButtonClicked}>Register</button>
+                <input required placeholder={"Password"}
+                    type="password"
+                    id="inputPassword"
+                    className="inputField"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <div className="inputDiv">
 
-        <p>Already have an account? </p>
-        <Link to="/login">Login</Link>
-    </div>
+                <input required placeholder={"Email"}
+                    type="email"
+                    id="inputEmail"
+                    className="inputField"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div className="inputDiv">
+
+                <input required placeholder={"Name"}
+                    type="text"
+                    id="inputName"
+                    className="inputField"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </div>
+            <div className="inputDiv">
+
+            <input required placeholder={"Location"}
+                   type="text"
+                   id="inputLocation"
+                   className="inputField"
+                   value={location}
+                   onChange={(e) => setLocation(e.target.value)}
+            />
+        </div>
+            <div className="inputDiv">
+                <p>Profile picture</p>
+                <input required placeholder={"Profile picture"}
+                    type="file"
+                    id="inputProfilePicture"
+                    className="inputField"
+                    value={profilePicture}
+                    onChange={(e) => setProfilePicture(e.target.value)}
+                />
+            </div>
+
+            <button type="submit" id="buttonRegister" onClick={onRegisterButtonClicked}>
+                Register
+            </button>
+            <p>Already have an account?</p>
+            <Link to="/login" className="loginLink">
+                Login
+            </Link>
+        </div>
     );
 }

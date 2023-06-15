@@ -6,6 +6,8 @@ import UserMainPage from "./components/userPage/UserMainPage";
 import Home from "./components/home/Home";
 import React from 'react';
 import {AuthContextProvider} from "./auth/AuthProvider";
+import UserProfilePage from "./components/userPage/UserProfilePage";
+import UserMessagePage from "./components/userPage/UserMessagePage";
 const App = () => {
   return (
     <>
@@ -15,6 +17,8 @@ const App = () => {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/userPage" element={<UserMainPage/>}/>
+            <Route path="/userProfilePage" element={<UserProfilePage/>}/>
+            <Route path="/userMessagePage" element={<UserMessagePage/>}/>
         </Routes>
         </AuthContextProvider>
     </>

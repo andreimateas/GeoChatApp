@@ -5,7 +5,7 @@ import User from "../../controller/entities/User";
 import {useNavigate} from 'react-router-dom';
 import React from 'react';
 import {useAuthContext} from "../../auth/AuthProvider";
-
+import "./Login.css";
 
 export default function Login(){
 
@@ -66,24 +66,31 @@ export default function Login(){
     }, [userString, login, navigate]);
 
     return (
+        <div className="loginDiv">
 
-        <div className={"loginDiv"}>
 
-            <h1 className={"welcomeHeader"}>Welcome to ChatApp</h1>
+            <input required placeholder="Username"
+                type="text"
+                id="inputUsernameLogin"
+                className="inputLogin"
+                onChange={(text) => setUsername(text.target.value)}
+            />
 
-                <label>username</label>
-                <input type="text" id={"inputUsernameLogin"} className={"inputLogin"} onChange={(text)=>setUsername(text.target.value)}/>
 
-                <label>password</label>
-                <input type="password" id={"inputPasswordLogin"} className={"inputLogin"}  onChange={(event) => setPassword(event.target.value)}/>
+            <input required placeholder="Password"
+                type="password"
+                id="inputPasswordLogin"
+                className="inputLogin"
+                onChange={(event) => setPassword(event.target.value)}
+            />
+            <button type="submit" id="buttonLogin" onClick={onLoginButtonClicked}>
+                Login
+            </button>
+            <p className="p-register">Don't have an account?</p>
+            <Link to="/register" className="register-link">Register</Link>
 
-                <p></p>
-                <button type={"submit"} id={"buttonLogin"} onClick={onLoginButtonClicked} >Login</button>
 
-            <p>Don't have an account? </p>
-            <Link to="/register">Register</Link>
         </div>
+    );
 
-
-       );
 }

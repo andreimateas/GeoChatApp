@@ -1,14 +1,18 @@
 import "./NavBar.css"
+import {Link} from "react-router-dom";
+import React from "react";
 
 
 const NavBar=() =>{
 
 
     return(<div className="topnav">
-        <a href="#home"></a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+
+        <Link to="/userPage">Home</Link>
+
+        <Link to="/userProfilePage">Profile</Link>
+
+        <Link to="/userMessagePage">Messages</Link>
     </div>);
 }
 
