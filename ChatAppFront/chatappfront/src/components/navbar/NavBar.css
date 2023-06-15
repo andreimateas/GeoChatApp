@@ -1,10 +1,8 @@
-/* styles.css */
 
-/* Define a unique color palette */
 :root {
-    --primary-color: rgba(221, 85, 102, 0.9); /* Adjusted primary color */
-    --secondary-color: #252525; /* Adjusted secondary color */
-    --text-color: rgba(250, 246, 247, 0.9); /* Adjusted text color */
+    --primary-color: rgba(221, 85, 102, 0.9); /*  primary color */
+    --secondary-color: #252525; /*  secondary color */
+    --text-color: rgba(250, 246, 247, 0.9); /*  text color */
 }
 
 .topnav {
@@ -12,19 +10,19 @@
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 12px; /* Reduce padding to make the navigation bar smaller */
+    padding: 12px;
 }
 
 .topnav a {
     float: left;
     color: var(--text-color);
     text-align: center;
-    padding: 8px 16px; /* Reduce padding to match the smaller navigation bar */
+    padding: 8px 16px;
     text-decoration: none;
     font-size: 17px;
-    font-weight: 750; /* Add a little bit of boldness */
+    font-weight: 750;
     transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif; /* Use 'Poppins' font or any other modern font */
+    font-family: 'Poppins', sans-serif;
 }
 
 .topnav a:hover {
@@ -35,7 +33,7 @@
     background-color: var(--secondary-color);
 }
 
-/* Optional: Add unique hover animation */
+
 .topnav a::after {
     content: "";
     display: block;

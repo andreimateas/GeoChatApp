@@ -1,4 +1,4 @@
-/* HomePage.css */
+
 
 .home-page {
     display: flex;
@@ -18,7 +18,7 @@
     color: var(--text-color);
     font-size: 60px;
     margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif; /* Use 'Poppins' font or any other modern font */
+    font-family: 'Poppins', sans-serif;
     color: #333;
 }
 
@@ -26,7 +26,7 @@
     color: var(--text-color);
     font-size: 30px;
     margin-bottom: 16px;
-    font-family: 'Poppins', sans-serif; /* Use 'Poppins' font or any other modern font */
+    font-family: 'Poppins', sans-serif;
     color: #333;
 }
 
@@ -43,7 +43,7 @@
     font-size: 18px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif; /* Use 'Poppins' font or any other modern font */
+    font-family: 'Poppins', sans-serif;
 }
 
 .home-page__link:hover {
