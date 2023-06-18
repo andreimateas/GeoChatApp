@@ -5,7 +5,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: var(--background-color);
+    background: url("../../images/WorldMapDark3.svg");
+    background-size:100% auto;
 }
 
 .home-page__content {
@@ -15,34 +16,46 @@
 }
 
 .home-page__heading {
-    color: var(--text-color);
-    font-size: 60px;
-    margin-bottom: 20px;
+
+    font-size: 69px;
+    margin-bottom: 22px;
     font-family: 'Poppins', sans-serif;
-    color: #333;
+    color: #f5f1f1;
 }
 
 .home-page__text {
-    color: var(--text-color);
-    font-size: 30px;
-    margin-bottom: 16px;
+
+    font-size: 35px;
+    margin-bottom: 18px;
     font-family: 'Poppins', sans-serif;
-    color: #333;
+    color: #f5f1f1;
+
 }
 
 .home-page__button {
-    margin-bottom: 70px;
+    margin-bottom: 80px;
     margin-top: 50px;
 }
 
-.home-page__link {
+.home-page__link_login {
     color: var(--text-color);
     background-color: var(--primary-color);
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 22px 48px;
+    border-radius: 16px;
+    font-size: 36px;
+    text-decoration: none;
+    transition: background-color 0.6s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.home-page__link_register {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    padding: 13px 22px;
+    border-radius: 10px;
     font-size: 18px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.4s ease;
     font-family: 'Poppins', sans-serif;
 }
 
