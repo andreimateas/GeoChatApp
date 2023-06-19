@@ -4,6 +4,8 @@ import "./Home.css";
 
 export default function Home(){
 
+    const time=new Date();
+    console.log("TIME IS:  "+time);
 
     return (
         <div className="home-page">

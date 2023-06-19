@@ -1,6 +1,7 @@
 import { useAuthContext } from '../../auth/AuthProvider';
 import User from "../../controller/entities/User";
 import {navBarWrapper} from "../navbar/navBarWrapper";
+import "./UserPage.css";
 
 const UserMainPage=()=> {
     const { userProfile } = useAuthContext();
@@ -16,11 +17,12 @@ const UserMainPage=()=> {
     }
 
     return (
-        <div>
+        <div className={"mainDiv"}>
+            <div className={"feed"}>
             <h1>Welcome, {user.username}!</h1>
             <h3><img src={imagePath} alt="profile"/></h3>
             <h3>YOUR FEED</h3>
-
+            </div>
         </div>
     );
 }
