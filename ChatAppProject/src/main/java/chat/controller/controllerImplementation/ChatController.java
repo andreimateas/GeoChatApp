@@ -1,5 +1,6 @@
 package chat.controller.controllerImplementation;
 
+import chat.domain.FeedPost;
 import chat.domain.Token;
 import chat.domain.User;
 import chat.service.serviceImplementation.ChatService;
@@ -23,6 +24,7 @@ public class ChatController {
     @Autowired
     private  ChatService chatService;
 
+    //Users
     @PostMapping(value="/login", produces="application/json")
     public ResponseEntity<?> login(@RequestBody User user){
         System.out.println("Entered login");
@@ -44,6 +46,29 @@ public class ChatController {
         else
             return new Token("");
     }
+
+    //FeedPosts
+    @GetMapping("/getfeedposts")
+    public List<FeedPost> getFeedPosts(){
+        return chatService.getFeedPosts();
+    }
+
+    @PostMapping("/addfeedpost")
+    public ResponseEntity<?> addFeedPost(@RequestBody FeedPost feedPost){
+        if(chatService.addFeedPost(feedPost)!=null)
+            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);
+        else
+            return new ResponseEntity<String>("cannot add post",HttpStatus.NOT_FOUND);
+    }
+
+
+
+
+
+
+
+
+
 
 
     private String getJWTToken(User user) {

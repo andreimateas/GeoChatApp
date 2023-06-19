@@ -1,6 +1,8 @@
 package chat.service.serviceImplementation;
 
+import chat.domain.FeedPost;
 import chat.domain.User;
+import chat.repository.IFeedPostRepository;
 import chat.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.Optional;
 public class ChatService {
     @Autowired
     private IUserRepository userRepository;
+
+    @Autowired
+    private IFeedPostRepository feedPostRepository;
 
     public User getUser(String username, String password) {
         try {
@@ -34,6 +39,20 @@ public class ChatService {
                 return userRepository.save(user);
 
             }
+        catch(IllegalArgumentException e){
+            return null;
+        }
+    }
+
+    public List<FeedPost> getFeedPosts(){
+        return feedPostRepository.findAll();
+    }
+
+    public FeedPost addFeedPost(FeedPost feedPost){
+        try{
+            return feedPostRepository.save(feedPost);
+
+        }
         catch(IllegalArgumentException e){
             return null;
         }
