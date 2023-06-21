@@ -1,16 +1,15 @@
 
 :root {
     --primary-color: rgba(221, 85, 102, 1); /*  primary color */
-    --secondary-color: #252525; /*  secondary color */
+    --secondary-color: rgb(168, 49, 64); /*  secondary color */
     --text-color: rgba(255, 255, 255, 1); /*  text color */
 }
 
 .topnav {
     background-color: var(--primary-color);
     overflow: hidden;
-
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 12px;
+    padding: 10px;
     max-height: 70px;
     position: fixed;
     top: 0;
@@ -21,12 +20,15 @@
     float: left;
     color: var(--text-color);
     text-align: center;
-    padding: 8px 16px;
+    padding: 2px 20px;
     text-decoration: none;
     font-size: 17px;
     font-weight: 750;
     transition: background-color 0.3s ease;
     font-family: 'Poppins', sans-serif;
+    margin-top: 15px;
+    border-radius: 16px;
+
 }
 
 .topnav a:hover {
@@ -51,4 +53,11 @@
     transform: scaleX(1);
 }
 
+.topnav img{
+    width: 39px;
+    height: 39px;
+    margin-right: 10px;
+    float: left;
+
+}
 

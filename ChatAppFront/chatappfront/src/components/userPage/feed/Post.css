@@ -1,0 +1,80 @@
+.post {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 97%;
+    display: inline-block;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-left: 10px;
+}
+
+.post-user {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.post-date {
+    font-size: 14px;
+    color: #666666;
+}
+
+.post-content {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.post-footer {
+    display: flex;
+    align-items: center;
+}
+
+.post-like-button {
+    background-color: rgba(221, 85, 102, 1);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.post-like-button:hover {
+    background-color: rgb(168, 49, 64);
+}
+
+.post-likes {
+    font-size: 14px;
+    color: #666666;
+    margin-left: 8px;
+}
+.post-like-button::before {
+
+    font-family: "Font Awesome 5 Free", serif;
+    font-weight: 900;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.post-like-button.liked {
+    background-color: #ff4081;
+}
+
+.post-image {
+    max-width: 100%;
+    margin-bottom: 16px;
+}
+
+.post-like-button.clicked {
+    background-color: red;
+}
