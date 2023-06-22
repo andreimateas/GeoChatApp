@@ -13,22 +13,21 @@ function json(response) {
 }
 export class FeedPostController{
 
-    login(user){
+    getFeedPosts(){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
         myheaders.append('Content-Type', 'application/json');
 
         const header = {
-            method: 'POST',
+            method: 'GET',
             headers: myheaders,
-            mode: 'cors',
-            body: JSON.stringify(user),
+            mode: 'cors'
 
         };
-        const loginUrl = SERVER_URL + '/login';
+        const serverUrl = SERVER_URL + '/getfeedposts';
 
-        console.table('Sending data to server:', user);
-        return fetch(loginUrl, header)
+        console.table('Sending data to server: request all posts');
+        return fetch(serverUrl, header)
             .then(status)
             .then(json)
             .then((data) => {
@@ -41,31 +40,4 @@ export class FeedPostController{
             })
     }
 
-    register(user){
-        const myheaders = new Headers();
-        myheaders.append('Accept', 'application/json');
-        myheaders.append('Content-Type', 'application/json');
-
-        const header = {
-            method: 'POST',
-            headers: myheaders,
-            mode: 'cors',
-            body: JSON.stringify(user),
-
-        };
-        const loginUrl = SERVER_URL + '/adduser';
-
-        console.table('Sending data to server:', user);
-        return fetch(loginUrl, header)
-            .then(status)
-            .then(json)
-            .then((data) => {
-                console.log('Request succeeded with JSON response', data);
-                return data;
-            })
-            .catch(error=>{
-                console.error('Error:',error);
-                throw error;
-            })
-    }
 }

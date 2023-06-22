@@ -15,8 +15,7 @@ const Post = ({ user, date, content, imagePath, likes, cont}) => {
             document.getElementById("btnLike"+cont).textContent="Liked";
             document.getElementById("btnLike"+cont).style.textAlign="center";
 
-            let newLikes=likes+1;
-            document.getElementById("txtLike"+cont).textContent=newLikes;
+            document.getElementById("txtLike"+cont).textContent=likes + 1;
         }
         else
         {
@@ -25,8 +24,7 @@ const Post = ({ user, date, content, imagePath, likes, cont}) => {
             document.getElementById("btnLike"+cont).textContent="Like";
             document.getElementById("btnLike"+cont).style.textAlign="center";
 
-            let newLikes=likes;
-            document.getElementById("txtLike"+cont).textContent=newLikes;
+            document.getElementById("txtLike"+cont).textContent=likes;
         }
     }
 
