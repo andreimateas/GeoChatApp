@@ -43,12 +43,18 @@ body, html {
     height: 100px;
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid rgba(221, 85, 102, 1);
+    border: 1px solid #D0BEBD;
     resize: none;
     margin-bottom: 10px;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
+
+.add-post-textarea ::placeholder{
+    color: #9D8B8A;
+}
+
+
 
 .add-post-file-input {
     margin-bottom: 10px;
@@ -66,7 +72,7 @@ body, html {
     color: #fff;
     border: none;
     padding: 15px 25px;
-    border-radius: 4px;
+    border-radius: 12px;
     cursor: pointer;
     font-weight: bold;
     float:right;
@@ -79,10 +85,10 @@ body, html {
 }
 
 .add-post-div{
-    background-color: #f5f1f1;
+    background-color: #F9F7F7;
     padding: 20px;
     border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 50px;
     margin-top:10px;
 
@@ -96,8 +102,8 @@ body, html {
     display: inline-block;
     padding: 7px 3px;
     background-color: #ffffff;
-    color: rgba(221, 85, 102, 1);
-    border: 1px solid rgba(221, 85, 102, 1);
+    color: #9D8B8A;
+    border: 1px solid #D0BEBD;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;

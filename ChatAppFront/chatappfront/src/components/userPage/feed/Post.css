@@ -7,6 +7,10 @@
     display: inline-block;
 }
 
+.post:hover{
+    background-color: #F9F7F7;
+}
+
 .post-header {
     display: flex;
     align-items: center;
@@ -47,7 +51,10 @@
     transition: background-color 0.3s ease;
     border: none;
     outline: none;
+    width: 67.5px;
+    text-align: center;
 }
+
 
 .post-like-button:hover {
     background-color: rgb(168, 49, 64);
@@ -66,15 +73,9 @@
     margin-right: 8px;
 }
 
-.post-like-button.liked {
-    background-color: #ff4081;
-}
 
 .post-image {
     max-width: 100%;
     margin-bottom: 16px;
 }
 
-.post-like-button.clicked {
-    background-color: red;
-}

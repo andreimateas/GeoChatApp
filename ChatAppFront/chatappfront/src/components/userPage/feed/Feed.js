@@ -5,7 +5,7 @@ import "./Feed.css";
 const Feed = ({ posts }) => {
     return (
         <div className={"parentFeed"}>
-            {posts.map((post) => (
+            {posts.map((post, index) => (
                 <Post
                     key={post.postId}
                     user={post.username}
@@ -13,10 +13,12 @@ const Feed = ({ posts }) => {
                     content={post.contentText}
                     imagePath={post.contentImage}
                     likes={post.likes}
+                    cont={index + 1}
                 />
             ))}
         </div>
     );
 };
+
 
 export default Feed;

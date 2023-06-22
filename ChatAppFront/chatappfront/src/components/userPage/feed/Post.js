@@ -1,12 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Post.css';
 
 
-const Post = ({ user, date, content, imagePath, likes }) => {
+const Post = ({ user, date, content, imagePath, likes, cont}) => {
 
 
     const image= imagePath.split("\\")[2];
     const imageFoundPath= require(`../../../images/${image}`);
+    const [liked, setLiked] =useState(false);
+    function onLikeButtonClick(){
+        if(liked===false){
+            setLiked(true);
+            document.getElementById("btnLike"+cont).style.background="rgb(128,30,42)";
+            document.getElementById("btnLike"+cont).textContent="Liked";
+            document.getElementById("btnLike"+cont).style.textAlign="center";
+
+            let newLikes=likes+1;
+            document.getElementById("txtLike"+cont).textContent=newLikes;
+        }
+        else
+        {
+            setLiked(false);
+            document.getElementById("btnLike"+cont).style.background="rgba(221, 85, 102, 1)";
+            document.getElementById("btnLike"+cont).textContent="Like";
+            document.getElementById("btnLike"+cont).style.textAlign="center";
+
+            let newLikes=likes;
+            document.getElementById("txtLike"+cont).textContent=newLikes;
+        }
+    }
 
     return (
         <div className="post">
@@ -17,8 +39,8 @@ const Post = ({ user, date, content, imagePath, likes }) => {
             <div className="post-content">{content}</div>
             <img src={imageFoundPath} alt={"Post"} className={"post-image"} />
             <div className="post-footer">
-                <button className="post-like-button">Like</button>
-                <span className="post-likes">{likes}</span>
+                <button className="post-like-button" id={"btnLike"+cont} onClick={onLikeButtonClick}>Like</button>
+                <span className="post-likes" id={"txtLike"+cont}>{likes}</span>
             </div>
         </div>
     );
