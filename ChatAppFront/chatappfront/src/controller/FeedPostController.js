@@ -1,3 +1,4 @@
+
 const SERVER_URL = 'http://localhost:3001';
 
 function status(response) {
@@ -38,6 +39,35 @@ export class FeedPostController{
                 console.error('Error:',error);
                 throw error;
             })
+    }
+
+    addFeedPost(feedPost){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'POST',
+            headers: myheaders,
+            mode: 'cors',
+            body: JSON.stringify(feedPost),
+
+        };
+        const serverUrl = SERVER_URL + '/addfeedpost';
+
+        console.table('Sending data to server:', feedPost);
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+
     }
 
 }
