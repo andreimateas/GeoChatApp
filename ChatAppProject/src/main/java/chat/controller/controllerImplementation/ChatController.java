@@ -4,25 +4,30 @@ import chat.domain.FeedPost;
 import chat.domain.Token;
 import chat.domain.User;
 import chat.service.serviceImplementation.ChatService;
+import chat.websocket.WebSocketConfig;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.authority.AuthorityUtils;
-import java.io.Console;
+
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
 @RestController
 @CrossOrigin(origins = "*")
 public class ChatController {
     @Autowired
     private  ChatService chatService;
+
 
     //Users
     @PostMapping(value="/login", produces="application/json")
@@ -56,12 +61,20 @@ public class ChatController {
     @PostMapping("/addfeedpost")
     public ResponseEntity<?> addFeedPost(@RequestBody FeedPost feedPost){
         if(chatService.addFeedPost(feedPost)!=null)
-            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonMessage;
+            try {
+                jsonMessage = objectMapper.writeValueAsString("refresh");
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+
+            chatService.sendUpdate(jsonMessage);
+            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
         else
             return new ResponseEntity<String>("cannot add post",HttpStatus.NOT_FOUND);
     }
-
-
 
 
 

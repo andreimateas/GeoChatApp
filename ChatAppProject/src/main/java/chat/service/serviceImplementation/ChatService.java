@@ -5,6 +5,7 @@ import chat.domain.User;
 import chat.repository.IFeedPostRepository;
 import chat.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,6 +19,13 @@ public class ChatService {
 
     @Autowired
     private IFeedPostRepository feedPostRepository;
+
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
+
+    public void sendUpdate(String message) {
+        messagingTemplate.convertAndSend("/topic/updates", message);
+    }
 
     public User getUser(String username, String password) {
         try {

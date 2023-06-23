@@ -6,10 +6,52 @@ import {useEffect, useState} from "react";
 import {FeedPostController} from "../../controller/FeedPostController";
 import {useAuthContext} from "../../auth/AuthProvider";
 import FeedPost from "../../controller/entities/FeedPost";
-
-
+import SockJS from 'sockjs-client';
+import {over} from 'stompjs';
 
 const UserMainPage=()=> {
+
+    const [message, setMessage] = useState('');
+
+    const socket = new SockJS('http://localhost:3001/ws');
+    const stompClient = over(socket);
+    let isConnected = false;
+
+    useEffect(() => {
+        const connect = () => {
+            stompClient.connect({}, () => {
+                isConnected = true;
+                console.log('WebSocket connected');
+                stompClient.subscribe('/topic/updates', (response) => {
+                    const data = JSON.parse(response.body);
+                    setMessage(data);
+                    fetchData();
+                });
+            });
+        };
+
+        const disconnect = () => {
+            if (isConnected) {
+                stompClient.disconnect(() => {
+                    isConnected = false;
+                    console.log('WebSocket disconnected');
+                });
+            }
+        };
+
+        connect();
+
+        return disconnect;
+    }, []); // Empty dependency array to run only once
+
+// Check if the WebSocket connection is established before sending a message
+    const sendMessage = (message) => {
+        if (isConnected) {
+            stompClient.send('/app/sendMessage', {}, JSON.stringify(message));
+        } else {
+            console.log('WebSocket connection is not established');
+        }
+    };
 
     const [feedPosts, setFeedPosts]= useState([]);
 
@@ -36,18 +78,17 @@ const UserMainPage=()=> {
 
 
     async function fetchData() {
-
         const controller = new FeedPostController();
         const feedPosts = await controller.getFeedPosts();
-        feedPosts.forEach(x=>x.date=x.date.replace(/T/g, ' '));
-        console.log("Received feed posts from server: " + feedPosts);
+        feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
+        console.log("Received feed posts from server: ", feedPosts);
         setFeedPosts(feedPosts.reverse());
         setUsername(user);
-
     }
+
     useEffect( () => {
 
-    fetchData();
+        fetchData();
     }, []);
 
     async function onAddPostButtonClicked(){
