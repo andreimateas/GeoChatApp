@@ -2,15 +2,14 @@ import "./UserMessagePage.css";
 
 import {navBarWrapper} from "../navbar/navBarWrapper";
 
+
 const UserMessagePage=()=> {
 
 
     return (
-        <div className={"mainDiv2"}>
-        <div className={"feed2"}>
+        <div id="map" style={{ width: '50%', height: '400px', alignContent: 'center'}}></div>
 
-        </div>
-        </div>
+
     );
 }
 

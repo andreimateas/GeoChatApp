@@ -8,6 +8,7 @@ import {useAuthContext} from "../../auth/AuthProvider";
 import FeedPost from "../../controller/entities/FeedPost";
 import SockJS from 'sockjs-client';
 import {over} from 'stompjs';
+import MyMap from "./MyMap";
 
 const UserMainPage=()=> {
 
@@ -42,9 +43,9 @@ const UserMainPage=()=> {
         connect();
 
         return disconnect;
-    }, []); // Empty dependency array to run only once
+    }, []);
 
-// Check if the WebSocket connection is established before sending a message
+
     const sendMessage = (message) => {
         if (isConnected) {
             stompClient.send('/app/sendMessage', {}, JSON.stringify(message));
@@ -111,6 +112,8 @@ const UserMainPage=()=> {
             <div className={"feed1"}>
 
             <h1 className={"feedHeader1"}>YOUR FEED</h1>
+
+                <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap/></div>
 
                 <div className={"add-post-div"}>
                     <textarea  value={contentText}
