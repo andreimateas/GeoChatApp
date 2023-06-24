@@ -10,21 +10,15 @@ const MyMap = () => {
 
     const mapContainerRef = useRef(null);
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZm9vemVuYmVyZyIsImEiOiJjbGphZHY3YjMxbjI0M2Rxem4ybHF1ZWc5In0.e5wmrFTSG5JBOz84CCgvsw';
+
 
     const [selectedState, setSelectedState] = useState(null);
 
-    const [viewport, setViewport] = useState({
-        width: '100%',
-        height: 400,
-        latitude: 0,
-        longitude: 0,
-        zoom: 10,
-    });
 
     useEffect(() => {
         // Log the selected state instantly
         console.log('Selected State:', selectedState);
+        document.getElementById("cityHeader").textContent=selectedState;
     }, [selectedState]);
 
     useEffect(() => {
@@ -100,6 +94,7 @@ const MyMap = () => {
 
 
         <div
+
             style={{
                 width: '90%',
                 margin: '0 auto',

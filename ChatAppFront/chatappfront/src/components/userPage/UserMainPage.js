@@ -2,7 +2,7 @@
 import {navBarWrapper} from "../navbar/navBarWrapper";
 import "./UserMainPage.css";
 import Feed from "./feed/Feed";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FeedPostController} from "../../controller/FeedPostController";
 import {useAuthContext} from "../../auth/AuthProvider";
 import FeedPost from "../../controller/entities/FeedPost";
@@ -21,6 +21,7 @@ const UserMainPage=()=> {
     useEffect(() => {
         const connect = () => {
             stompClient.connect({}, () => {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 isConnected = true;
                 console.log('WebSocket connected');
                 stompClient.subscribe('/topic/updates', (response) => {
@@ -112,6 +113,7 @@ const UserMainPage=()=> {
             <div className={"feed1"}>
 
             <h1 className={"feedHeader1"}>YOUR FEED</h1>
+                <h2 id={"cityHeader"}>Everywhere</h2>
 
                 <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap/></div>
 
