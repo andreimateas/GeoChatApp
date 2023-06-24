@@ -23,6 +23,11 @@ const MyMap = () => {
     });
 
     useEffect(() => {
+        // Log the selected state instantly
+        console.log('Selected State:', selectedState);
+    }, [selectedState]);
+
+    useEffect(() => {
         const isMapboxSupported = MapboxGlSupported();
 
         if (isMapboxSupported) {
@@ -39,6 +44,7 @@ const MyMap = () => {
                 bounds: bounds,
                 maxBounds: bounds,
                 minZoom: 5,
+                attributionControl: false,
             });
 
             map.on('load', () => {
