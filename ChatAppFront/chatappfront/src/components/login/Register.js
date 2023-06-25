@@ -54,7 +54,7 @@ export default function Register() {
     }
 
     function validateProfilePicture() {
-        return validateField(profilePicture, /[\s\S]*/);
+        return profilePicture.length>0;
     }
 
     function validateLocation() {
