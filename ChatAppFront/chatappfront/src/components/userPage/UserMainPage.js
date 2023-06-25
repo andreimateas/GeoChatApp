@@ -21,7 +21,7 @@ const UserMainPage=()=> {
     useEffect(() => {
         const connect = () => {
             stompClient.connect({}, () => {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
+
                 isConnected = true;
                 console.log('WebSocket connected');
                 stompClient.subscribe('/topic/updates', (response) => {

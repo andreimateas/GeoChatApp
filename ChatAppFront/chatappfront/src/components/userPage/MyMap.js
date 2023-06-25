@@ -56,7 +56,7 @@ const MyMap = () => {
                         'fill-color': [
                             'case',
                             ['==', ['get', 'name'], selectedState],
-                            '#FF0000',
+                            '#d97581',
                             'transparent',
                         ],
                         'fill-opacity': 0.5,

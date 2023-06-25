@@ -70,3 +70,10 @@ p {
     margin-bottom: 8px;
     font-family: 'Poppins', sans-serif;
 }
+
+span{
+    color: darkred;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
