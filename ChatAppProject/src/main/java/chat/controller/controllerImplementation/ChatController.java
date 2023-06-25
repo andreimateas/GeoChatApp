@@ -37,7 +37,7 @@ public class ChatController {
         if(foundUser!=null)
             return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser)),HttpStatus.OK);
         else
-            return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("wrong user credentials",HttpStatus.NOT_FOUND);
     }
     @GetMapping("/getusers")
     public List<User> getUsers(){
@@ -49,7 +49,7 @@ public class ChatController {
         if(chatService.addUser(user)!=null)
             return new Token(getJWTToken(user));
         else
-            return new Token("");
+            return new Token("user already exists");
     }
 
     //FeedPosts
@@ -75,12 +75,6 @@ public class ChatController {
         else
             return new ResponseEntity<String>("cannot add post",HttpStatus.NOT_FOUND);
     }
-
-
-
-
-
-
 
 
 

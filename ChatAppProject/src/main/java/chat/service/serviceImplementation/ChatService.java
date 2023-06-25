@@ -42,12 +42,14 @@ public class ChatService {
         return userRepository.findAll();
     }
 
-    public User addUser(User user){
-        try{
-                return userRepository.save(user);
+    public User addUser(User user) {
+        try {
 
+            if (userRepository.existsById(user.getUsername())) {
+                return null;
             }
-        catch(IllegalArgumentException e){
+            return userRepository.save(user);
+        } catch (IllegalArgumentException e) {
             return null;
         }
     }
