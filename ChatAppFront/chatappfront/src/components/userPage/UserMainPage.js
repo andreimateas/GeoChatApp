@@ -107,6 +107,11 @@ const UserMainPage=()=> {
         }
     }
 
+     const handleLikeButtonClick = async (feedPostNumber,liked) => {
+
+    };
+
+
 
     return (
         <div className={"mainDiv1"}>
@@ -130,7 +135,7 @@ const UserMainPage=()=> {
                     <button type="submit" className={"add-post-button"}  onClick={onAddPostButtonClicked}>Post</button>
                 </div>
 
-                <Feed posts={feedPosts} />
+                <Feed posts={feedPosts} onLikeButtonClick={handleLikeButtonClick}/>
 
             </div>
         </div>

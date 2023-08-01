@@ -2,7 +2,9 @@ import React from 'react';
 import Post from './Post';
 import "./Feed.css";
 
-const Feed = ({ posts }) => {
+
+
+const Feed = ({ posts, onLikeButtonClick }) => {
     return (
         <div className={"parentFeed"}>
             {posts.map((post, index) => (
@@ -14,6 +16,7 @@ const Feed = ({ posts }) => {
                     imagePath={post.contentImage}
                     likes={post.likes}
                     cont={index + 1}
+                    onLikeButtonClick={onLikeButtonClick}
                 />
             ))}
         </div>
