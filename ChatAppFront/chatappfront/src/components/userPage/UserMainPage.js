@@ -9,6 +9,7 @@ import FeedPost from "../../controller/entities/FeedPost";
 import SockJS from 'sockjs-client';
 import {over} from 'stompjs';
 import MyMap from "./MyMap";
+import feed from "./feed/Feed";
 
 const UserMainPage=()=> {
 
@@ -78,18 +79,17 @@ const UserMainPage=()=> {
     const [contentImage, setContentImage] =useState('');
 
 
-
     async function fetchData() {
         const controller = new FeedPostController();
         const feedPosts = await controller.getFeedPosts();
         feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
         console.log("Received feed posts from server: ", feedPosts);
-        setFeedPosts(feedPosts.reverse());
+        setFeedPosts(feedPosts);
         setUsername(user);
     }
 
     useEffect( () => {
-
+        document.getElementById("postText").value="";
         fetchData();
     }, []);
 
@@ -97,13 +97,35 @@ const UserMainPage=()=> {
         try{
             setDate(formatDate(new Date()).replace(' ', 'T'));
             const controller= new FeedPostController();
-            const feedPost= new FeedPost(0,username,contentText,contentImage,date,0);
+            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0);
+            const token= await controller.addFeedPost(feedPost);
+            console.log("Received token from server: "+token.string);
+            fetchData();
+            setContentText("");
+
+        }catch(exception){
+            console.log("error add post");
+        }
+    }
+
+    const updateLikes = async (post,liked) => {
+        try {
+            const controller= new FeedPostController();
+            const feedPost= post;
+            const date= new Date(feedPost.date);
+            feedPost.date=formatDate(date).replace(' ', 'T');
+            if(liked===true){
+                feedPost.likes++;
+            }
+            else{
+                feedPost.likes--;
+            }
             const token= await controller.addFeedPost(feedPost);
             console.log("Received token from server: "+token.string);
             fetchData();
 
-        }catch(exception){
-            console.log("error add post");
+        } catch (exception) {
+            console.log("error like post"+exception);
         }
     }
 
@@ -118,7 +140,7 @@ const UserMainPage=()=> {
                 <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap/></div>
 
                 <div className={"add-post-div"}>
-                    <textarea  value={contentText}
+                    <textarea id={"postText"} value={contentText}
                                onChange={(e) => setContentText(e.target.value)} className={"add-post-textarea"}
                         placeholder="Write your post..."
                     ></textarea>
@@ -130,7 +152,7 @@ const UserMainPage=()=> {
                     <button type="submit" className={"add-post-button"}  onClick={onAddPostButtonClicked}>Post</button>
                 </div>
 
-                <Feed posts={feedPosts} />
+                <Feed posts={feedPosts} onLikeButtonClick={updateLikes}/>
 
             </div>
         </div>
