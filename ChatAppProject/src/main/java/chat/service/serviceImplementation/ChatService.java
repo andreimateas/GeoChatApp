@@ -55,7 +55,7 @@ public class ChatService {
     }
 
     public List<FeedPost> getFeedPosts(){
-        return feedPostRepository.findAll();
+        return feedPostRepository.findAllOrderByDate();
     }
 
     public FeedPost addFeedPost(FeedPost feedPost){
@@ -67,5 +67,7 @@ public class ChatService {
             return null;
         }
     }
+
+
 
 }

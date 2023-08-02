@@ -17,7 +17,7 @@ public class FeedPost implements Serializable {
 
 
     @Id
-    private int postId;
+    private String postId;
 
     private String username;
 
@@ -30,7 +30,7 @@ public class FeedPost implements Serializable {
     public FeedPost() {
     }
 
-    public FeedPost(int postId, String username, String contentText, String contentImage, LocalDateTime date, int likes) {
+    public FeedPost(String postId, String username, String contentText, String contentImage, LocalDateTime date, int likes) {
         this.postId = postId;
         this.username = username;
         this.contentText = contentText;
@@ -52,11 +52,11 @@ public class FeedPost implements Serializable {
                 '}';
     }
 
-    public int getPostId() {
+    public String getPostId() {
         return postId;
     }
 
-    public void setPostId(int postId) {
+    public void setPostId(String postId) {
         this.postId = postId;
     }
 
