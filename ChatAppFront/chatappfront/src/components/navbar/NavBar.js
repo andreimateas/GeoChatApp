@@ -13,6 +13,11 @@ const NavBar=() =>{
     const image= fields[4].split("\\")[2];
     const user= new User(fields[0],"", fields[2], fields[1], image, fields[3]);
     const imagePath= require(`../../images/${image}`);
+    const { logout } = useAuthContext();
+
+    function handleLogout(){
+        logout();
+    }
 
     return(<div className="topnav">
 
@@ -21,7 +26,7 @@ const NavBar=() =>{
         <Link to="/userProfilePage">Profile</Link>
         <Link to="/userPage">Home</Link>
         <Link to="/userMessagePage">Messages</Link>
-
+        <Link  id={"logoutButton"} onClick={handleLogout} to="/">Logout</Link>
 
     </div>);
 }

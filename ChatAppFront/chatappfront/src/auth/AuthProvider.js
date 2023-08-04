@@ -17,6 +17,7 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     function logout() {
+        console.log(`user: ${userProfile.userString} logged out`);
         setUserProfile({
             userString: '',
         });
