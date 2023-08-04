@@ -10,10 +10,12 @@ import SockJS from 'sockjs-client';
 import {over} from 'stompjs';
 import MyMap from "./MyMap";
 import feed from "./feed/Feed";
+import Swal from "sweetalert2";
 
 const UserMainPage=()=> {
 
     const [message, setMessage] = useState('');
+
 
     const socket = new SockJS('http://localhost:3001/ws');
     const stompClient = over(socket);
@@ -94,6 +96,16 @@ const UserMainPage=()=> {
     }, []);
 
     async function onAddPostButtonClicked(){
+        if(contentText.length<5){
+            await Swal.fire({
+                title: "Post is too short!",
+                icon: "error",
+                color: '#A83140FF',
+                confirmButtonColor: '#A83140FF',
+
+            });
+        }
+        else{
         try{
             setDate(formatDate(new Date()).replace(' ', 'T'));
             const controller= new FeedPostController();
@@ -105,6 +117,7 @@ const UserMainPage=()=> {
 
         }catch(exception){
             console.log("error add post");
+        }
         }
     }
 
@@ -150,6 +163,7 @@ const UserMainPage=()=> {
                                 onChange={(e) => setContentImage(e.target.value)} type="file" className={"add-post-file-input"}  />
                     </label>
                     <button type="submit" className={"add-post-button"}  onClick={onAddPostButtonClicked}>Post</button>
+
                 </div>
 
                 <Feed posts={feedPosts} onLikeButtonClick={updateLikes}/>

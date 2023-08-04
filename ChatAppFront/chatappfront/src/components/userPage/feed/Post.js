@@ -1,13 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Post.css';
 
 
 const Post = ({ post,postId,user, date, content, imagePath, likes, cont,onLikeButtonClick}) => {
 
-
-    const image= imagePath.split("\\")[2];
-    const imageFoundPath= require(`../../../images/${image}`);
     const [liked, setLiked] =useState(false);
+    const [hasImage,setHasImage]= useState(false);
+    const image = imagePath ? imagePath.split("\\")[2] : '';
+    const imageFoundPathRef = useRef('');
+
+    useEffect(() => {
+        if (image) {
+            try {
+                imageFoundPathRef.current = require(`../../../images/${image}`);
+                setHasImage(true);
+            } catch (e) {
+                setHasImage(false);
+            }
+        }
+    }, [image]);
+
     function handleLikeButtonClick(){
         if(liked===false){
             setLiked(true);
@@ -41,7 +53,7 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, cont,onLikeBu
                 <div className="post-date">{date}</div>
             </div>
             <div className="post-content">{content}</div>
-            <img src={imageFoundPath} alt={"Post"} className={"post-image"} />
+            {hasImage && <img src={imageFoundPathRef.current} alt={"Post"} className={"post-image"} />}
             <div className="post-footer">
                 <button className="post-like-button" id={"btnLike"+cont} onClick={handleLikeButtonClick}>Like</button>
                 <span className="post-likes" id={"txtLike"+cont}>{likes}</span>
