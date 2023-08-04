@@ -16,11 +16,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.authority.AuthorityUtils;
 
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -31,7 +38,7 @@ public class ChatController {
 
     //Users
     @PostMapping(value="/login", produces="application/json")
-    public ResponseEntity<?> login(@RequestBody User user){
+    public ResponseEntity<?> login(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         System.out.println("Entered login");
         User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
         if(foundUser!=null)
@@ -45,7 +52,7 @@ public class ChatController {
     }
 
     @PostMapping("/adduser")
-    public Token addUser(@RequestBody User user){
+    public Token addUser(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         if(chatService.addUser(user)!=null)
             return new Token(getJWTToken(user));
         else
