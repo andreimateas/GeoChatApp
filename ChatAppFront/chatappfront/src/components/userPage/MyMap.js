@@ -6,19 +6,21 @@ import './MyMap.css';
 import romaniaStates from './ro_judete_poligon.geojson';
 import MapboxGlSupported from 'mapbox-gl-supported';
 
-const MyMap = () => {
+const MyMap = ({initialLocation, onMapChange}) => {
 
     const mapContainerRef = useRef(null);
 
 
 
-    const [selectedState, setSelectedState] = useState(null);
+    const [selectedState, setSelectedState] = useState(initialLocation);
 
 
     useEffect(() => {
-        // Log the selected state instantly
+
         console.log('Selected State:', selectedState);
         document.getElementById("cityHeader").textContent=selectedState;
+        onMapChange();
+
     }, [selectedState]);
 
     useEffect(() => {

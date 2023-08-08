@@ -15,6 +15,7 @@ const Feed = ({ posts , onLikeButtonClick}) => {
                     content={post.contentText}
                     imagePath={post.contentImage}
                     likes={post.likes}
+                    location={post.location}
                     cont={index + 1}
                     onLikeButtonClick={onLikeButtonClick}
                 />

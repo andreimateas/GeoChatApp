@@ -25,6 +25,50 @@ export default function Register() {
     const { login } = useAuthContext();
     const navigate = useNavigate();
     const anyError = useRef(false);
+    const counties = [
+        "Alba",
+        "Arad",
+        "Argeș",
+        "Bacău",
+        "Bihor",
+        "Bistrița-Năsăud",
+        "Botoșani",
+        "Brăila",
+        "Brașov",
+        "București",
+        "Buzău",
+        "Călărași",
+        "Caraș-Severin",
+        "Cluj",
+        "Constanța",
+        "Covasna",
+        "Dâmbovița",
+        "Dolj",
+        "Galați",
+        "Giurgiu",
+        "Gorj",
+        "Harghita",
+        "Hunedoara",
+        "Ialomița",
+        "Iași",
+        "Ilfov",
+        "Maramureș",
+        "Mehedinți",
+        "Mureș",
+        "Neamț",
+        "Olt",
+        "Prahova",
+        "Sălaj",
+        "Satu Mare",
+        "Sibiu",
+        "Suceava",
+        "Teleorman",
+        "Timiș",
+        "Tulcea",
+        "Vâlcea",
+        "Vaslui",
+        "Vrancea"
+    ];
 
     function resetErrorFlags() {
         const errorSetters = [setUsernameError, setPasswordError];
@@ -57,9 +101,7 @@ export default function Register() {
         return profilePicture.length>0;
     }
 
-    function validateLocation() {
-        return validateField(location, /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/);
-    }
+
 
     function parseJwt (token) {
         const base64Url = token.split('.')[1];
@@ -99,10 +141,6 @@ export default function Register() {
             anyError.current = true;
         }
 
-        if (!validateLocation()) {
-            setLocationError("Enter a valid city");
-            anyError.current = true;
-        }
 
         if(!anyError.current) {
             try {
@@ -199,15 +237,14 @@ export default function Register() {
 
 
             {locationError && <span className="error">{locationError}</span>}
-                <input required placeholder={"Location"}
-                   type="text"
-                   id="inputLocation"
-                   className="inputField"
-                   value={location}
-                   style={{ borderColor: locationError.length > 0 ? "red" : "" }}
-                   onChange={(e) => setLocation(e.target.value)}
-                />
-
+            <select value={location} onChange={(e) => setLocation(e.target.value)}>
+                <option value="">Select a county</option>
+                {counties.map((county, index) => (
+                    <option key={index} value={county}>
+                        {county}
+                    </option>
+                ))}
+            </select>
 
                 <p>Profile picture</p>
             {profilePictureError && <span className="error">{profilePictureError}</span>}

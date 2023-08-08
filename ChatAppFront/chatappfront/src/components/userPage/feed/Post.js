@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import './Post.css';
 
 
-const Post = ({ post,postId,user, date, content, imagePath, likes, cont,onLikeButtonClick}) => {
+const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont,onLikeButtonClick}) => {
 
     const [liked, setLiked] =useState(false);
     const [hasImage,setHasImage]= useState(false);

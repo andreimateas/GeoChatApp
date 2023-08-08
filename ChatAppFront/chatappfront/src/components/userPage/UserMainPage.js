@@ -2,7 +2,7 @@
 import {navBarWrapper} from "../navbar/navBarWrapper";
 import "./UserMainPage.css";
 import Feed from "./feed/Feed";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {FeedPostController} from "../../controller/FeedPostController";
 import {useAuthContext} from "../../auth/AuthProvider";
 import FeedPost from "../../controller/entities/FeedPost";
@@ -11,8 +11,15 @@ import {over} from 'stompjs';
 import MyMap from "./MyMap";
 import feed from "./feed/Feed";
 import Swal from "sweetalert2";
+import User from "../../controller/entities/User";
 
 const UserMainPage=()=> {
+
+    const { userProfile } = useAuthContext();
+    const fields= userProfile.userString.split(",");
+    const image= fields[4].split("\\")[2];
+    const userFull= new User(fields[0],"", fields[2], fields[1], image, fields[3]);
+    const user= fields[0];
 
     const [message, setMessage] = useState('');
 
@@ -60,10 +67,7 @@ const UserMainPage=()=> {
 
     const [feedPosts, setFeedPosts]= useState([]);
 
-    const { userProfile } = useAuthContext();
 
-    const fields= userProfile.userString.split(",");
-    const user= fields[0];
 
     const [username, setUsername] =useState('');
     function formatDate(date) {
@@ -79,11 +83,22 @@ const UserMainPage=()=> {
     const [date, setDate] =useState(formatDate(new Date()).replace(' ', 'T'));
     const [contentText, setContentText] =useState('');
     const [contentImage, setContentImage] =useState('');
-
+    const [postLocation, setPostLocation]= useState(userFull.location);
+    const currentCounty= useRef(null);
 
     async function fetchData() {
         const controller = new FeedPostController();
-        const feedPosts = await controller.getFeedPosts();
+        let feedPosts = await controller.getFeedPosts();
+        console.log("Current county: "+currentCounty.current.textContent);
+        let filteredPosts=[];
+        if(currentCounty.current.textContent!==""){
+            for(let post of feedPosts){
+                if(post.location===currentCounty.current.textContent)
+                    filteredPosts.push(post);
+            }
+            feedPosts=filteredPosts;
+        }
+
         feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
         console.log("Received feed posts from server: ", feedPosts);
         setFeedPosts(feedPosts);
@@ -94,6 +109,7 @@ const UserMainPage=()=> {
         document.getElementById("postText").value="";
         fetchData();
     }, []);
+
 
     async function onAddPostButtonClicked(){
         if(contentText.length<5){
@@ -109,7 +125,7 @@ const UserMainPage=()=> {
         try{
             setDate(formatDate(new Date()).replace(' ', 'T'));
             const controller= new FeedPostController();
-            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0);
+            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0,userFull.location);
             const token= await controller.addFeedPost(feedPost);
             console.log("Received token from server: "+token.string);
             fetchData();
@@ -142,15 +158,21 @@ const UserMainPage=()=> {
         }
     }
 
+    const fetchMap = async (post,liked) => {
+        await fetchData();
+    }
+
+
+
 
     return (
         <div className={"mainDiv1"}>
             <div className={"feed1"}>
 
             <h1 className={"feedHeader1"}>YOUR FEED</h1>
-                <h2 id={"cityHeader"}>Everywhere</h2>
+                <h2 ref={currentCounty} id={"cityHeader"} ></h2>
 
-                <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap/></div>
+                <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap initialLocation={userFull.location} onMapChange={fetchMap}/></div>
 
                 <div className={"add-post-div"}>
                     <textarea id={"postText"} value={contentText}
