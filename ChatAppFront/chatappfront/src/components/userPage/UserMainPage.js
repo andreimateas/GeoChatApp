@@ -125,7 +125,7 @@ const UserMainPage=()=> {
         try{
             setDate(formatDate(new Date()).replace(' ', 'T'));
             const controller= new FeedPostController();
-            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0,userFull.location);
+            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0,currentCounty.current.textContent);
             const token= await controller.addFeedPost(feedPost);
             console.log("Received token from server: "+token.string);
             fetchData();

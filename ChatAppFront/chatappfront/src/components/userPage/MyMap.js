@@ -98,9 +98,12 @@ const MyMap = ({initialLocation, onMapChange}) => {
         <div
 
             style={{
-                width: '90%',
+                width: '75%',
                 margin: '0 auto',
                 height: '500px',
+                borderRadius: '10px',
+                overflow: 'hidden',
+
             }}
             id="map-container"
             ref={mapContainerRef}
