@@ -27,16 +27,19 @@ public class FeedPost implements Serializable {
 
     private int likes;
 
+    private String location;
+
     public FeedPost() {
     }
 
-    public FeedPost(String postId, String username, String contentText, String contentImage, LocalDateTime date, int likes) {
+    public FeedPost(String postId, String username, String contentText, String contentImage, LocalDateTime date, int likes, String location) {
         this.postId = postId;
         this.username = username;
         this.contentText = contentText;
         this.contentImage = contentImage;
         this.date = date;
         this.likes = likes;
+        this.location = location;
     }
 
 
@@ -49,6 +52,7 @@ public class FeedPost implements Serializable {
                 ", contentImage='" + contentImage + '\'' +
                 ", date=" + date +
                 ", likes=" + likes +
+                ", location=" + location +
                 '}';
     }
 
@@ -99,4 +103,13 @@ public class FeedPost implements Serializable {
     public void setLikes(int likes) {
         this.likes = likes;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
 }
