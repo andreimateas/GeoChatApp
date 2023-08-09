@@ -1,6 +1,7 @@
 package chat.controller.controllerImplementation;
 
 import chat.domain.FeedPost;
+import chat.domain.Message;
 import chat.domain.Token;
 import chat.domain.User;
 import chat.service.serviceImplementation.ChatService;
@@ -82,6 +83,33 @@ public class ChatController {
         else
             return new ResponseEntity<String>("cannot add post",HttpStatus.NOT_FOUND);
     }
+
+
+    //Messages
+    @GetMapping("/getmessages")
+    public List<Message> getMessages(){
+        return chatService.getMessages();
+    }
+
+    @PostMapping("/addmessage")
+    public ResponseEntity<?> addMessage(@RequestBody Message message){
+        if(chatService.addMessage(message)!=null)
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonMessage;
+            try {
+                jsonMessage = objectMapper.writeValueAsString("refresh");
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+
+            chatService.sendUpdate(jsonMessage);
+            return new ResponseEntity<Message>(message,HttpStatus.OK);}
+        else
+            return new ResponseEntity<String>("cannot add message",HttpStatus.NOT_FOUND);
+    }
+
+
 
 
     private String getJWTToken(User user) {

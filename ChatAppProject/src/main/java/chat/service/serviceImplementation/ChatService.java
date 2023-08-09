@@ -1,8 +1,10 @@
 package chat.service.serviceImplementation;
 
 import chat.domain.FeedPost;
+import chat.domain.Message;
 import chat.domain.User;
 import chat.repository.IFeedPostRepository;
+import chat.repository.IMessageRepository;
 import chat.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -38,6 +40,9 @@ public class ChatService {
     private IFeedPostRepository feedPostRepository;
 
     @Autowired
+    private IMessageRepository messageRepository;
+
+    @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
     private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
@@ -63,6 +68,73 @@ public class ChatService {
         }
     }
 
+
+    //service methods
+    public void sendUpdate(String message) {
+        messagingTemplate.convertAndSend("/topic/updates", message);
+    }
+
+    public User getUser(String username, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        try {
+            User user = userRepository.getOne(username);
+            if (getEncryptedPassword(password).equals(user.getPassword()))
+                return user;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+        return null;
+    }
+
+    public List<User> getUsers(){
+        return userRepository.findAll();
+    }
+
+    public User addUser(User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        try {
+
+            if (userRepository.existsById(user.getUsername())) {
+                return null;
+            }
+            storeSecretKeyAndIv(secretKey,ivParameterSpec);
+            user.setPassword(getEncryptedPassword(user.getPassword()));
+            return userRepository.save(user);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
+
+    public List<FeedPost> getFeedPosts(){
+        return feedPostRepository.findAllOrderByDate();
+    }
+
+    public FeedPost addFeedPost(FeedPost feedPost){
+        try{
+            return feedPostRepository.save(feedPost);
+
+        }
+        catch(IllegalArgumentException e){
+            return null;
+        }
+    }
+
+    public List<Message> getMessages(){
+        return messageRepository.findAll();
+    }
+
+    public Message addMessage(Message message){
+        try{
+            return messageRepository.save(message);
+        }
+        catch(IllegalArgumentException e){
+
+            return null;
+        }
+    }
+
+
+
+
+    //encryption methods
     private void storeSecretKeyAndIv(SecretKey secretKey, IvParameterSpec ivParameterSpec) {
 
         String serializedSecretKey = serializeSecretKey(secretKey);
@@ -112,56 +184,6 @@ public class ChatService {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void sendUpdate(String message) {
-        messagingTemplate.convertAndSend("/topic/updates", message);
-    }
-
-    public User getUser(String username, String password) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        try {
-            User user = userRepository.getOne(username);
-
-
-
-            if (getEncryptedPassword(password).equals(user.getPassword()))
-                return user;
-        } catch (EntityNotFoundException exception) {
-            return null;
-        }
-        return null;
-    }
-
-    public List<User> getUsers(){
-        return userRepository.findAll();
-    }
-
-    public User addUser(User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        try {
-
-            if (userRepository.existsById(user.getUsername())) {
-                return null;
-            }
-            storeSecretKeyAndIv(secretKey,ivParameterSpec);
-            user.setPassword(getEncryptedPassword(user.getPassword()));
-            return userRepository.save(user);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
-
-    public List<FeedPost> getFeedPosts(){
-        return feedPostRepository.findAllOrderByDate();
-    }
-
-    public FeedPost addFeedPost(FeedPost feedPost){
-        try{
-            return feedPostRepository.save(feedPost);
-
-        }
-        catch(IllegalArgumentException e){
-            return null;
         }
     }
 
