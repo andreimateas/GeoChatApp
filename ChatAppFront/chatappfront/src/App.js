@@ -7,7 +7,8 @@ import Home from "./components/home/Home";
 import React from 'react';
 import {AuthContextProvider} from "./auth/AuthProvider";
 import UserProfilePage from "./components/userPage/UserProfilePage";
-import UserMessagePage from "./components/userPage/UserMessagePage";
+import UserMessagePageWrapped from "./components/userPage/UserMessagePage";
+import MessagesWrapped from "./components/userPage/messages/Messages";
 const App = () => {
   return (
     <>
@@ -18,7 +19,8 @@ const App = () => {
             <Route path="/register" element={<Register/>}/>
             <Route path="/userPage" element={<UserMainPage/>}/>
             <Route path="/userProfilePage" element={<UserProfilePage/>}/>
-            <Route path="/userMessagePage" element={<UserMessagePage/>}/>
+            <Route path="/userMessagePage" element={<UserMessagePageWrapped/>}/>
+            <Route path="/messages/:user2" element={<MessagesWrapped/>}/>
         </Routes>
         </AuthContextProvider>
     </>

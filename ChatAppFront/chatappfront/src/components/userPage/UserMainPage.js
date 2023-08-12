@@ -9,7 +9,6 @@ import FeedPost from "../../controller/entities/FeedPost";
 import SockJS from 'sockjs-client';
 import {over} from 'stompjs';
 import MyMap from "./MyMap";
-import feed from "./feed/Feed";
 import Swal from "sweetalert2";
 import User from "../../controller/entities/User";
 
