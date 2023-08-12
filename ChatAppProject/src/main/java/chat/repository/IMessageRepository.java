@@ -2,8 +2,15 @@ package chat.repository;
 
 import chat.domain.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface IMessageRepository extends JpaRepository<Message, Integer> {
+
+    @Query("SELECT msg FROM Message msg WHERE (msg.from= :user1 AND msg.to= :user2) OR (msg.from= :user2 AND msg.to= :user1)")
+    public List<Message> getMessagesByUsers(@Param("user1") String user1, @Param("user2") String user2);
 }

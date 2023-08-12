@@ -121,12 +121,8 @@ public class ChatService {
         return messageRepository.findAll();
     }
 
-    /**
-     * Adds a new message to the repository.
-     *
-     * @param message The message to be added.
-     * @return The added message if successful; otherwise, null.
-     */
+
+
     public Message addMessage(Message message){
         try{
             return messageRepository.save(message);
@@ -135,6 +131,10 @@ public class ChatService {
 
             return null;
         }
+    }
+
+    public List<Message> getMessagesByUsers(String user1, String user2){
+        return messageRepository.getMessagesByUsers(user1,user2);
     }
 
 

@@ -109,6 +109,11 @@ public class ChatController {
             return new ResponseEntity<String>("cannot add message",HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/getmessagesbyusers")
+    public List<Message> getMessagesByUsers(@RequestParam String user1, @RequestParam String user2){
+        return chatService.getMessagesByUsers(user1,user2);
+    }
+
 
 
 
