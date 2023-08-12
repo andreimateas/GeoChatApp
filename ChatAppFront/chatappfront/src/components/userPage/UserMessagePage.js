@@ -56,23 +56,19 @@ const UserMessagePage=()=> {
     }, []);
 
     return (
-        <div className={"mainDiv"}>
-            <h1>Messages</h1>
-            <ul>
-            {userMessageList.map((currentUser, index) => (
-                <li key={index}>
-
-                    <Link to={`/messages/${currentUser[0]}`}>
-                        <p>DM: {currentUser[0]}</p>
-                        <p>Last message: {currentUser[1]}</p>
-                        <p>Date: {currentUser[2]}</p>
-                        <p>--------------------------------------</p>
-                    </Link>
-                </li>
-            ))}
-        </ul>
+        <div className="mainDiv">
+            <ul className="userMessageList">
+                {userMessageList.map((currentUser, index) => (
+                    <li key={index} className="messageBox">
+                        <Link to={`/messages/${currentUser[0]}`}>
+                            <p className="messageFrom">DM: {currentUser[0]}</p>
+                            <p className="messageContent">Last message: {currentUser[1]}</p>
+                            <p className="messageDate">Date: {currentUser[2]}</p>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
-
     );
 }
 

@@ -69,4 +69,32 @@ export class MessageController{
 
     }
 
+    getMessagesByUsers(user1, user2){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'GET',
+            headers: myheaders,
+            mode: 'cors'
+
+
+        };
+        const serverUrl = SERVER_URL + '/getmessagesbyusers/?user1=' + user1 + '&user2=' + user2;
+
+        console.table('Sending data to server: request all messages');
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+    }
+
 }
