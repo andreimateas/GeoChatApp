@@ -31,16 +31,32 @@ const Messages=()=> {
     }, []);
 
     return (
-        <div className="mainDiv">
-            <ul className="messageList">
-                {messageList.map((message, index) => (
-                    <li key={index} className="messageBox">
-                        <p className="messageFrom">{message.from}</p>
-                        <p className="messageContent">{message.content}</p>
-                        <p className="messageDate">Date: {message.date}</p>
-                    </li>
-                ))}
-            </ul>
+        <div className="messagePageContainer">
+            <div className="messageListContainer">
+                <ul className="messageList">
+                    {messageList.map((message, index) => (
+                        <li
+                            key={index}
+                            className={`messageBox ${
+                                message.from === user1 ? 'rightMessage' : 'leftMessage'
+                            }`}
+                        >
+                            <div
+                                className={`messageBubble ${
+                                    message.from === user1 ? 'rightBubble' : 'leftBubble'
+                                }`}
+                            >
+                                <p className="messageContent">{message.content}</p>
+                                <p className="messageDate">{message.date}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="messageInputContainer">
+                <textarea className="messageTextArea" placeholder="Type a message..."></textarea>
+                <button className="sendButton">Send</button>
+            </div>
         </div>
     );
 }
