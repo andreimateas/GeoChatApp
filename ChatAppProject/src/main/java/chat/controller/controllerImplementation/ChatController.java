@@ -1,9 +1,6 @@
 package chat.controller.controllerImplementation;
 
-import chat.domain.FeedPost;
-import chat.domain.Message;
-import chat.domain.Token;
-import chat.domain.User;
+import chat.domain.*;
 import chat.service.serviceImplementation.ChatService;
 import chat.websocket.WebSocketConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,6 +17,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +46,7 @@ public class ChatController {
             return new ResponseEntity<String>("wrong user credentials",HttpStatus.NOT_FOUND);
     }
     @GetMapping("/getusers")
-    public List<User> getUsers(){
+    public List<UserDTO> getUsers(){
         return chatService.getUsers();
     }
 
@@ -58,6 +56,12 @@ public class ChatController {
             return new Token(getJWTToken(user));
         else
             return new Token("user already exists");
+    }
+
+    @GetMapping("/getuser")
+    public UserDTO getUser(@RequestParam String username){
+
+        return chatService.getUser(username);
     }
 
     //FeedPosts

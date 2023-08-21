@@ -3,6 +3,7 @@ package chat.service.serviceImplementation;
 import chat.domain.FeedPost;
 import chat.domain.Message;
 import chat.domain.User;
+import chat.domain.UserDTO;
 import chat.repository.IFeedPostRepository;
 import chat.repository.IMessageRepository;
 import chat.repository.IUserRepository;
@@ -26,10 +27,7 @@ import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 
 @Service
 public class ChatService {
@@ -85,8 +83,36 @@ public class ChatService {
         return null;
     }
 
-    public List<User> getUsers(){
-        return userRepository.findAll();
+    public UserDTO getUser(String username){
+        try {
+            User user = userRepository.getOne(username);
+            UserDTO userDTO = new UserDTO();
+            userDTO.setUsername(user.getUsername());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setName(user.getName());
+            userDTO.setProfilePicture(user.getProfilePicture());
+            userDTO.setLocation(user.getLocation());
+            return userDTO;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
+
+    }
+
+    public List<UserDTO> getUsers(){
+        List<User> userList=userRepository.findAll();
+        List<UserDTO> userDTOList=new ArrayList<UserDTO>();
+        for (User user : userList) {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setUsername(user.getUsername());
+            userDTO.setEmail(user.getEmail());
+            userDTO.setName(user.getName());
+            userDTO.setProfilePicture(user.getProfilePicture());
+            userDTO.setLocation(user.getLocation());
+            userDTOList.add(userDTO);
+
+        }
+        return userDTOList;
     }
 
     public User addUser(User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
