@@ -36,10 +36,12 @@ body, html {
 .feedHeader1{
     margin-top: 90px;
     margin-bottom: 0px;
+    color: #914040;
 }
 
 #cityHeader{
     margin-bottom: 15px;
+    color: #914040;
 }
 
 .add-post-textarea {

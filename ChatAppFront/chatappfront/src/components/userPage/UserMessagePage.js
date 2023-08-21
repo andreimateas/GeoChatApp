@@ -27,12 +27,13 @@ const UserMessagePage=()=> {
             for(let msg of messages){
 
                     if(msg.from===user.username){
-                        userArray.push([msg.to,msg.content,msg.date]);
+                        userArray.push([msg.to,msg.content,msg.date,msg.from]);
                     }
                     if(msg.to===user.username){
-                        userArray.push([msg.from,msg.content,msg.date]);
+                        userArray.push([msg.from,msg.content,msg.date,msg.from]);
                     }
             }
+        userArray=userArray.reverse();
         let userSet=new Set();
         let filteredUsers=[]
         for(const arr of userArray){
@@ -60,10 +61,12 @@ const UserMessagePage=()=> {
             <ul className="userMessageList">
                 {userMessageList.map((currentUser, index) => (
                     <li key={index} className="messageBox">
-                        <Link to={`/messages/${currentUser[0]}`}>
-                            <p className="messageFrom">DM: {currentUser[0]}</p>
-                            <p className="messageContent">Last message: {currentUser[1]}</p>
-                            <p className="messageDate">Date: {currentUser[2]}</p>
+                        <Link to={`/messages/${currentUser[0]}`} className="messageLink">
+                            <div className="messagePreview">
+                                <p className="messageFrom">{currentUser[0]}</p>
+                                <p className="messageContent1">{(currentUser[3]===user.username ? "You" : currentUser[3])}: {currentUser[1]}</p>
+                            </div>
+                            <p className="messageDate">Date: {currentUser[2].replace(/T/g, ' ')}</p>
                         </Link>
                     </li>
                 ))}

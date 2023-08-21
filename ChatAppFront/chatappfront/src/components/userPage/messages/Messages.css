@@ -1,10 +1,10 @@
-/* MessagePage.css */
 
 .messagePageContainer {
     display: flex;
     flex-direction: column;
     height: 100vh;
     background-color: #F5F1F1FF;
+    justify-content: space-between;
 }
 
 .messageListContainer {
@@ -18,14 +18,28 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    border-right: #e18893;
+    border-right-style: inset;
+    border-left: #e18893;
+    border-left-style: outset;
+    border-width: 2px;
 }
 
-.messageBox {
+.messageBox1 {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 10px 0;
+    border: 2px solid #e18893;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 15px;
+    transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(246, 241, 241, 0.9);
 }
+
+
 
 .messageBubble {
     padding: 10px;
@@ -34,23 +48,28 @@
     word-wrap: break-word;
 }
 
+.messageBubble:hover{
+    background-color: #ffe3e3;
+}
+
 .rightMessage {
     justify-content: flex-end;
+    border-style: none;
 }
 
 .leftMessage {
     justify-content: flex-start;
+    border-style: none;
 }
 
 .rightBubble {
-    background-color: #DCF8C6;
+    background-color: #f1c4ca;
     color: #000;
     align-self: flex-end;
-
 }
 
 .leftBubble {
-    background-color: #E4E6EB;
+    background-color: #e9e9ee;
     color: #000;
 }
 
@@ -67,8 +86,10 @@
 .messageInputContainer {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-top: 1px solid #ccc;
+    padding: 20px;
+    margin: 30px;
+    border-top: 2px solid #e18893;
+    justify-content: center;
 }
 
 .messageTextArea {
@@ -76,15 +97,37 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical;
+    max-width: 35%;
+    max-height: 100%;
+    resize: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
 }
+
+
 
 .sendButton {
     padding: 8px 15px;
-    background-color: #007BFF;
+    background-color: rgba(221, 85, 102, 1);
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 10vh;
+    height: 65%;
+}
+
+.sendButton:hover{
+    background-color: rgb(168, 49, 64);
+}
+
+.chatTitle{
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #914040;
 }
