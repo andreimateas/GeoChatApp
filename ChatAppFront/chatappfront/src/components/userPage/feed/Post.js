@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './Post.css';
+import {UserController} from "../../../controller/UserController";
 
 
 const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont,onLikeButtonClick}) => {
@@ -8,6 +9,30 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
     const [hasImage,setHasImage]= useState(false);
     const image = imagePath ? imagePath.split("\\")[2] : '';
     const imageFoundPathRef = useRef('');
+
+    const [userImage,setUserImage]=useState("");
+
+    const userImagePath= useRef('');
+
+    const [userImagePathUpdated, setUserImagePathUpdated] = useState(false);
+
+
+    async function fetchData(){
+        const userController = new UserController();
+        let receivedUser= await userController.getUser(user);
+        console.log("Received user from server: ", receivedUser);
+
+        setUserImage(receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : "");
+        userImagePath.current = require(`../../../images/${receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : ""}`);
+
+        localStorage.setItem('userImagePath', JSON.stringify(userImagePath));
+        setUserImagePathUpdated(true);
+    }
+
+    useEffect(() => {
+        fetchData();
+
+    }, []);
 
     useEffect(() => {
         if (image) {
@@ -46,9 +71,18 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }
 
+    useEffect(() => {
+        const storedImagePath = localStorage.getItem('userImagePath');
+        if (storedImagePath) {
+            userImagePath.current = JSON.parse(storedImagePath);
+            setUserImagePathUpdated(true);
+        }
+    }, []);
+
     return (
         <div className="post">
             <div className="post-header">
+                <img src={userImagePath.current} className={"userImage"} alt={user}/>
                 <div className="post-user">{user}</div>
                 <div className="post-date">{date}</div>
             </div>

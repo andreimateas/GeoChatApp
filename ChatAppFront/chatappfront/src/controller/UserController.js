@@ -70,4 +70,32 @@ export class UserController{
                 throw error;
             })
     }
+
+    getUser(username){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'GET',
+            headers: myheaders,
+            mode: 'cors'
+
+        };
+        const serverUrl = SERVER_URL + '/getuser?username='+username;
+
+        console.table('Sending data to server:', username);
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+    }
+
 }

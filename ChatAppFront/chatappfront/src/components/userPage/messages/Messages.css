@@ -10,7 +10,7 @@
 .messageListContainer {
     flex: 1;
     overflow-y: auto;
-    padding: 15% 35%;
+    padding: 1% 35%;
     margin: 1%;
 }
 
@@ -130,4 +130,13 @@
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
     color: #914040;
+}
+
+.fromTag{
+    font-size: 12px;
+}
+
+.conversationUserImage{
+    max-height: 40px;
+    max-width: 39px;
 }
