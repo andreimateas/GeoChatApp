@@ -1,7 +1,9 @@
-body{
-
+body {
     background: url("../../images/WorldMapDark.svg");
-    background-size:100% auto;
+    background-size: 100% auto;
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+    font-family: 'Poppins', sans-serif;
 }
 
 .loginDiv {
@@ -9,23 +11,14 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40vh;
+    min-height: 100vh; /* Set minimum height to occupy full viewport height */
     background-color: rgba(255, 255, 255, 0.9);
     box-sizing: border-box;
     padding: 20px;
     max-width: 400px;
-    margin: 20vh auto;
+    margin: 0 auto; /* Center horizontally */
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-
-
-label {
-    color: #1f1f1f;
-    font-size: 18px;
-    margin-bottom: 8px;
-    font-family: 'Poppins', sans-serif;
 }
 
 .inputLogin {
@@ -43,19 +36,15 @@ label {
     border-radius: 8px;
     font-size: 18px;
     transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 1.5em;
 }
 
 #buttonLogin:hover {
     background-color: var(--secondary-color);
 }
 
-
 .register-link {
-
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
     transition: color 0.3s ease;
 }
 
@@ -65,15 +54,12 @@ label {
 }
 
 p {
-    color: #1f1f1f;
     font-size: 18px;
-    margin-bottom: 8px;
-    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0.8em;
 }
 
-span{
+span {
     color: darkred;
     font-size: 14px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
-

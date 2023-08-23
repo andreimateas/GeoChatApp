@@ -95,7 +95,7 @@ const Messages = () => {
                 <div ref={messagesEndRef} />
             </div>
             <div className="messageInputContainer">
-                <textarea className="messageTextArea" placeholder="Type a message..."></textarea>
+                <textarea className="messageTextArea" placeholder=""></textarea>
                 <button className="sendButton">Send</button>
             </div>
         </div>

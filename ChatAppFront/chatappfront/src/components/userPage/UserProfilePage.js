@@ -13,13 +13,13 @@ const UserProfilePage=()=> {
 
     return (
         <div className={"mainDiv"}>
-        <div className={"feed"}>
-            <h1>Welcome, {user.username}!</h1>
-            <h2>{user.name}</h2>
-            <h3>{user.email}</h3>
-            <h3>{user.location}</h3>
-            <h3><img src={imagePath} alt="profile"/></h3>
-        </div>
+            <div className={"feed"}>
+                <h1>Welcome, {user.username}!</h1>
+                <h2>{user.name}</h2>
+                <h3>{user.email}</h3>
+                <h3>{user.location}</h3>
+                <h3><img src={imagePath} alt="profile"/></h3>
+            </div>
         </div>
     );
 }
