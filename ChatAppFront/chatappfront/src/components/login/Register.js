@@ -274,7 +274,6 @@ export default function Register() {
                     type="file"
                     id="inputProfilePicture"
                     className="inputField"
-                    value={profilePicture}
                     style={{ borderColor: profilePictureError.length > 0 ? "red" : "" }}
                     onChange={handleProfilePictureChange}
                 />

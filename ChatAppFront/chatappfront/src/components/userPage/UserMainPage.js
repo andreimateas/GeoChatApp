@@ -162,7 +162,22 @@ const UserMainPage=()=> {
     }
 
 
+    function handlePostImageChange(e) {
 
+
+        try{
+            const fileInput = e.target;
+            const fileLabel = document.getElementById('fileLabelText');
+            if (fileInput.files.length > 0){
+                fileLabel.textContent = fileInput.files[0].name;
+                setContentImage(e.target.value);
+            }else
+                fileLabel.textContent = 'Select image';
+        }
+        catch (e){
+            console.log("Error uploading post image: "+ e);
+        }
+    }
 
     return (
         <div className={"mainDiv1"}>
@@ -179,9 +194,8 @@ const UserMainPage=()=> {
                         placeholder="Write your post..."
                     ></textarea>
                     <label className={"file-input-label"}>
-                        Image
-                        <input  value={contentImage}
-                                onChange={(e) => setContentImage(e.target.value)} type="file" className={"add-post-file-input"}  />
+                        <span className={"input-label-text1"} id="fileLabelText">Select image</span>
+                        <input onChange={handlePostImageChange} type="file" className={"add-post-file-input"}  />
                     </label>
                     <button type="submit" className={"add-post-button"}  onClick={onAddPostButtonClicked}>Post</button>
 
