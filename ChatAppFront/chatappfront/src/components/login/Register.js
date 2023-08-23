@@ -25,6 +25,7 @@ export default function Register() {
     const { login } = useAuthContext();
     const navigate = useNavigate();
     const anyError = useRef(false);
+    const imagePath= require(`../../images/selectImage.png`);
     const counties = [
         "Alba",
         "Arad",
@@ -188,6 +189,24 @@ export default function Register() {
         }
     }, [userString, login, navigate]);
 
+
+    function handleProfilePictureChange(e) {
+
+        try{
+            const fileInput = e.target;
+            const fileLabel = document.getElementById('fileLabelText');
+            if (fileInput.files.length > 0){
+                setProfilePictureError('');
+                fileLabel.textContent = fileInput.files[0].name;
+                setProfilePicture(e.target.value);
+            }else
+                fileLabel.textContent = 'Select profile picture';
+        }
+        catch (e){
+            console.log("Error uploading profile picture: "+ e);
+        }
+    }
+
     return (
         <div className="registerDiv">
 
@@ -237,8 +256,8 @@ export default function Register() {
 
 
             {locationError && <span className="error">{locationError}</span>}
-            <select value={location} onChange={(e) => setLocation(e.target.value)}>
-                <option value="">Select a county</option>
+            <select required value={location} className="selectLocation" onChange={(e) => setLocation(e.target.value)}>
+
                 {counties.map((county, index) => (
                     <option key={index} value={county}>
                         {county}
@@ -246,17 +265,20 @@ export default function Register() {
                 ))}
             </select>
 
-                <p>Profile picture</p>
-            {profilePictureError && <span className="error">{profilePictureError}</span>}
+
+            <label className={"custom-input-file"}>
+                {profilePictureError && <span className="error">{profilePictureError}</span>}
+                <p className={"input-label-text"} id="fileLabelText">Select profile picture</p>
+                <img className={"select-image-icon"} src={imagePath} alt="selectImg"/>
                 <input required placeholder={"Profile picture"}
                     type="file"
                     id="inputProfilePicture"
                     className="inputField"
                     value={profilePicture}
                     style={{ borderColor: profilePictureError.length > 0 ? "red" : "" }}
-                    onChange={(e) => setProfilePicture(e.target.value)}
+                    onChange={handleProfilePictureChange}
                 />
-
+            </label>
 
             <button type="submit" id="buttonRegister" onClick={onRegisterButtonClicked}>
                 Register

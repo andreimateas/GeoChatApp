@@ -54,6 +54,7 @@ body{
     transition: background-color 0.3s ease;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 30px;
+    margin-top: 25px;
 }
 
 #buttonRegister:hover {
@@ -80,6 +81,56 @@ p {
 span{
     color: darkred;
     font-size: 14px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
+span.error{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-input-file{
+    border: 1px solid #ccc;
+    display: inline-flex;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    align-items: center;
+    gap: 10px;
+    width: 66%;
+
+}
+
+.custom-input-file:hover{
+    background-color: #f1f1f1;
+}
+
+.selectLocation {
+    width: 72.5%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+
+}
+
+.selectLocation:hover{
+    background-color: #f1f1f1;
+}
+
+.select-image-icon{
+    max-height: 40px;
+    max-width: 40px;
+
+}
+
+.input-label-text {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
