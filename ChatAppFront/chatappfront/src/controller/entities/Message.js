@@ -1,9 +1,9 @@
 
 export default class Message{
-    constructor(id,from,to,content,date){
-        this.id=id;
-        this.from=from;
-        this.to=to;
+    constructor(messageId,sender,receiver,content,date){
+        this.messageId=messageId;
+        this.sender=sender;
+        this.receiver=receiver;
         this.content=content;
         this.date=date;
     }

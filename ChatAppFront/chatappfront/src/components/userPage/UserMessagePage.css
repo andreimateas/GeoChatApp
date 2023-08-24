@@ -44,7 +44,7 @@
     flex: 1;
 }
 
-.messageFrom {
+.messageSender {
     margin: 0;
     font-weight: bold;
 }

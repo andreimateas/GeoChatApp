@@ -6,6 +6,10 @@ import {MessageController} from "../../../controller/MessageController";
 import "./Messages.css";
 import {UserController} from "../../../controller/UserController";
 import User from "../../../controller/entities/User";
+import SockJS from "sockjs-client";
+import {over} from "stompjs";
+import Swal from "sweetalert2";
+import Message from "../../../controller/entities/Message";
 
 
 
@@ -24,11 +28,69 @@ const Messages = () => {
     const imagePath= useRef('');
 
     const [imagePathUpdated, setImagePathUpdated] = useState(false);
+
+    const [message, setMessage] = useState('');
+
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+
+    const [date, setDate] =useState(formatDate(new Date()).replace(' ', 'T'));
+
+    const socket = new SockJS('http://localhost:3001/ws');
+    const stompClient = over(socket);
+    let isConnected = false;
+
+    useEffect(() => {
+        const connect = () => {
+            stompClient.connect({}, () => {
+
+                isConnected = true;
+                console.log('WebSocket connected');
+                stompClient.subscribe('/topic/updates', (response) => {
+                    const data = JSON.parse(response.body);
+                    setMessage(data);
+                    fetchData();
+                });
+            });
+        };
+
+        const disconnect = () => {
+            if (isConnected) {
+                stompClient.disconnect(() => {
+                    isConnected = false;
+                    console.log('WebSocket disconnected');
+                });
+            }
+        };
+
+        connect();
+
+        return disconnect;
+    }, []);
+
+
+    const sendMessage = (message) => {
+        if (isConnected) {
+            stompClient.send('/app/sendMessage', {}, JSON.stringify(message));
+        } else {
+            console.log('WebSocket connection is not established');
+        }
+    };
+
     async function fetchData() {
         const controller = new MessageController();
         let messages = await controller.getMessagesByUsers(user1, user2);
         messages.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
         console.log("Received messages from server: ", messages);
+        messages= messages.sort(x=>x.date);
         setMessageList(messages);
 
         const userController = new UserController();
@@ -44,6 +106,7 @@ const Messages = () => {
 
     useEffect(() => {
         fetchData();
+        document.getElementById("messageText").value="";
         scrollToBottom();
     }, []);
 
@@ -65,6 +128,33 @@ const Messages = () => {
         }
     }, []);
 
+    async function onSendMessageButtonClicked() {
+        if(message.length<1){
+            await Swal.fire({
+                title: "Message is too short!",
+                icon: "error",
+                color: '#A83140FF',
+                confirmButtonColor: '#A83140FF',
+
+            });
+        }
+        else{
+            try{
+                setDate(formatDate(new Date()).replace(' ', 'T'));
+                const controller= new MessageController();
+                const msg= new Message(0, user1, user2, message, date);
+                const token= await controller.addMessage(msg);
+                console.log("Received token from server: " + token.string);
+                fetchData();
+                setMessage("");
+
+            }catch(exception){
+                console.log("error add message");
+            }
+        }
+
+    }
+
     return (
         <div className="messagePageContainer">
             <p className="chatTitle"></p>
@@ -74,15 +164,15 @@ const Messages = () => {
                         <li
                             key={index}
                             className={`messageBox1 ${
-                                message.from === user1 ? 'rightMessage' : 'leftMessage'
+                                message.sender === user1 ? 'rightMessage' : 'leftMessage'
                             }`}
                         >
-                            <p className="fromTag">{
-                                message.from === user1 ? '' : <img src={imagePath.current} className={"conversationUserImage"} alt={user2}/>
+                            <p className="senderTag">{
+                                message.sender === user1 ? '' : <img src={imagePath.current} className={"conversationUserImage"} alt={user2}/>
                             }</p>
                             <div
                                 className={`messageBubble ${
-                                    message.from === user1 ? 'rightBubble' : 'leftBubble'
+                                    message.sender === user1 ? 'rightBubble' : 'leftBubble'
                                 }`}
                             >
 
@@ -95,8 +185,8 @@ const Messages = () => {
                 <div ref={messagesEndRef} />
             </div>
             <div className="messageInputContainer">
-                <textarea className="messageTextArea" placeholder=""></textarea>
-                <button className="sendButton">Send</button>
+                <textarea className="messageTextArea" id={"messageText"} placeholder="" onChange={(e)=>setMessage(e.target.value)}></textarea>
+                <button className="sendButton" onClick={onSendMessageButtonClicked}>Send</button>
             </div>
         </div>
     );
