@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './Post.css';
 import {UserController} from "../../../controller/UserController";
+import {Link, useNavigate} from "react-router-dom";
+import {useAuthContext} from "../../../auth/AuthProvider";
+import User from "../../../controller/entities/User";
 
 
 const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont,onLikeButtonClick}) => {
@@ -16,6 +19,13 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
 
     const [userImagePathUpdated, setUserImagePathUpdated] = useState(false);
 
+    const navigate = useNavigate();
+
+    const { userProfile } = useAuthContext();
+
+    const fields= userProfile.userString.split(",");
+    const imageLoggedUser= fields[4].split("\\")[2];
+    const loggedUser= new User(fields[0],"", fields[2], fields[1], imageLoggedUser, fields[3]);
 
     async function fetchData(){
         const userController = new UserController();
@@ -79,12 +89,28 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }, []);
 
+    function onConversationButtonClick() {
+        navigate(`/messages/${user}`);
+    }
+
     return (
         <div className="post">
             <div className="post-header">
-                <img src={userImagePath.current} className={"userImage"} alt={user}/>
-                <div className="post-user">{user}</div>
+                {(user!==loggedUser.username) ? <div className="user-container">
+                    <div className={"user"}>
+                        <Link to={`/messages/${user}`} className="messageLink">
+                            <img src={userImagePath.current} className={"userImage"} alt={user}/>
+                            <div className="post-user">{user}</div>
+                        </Link>
+                    </div>
+                    <div className="start-conversation-box">
+                        <button className="start-conversation-button" onClick={onConversationButtonClick}>Send message</button>
+                    </div>
+                </div> : <div className={"logged-user-div"}><img src={userImagePath.current} className={"userImage"} alt={user}/>
+                    <div className="post-logged-user">You</div></div>}
+
                 <div className="post-date">{date}</div>
+
             </div>
             <div className="post-content">{content}</div>
             {hasImage && <img src={imageFoundPathRef.current} alt={"Post"} className={"post-image"} />}
