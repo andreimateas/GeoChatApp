@@ -121,19 +121,20 @@ const UserMainPage=()=> {
             });
         }
         else{
-        try{
+            try{
 
-            const controller= new FeedPostController();
-            const dateNow= formatDate(new Date()).replace(' ', 'T');
-            const feedPost= new FeedPost(username+dateNow,username,contentText,contentImage,dateNow,0,currentCounty.current.textContent);
-            const token= await controller.addFeedPost(feedPost);
-            console.log("Received token from server: "+token.string);
-            fetchData();
-            setContentText("");
+                const controller= new FeedPostController();
+                const dateNow= formatDate(new Date()).replace(' ', 'T');
+                const contentImageFileName = contentImage ? ("C:\\fakepath\\"+contentImage.name) : '';
+                const feedPost= new FeedPost(username+dateNow,username,contentText,contentImageFileName,dateNow,0,currentCounty.current.textContent);
+                const token= await controller.addFeedPost(feedPost);
+                console.log("Received token from server: "+token.string);
+                fetchData();
+                setContentText("");
 
-        }catch(exception){
-            console.log("error add post");
-        }
+            }catch(exception){
+                console.log("error add post");
+            }
         }
     }
 
@@ -163,20 +164,20 @@ const UserMainPage=()=> {
     }
 
 
-    function handlePostImageChange(e) {
-
-
-        try{
+     function handlePostImageChange(e) {
+        try {
             const fileInput = e.target;
             const fileLabel = document.getElementById('fileLabelText');
-            if (fileInput.files.length > 0){
+
+            if (fileInput.files.length > 0) {
                 fileLabel.textContent = fileInput.files[0].name;
-                setContentImage(e.target.value);
-            }else
+                setContentImage(fileInput.files[0]); // Set contentImage to the image file
+            } else {
                 fileLabel.textContent = 'Select image';
-        }
-        catch (e){
-            console.log("Error uploading post image: "+ e);
+                setContentImage(null); // Clear contentImage if no file is selected
+            }
+        } catch (e) {
+            console.log("Error uploading post image: " + e);
         }
     }
 
@@ -184,15 +185,15 @@ const UserMainPage=()=> {
         <div className={"mainDiv1"}>
             <div className={"feed1"}>
 
-            <h1 className={"feedHeader1"}>YOUR FEED</h1>
+                <h1 className={"feedHeader1"}>YOUR FEED</h1>
                 <h2 ref={currentCounty} id={"cityHeader"} ></h2>
 
                 <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap initialLocation={userFull.location} onMapChange={fetchMap}/></div>
 
                 <div className={"add-post-div"}>
                     <textarea id={"postText"} value={contentText}
-                               onChange={(e) => setContentText(e.target.value)} className={"add-post-textarea"}
-                        placeholder="Write your post..."
+                              onChange={(e) => setContentText(e.target.value)} className={"add-post-textarea"}
+                              placeholder="Write your post..."
                     ></textarea>
                     <label className={"file-input-label"}>
                         <span className={"input-label-text1"} id="fileLabelText">Select image</span>
