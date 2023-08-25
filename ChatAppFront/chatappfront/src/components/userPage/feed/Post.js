@@ -35,7 +35,6 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         setUserImage(receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : "");
         userImagePath.current = require(`../../../images/${receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : ""}`);
 
-        localStorage.setItem('userImagePath', JSON.stringify(userImagePath));
         setUserImagePathUpdated(true);
     }
 
@@ -81,13 +80,6 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }
 
-    useEffect(() => {
-        const storedImagePath = localStorage.getItem('userImagePath');
-        if (storedImagePath) {
-            userImagePath.current = JSON.parse(storedImagePath);
-            setUserImagePathUpdated(true);
-        }
-    }, []);
 
     function onConversationButtonClick() {
         navigate(`/messages/${user}`);

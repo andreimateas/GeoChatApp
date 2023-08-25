@@ -62,10 +62,9 @@ const UserMessagePage=()=> {
             return require(`../../images/${receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : ""}`);
         });
 
-        const imagePaths = await Promise.all(imagePromises);
-        imagePaths.current = imagePaths;
+        imagePaths.current = await Promise.all(imagePromises);
 
-        localStorage.setItem('imagePaths', JSON.stringify(imagePaths));
+        //localStorage.setItem('imagePaths', JSON.stringify(imagePaths));
         setImagePathsUpdated(true);
     }
 
@@ -73,20 +72,22 @@ const UserMessagePage=()=> {
         fetchData();
     }, []);
 
-    useEffect(() => {
+   /* useEffect(() => {
         const storedImagePaths = localStorage.getItem('imagePaths');
         if (storedImagePaths) {
             imagePaths.current = JSON.parse(storedImagePaths);
             setImagePathsUpdated(true);
         }
     }, []);
+*/
 
     return (
         <div className="mainDiv">
             <ul className="userMessageList">
                 {userMessageList.map((currentUser, index) => (
                     <li key={index} className="messageBox">
-                        <Link to={`/messages/${currentUser[0].toString()}`} className="messageLink">
+
+                        <Link to={`/messages/${currentUser[0]}`} className="messageLink">
 
                             <div className="messagePreview">
                                 <img src={imagePaths.current[index]} className={"conversationUserImage"} alt={"userProfile"}/>
