@@ -5,7 +5,6 @@ import {useAuthContext} from "../../../auth/AuthProvider";
 import {MessageController} from "../../../controller/MessageController";
 import "./Messages.css";
 import {UserController} from "../../../controller/UserController";
-import User from "../../../controller/entities/User";
 import SockJS from "sockjs-client";
 import {over} from "stompjs";
 import Swal from "sweetalert2";
@@ -31,6 +30,8 @@ const Messages = () => {
 
     const [message, setMessage] = useState('');
 
+    const [messageContent, setMessageContent] = useState('');
+
     function formatDate(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -41,8 +42,6 @@ const Messages = () => {
 
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
-
-    const [date, setDate] =useState(formatDate(new Date()).replace(' ', 'T'));
 
     const socket = new SockJS('http://localhost:3001/ws');
     const stompClient = over(socket);
@@ -89,14 +88,21 @@ const Messages = () => {
         const controller = new MessageController();
         let messages = await controller.getMessagesByUsers(user1, user2);
         messages.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
-        console.log("Received messages from server: ", messages);
-        messages= messages.sort(x=>x.date);
+
+        console.log("Received messages from server: ");
+        messages.forEach(x=>console.log(x.content));
+
         setMessageList(messages);
+
+        console.log("Message List: ");
+        messageList.forEach(x=>console.log(x.content));
 
         const userController = new UserController();
         let receivedUser= await userController.getUser(user2);
         console.log("Received user from server: ", receivedUser);
+
         setConversationUser(receivedUser);
+
         setImage(receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : "");
         imagePath.current = require(`../../../images/${receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : ""}`);
 
@@ -105,8 +111,8 @@ const Messages = () => {
     }
 
     useEffect(() => {
-        fetchData();
         document.getElementById("messageText").value="";
+        fetchData();
         scrollToBottom();
     }, []);
 
@@ -129,7 +135,7 @@ const Messages = () => {
     }, []);
 
     async function onSendMessageButtonClicked() {
-        if(message.length<1){
+        if(messageContent.length<1){
             await Swal.fire({
                 title: "Message is too short!",
                 icon: "error",
@@ -140,13 +146,14 @@ const Messages = () => {
         }
         else{
             try{
-                setDate(formatDate(new Date()).replace(' ', 'T'));
+
                 const controller= new MessageController();
-                const msg= new Message(0, user1, user2, message, date);
+                const dateNow= formatDate(new Date()).replace(' ', 'T');
+                const msg= new Message(0, user1, user2, messageContent, dateNow);
                 const token= await controller.addMessage(msg);
                 console.log("Received token from server: " + token.string);
                 fetchData();
-                setMessage("");
+                setMessageContent("");
 
             }catch(exception){
                 console.log("error add message");
@@ -160,24 +167,23 @@ const Messages = () => {
             <p className="chatTitle"></p>
             <div className="messageListContainer">
                 <ul className="messageList">
-                    {messageList.map((message, index) => (
+                    {messageList.map((messageContent, index) => (
                         <li
                             key={index}
                             className={`messageBox1 ${
-                                message.sender === user1 ? 'rightMessage' : 'leftMessage'
+                                messageContent.sender === user1 ? 'rightMessage' : 'leftMessage'
                             }`}
                         >
                             <p className="senderTag">{
-                                message.sender === user1 ? '' : <img src={imagePath.current} className={"conversationUserImage"} alt={user2}/>
+                                messageContent.sender === user1 ? '' : <img src={imagePath.current} className={"conversationUserImage"} alt={user2}/>
                             }</p>
                             <div
                                 className={`messageBubble ${
-                                    message.sender === user1 ? 'rightBubble' : 'leftBubble'
+                                    messageContent.sender === user1 ? 'rightBubble' : 'leftBubble'
                                 }`}
                             >
-
-                                <p className="messageContent">{message.content}</p>
-                                <p className="messageDate">{message.date}</p>
+                                <p className="messageContent">{messageContent.content}</p>
+                                <p className="messageDate">{messageContent.date}</p>
                             </div>
                         </li>
                     ))}
@@ -185,8 +191,8 @@ const Messages = () => {
                 <div ref={messagesEndRef} />
             </div>
             <div className="messageInputContainer">
-                <textarea className="messageTextArea" id={"messageText"} placeholder="" onChange={(e)=>setMessage(e.target.value)}></textarea>
-                <button className="sendButton" onClick={onSendMessageButtonClicked}>Send</button>
+                <textarea value={messageContent} className="messageTextArea" id={"messageText"} placeholder="" onChange={(e)=>setMessageContent(e.target.value)}></textarea>
+                <button type={"submit"} className="sendButton" onClick={onSendMessageButtonClicked}>Send</button>
             </div>
         </div>
     );

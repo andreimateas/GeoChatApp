@@ -79,7 +79,7 @@ const UserMainPage=()=> {
 
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
-    const [date, setDate] =useState(formatDate(new Date()).replace(' ', 'T'));
+
     const [contentText, setContentText] =useState('');
     const [contentImage, setContentImage] =useState('');
     const [postLocation, setPostLocation]= useState(userFull.location);
@@ -122,9 +122,10 @@ const UserMainPage=()=> {
         }
         else{
         try{
-            setDate(formatDate(new Date()).replace(' ', 'T'));
+
             const controller= new FeedPostController();
-            const feedPost= new FeedPost(username+date,username,contentText,contentImage,date,0,currentCounty.current.textContent);
+            const dateNow= formatDate(new Date()).replace(' ', 'T');
+            const feedPost= new FeedPost(username+dateNow,username,contentText,contentImage,dateNow,0,currentCounty.current.textContent);
             const token= await controller.addFeedPost(feedPost);
             console.log("Received token from server: "+token.string);
             fetchData();
