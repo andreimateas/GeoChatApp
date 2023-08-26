@@ -64,7 +64,6 @@ const UserMessagePage=()=> {
 
         imagePaths.current = await Promise.all(imagePromises);
 
-        //localStorage.setItem('imagePaths', JSON.stringify(imagePaths));
         setImagePathsUpdated(true);
     }
 
@@ -72,14 +71,7 @@ const UserMessagePage=()=> {
         fetchData();
     }, []);
 
-   /* useEffect(() => {
-        const storedImagePaths = localStorage.getItem('imagePaths');
-        if (storedImagePaths) {
-            imagePaths.current = JSON.parse(storedImagePaths);
-            setImagePathsUpdated(true);
-        }
-    }, []);
-*/
+
 
     return (
         <div className="mainDiv">

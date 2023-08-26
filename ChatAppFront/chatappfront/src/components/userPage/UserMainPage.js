@@ -85,21 +85,33 @@ const UserMainPage=()=> {
     const [postLocation, setPostLocation]= useState(userFull.location);
     const currentCounty= useRef(null);
 
+
+    function removeDiacritics(str) {
+        const diacriticsMap = {
+            'ă': 'a', 'â': 'a', 'î': 'i', 'ș': 's', 'ț': 't',
+            'Ă': 'A', 'Â': 'A', 'Î': 'I', 'Ș': 'S', 'Ț': 'T', 'ş': 's'
+        };
+
+        return str.replace(/[ăâîșțĂÂÎȘȚş]/g, match => diacriticsMap[match]);
+    }
     async function fetchData() {
         const controller = new FeedPostController();
         let feedPosts = await controller.getFeedPosts();
         console.log("Current county: "+currentCounty.current.textContent);
+        console.log("Received feed posts from server 1: ", feedPosts);
         let filteredPosts=[];
         if(currentCounty.current.textContent!==""){
             for(let post of feedPosts){
-                if(post.location===currentCounty.current.textContent)
+                console.log("Location1: "+post.location+" Location2: "+currentCounty.current.textContent);
+                if(removeDiacritics(post.location)===removeDiacritics(currentCounty.current.textContent)) {
                     filteredPosts.push(post);
+                }
             }
             feedPosts=filteredPosts;
         }
 
         feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
-        console.log("Received feed posts from server: ", feedPosts);
+        console.log("Received feed posts from server 2: ", feedPosts);
         setFeedPosts(feedPosts);
         setUsername(user);
     }
