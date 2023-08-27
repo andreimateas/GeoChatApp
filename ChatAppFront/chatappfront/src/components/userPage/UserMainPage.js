@@ -176,7 +176,7 @@ const UserMainPage=()=> {
     }
 
 
-     function handlePostImageChange(e) {
+    function handlePostImageChange(e) {
         try {
             const fileInput = e.target;
             const fileLabel = document.getElementById('fileLabelText');

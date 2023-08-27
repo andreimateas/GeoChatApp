@@ -20,7 +20,7 @@ export default function Register() {
     const [profilePicture, setProfilePicture] =useState('');
     const [profilePictureError, setProfilePictureError] = useState('');
     const [location, setLocation] =useState('');
-    const [locationError, setLocationError] = useState('');
+    const [locationError, ] = useState('');
     const [userString, setUserString] =useState('');
     const { login } = useAuthContext();
     const navigate = useNavigate();

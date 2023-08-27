@@ -29,15 +29,15 @@ const UserMessagePage=()=> {
         const controller = new MessageController();
         let messages = await controller.getMessages();
         let userArray=[];
-            for(let msg of messages){
+        for(let msg of messages){
 
-                    if(msg.sender===user.username){
-                        userArray.push([msg.receiver,msg.content,msg.date,msg.sender]);
-                    }
-                    if(msg.receiver===user.username){
-                        userArray.push([msg.sender,msg.content,msg.date,msg.sender]);
-                    }
+            if(msg.sender===user.username){
+                userArray.push([msg.receiver,msg.content,msg.date,msg.sender]);
             }
+            if(msg.receiver===user.username){
+                userArray.push([msg.sender,msg.content,msg.date,msg.sender]);
+            }
+        }
         userArray=userArray.reverse();
         let userSet=new Set();
         let filteredUsers=[]
