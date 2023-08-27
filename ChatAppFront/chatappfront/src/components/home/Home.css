@@ -24,21 +24,27 @@
 
 .home-page__heading {
     font-size: 4.5vw; /* Use vw for responsive font size */
-    margin-top: 5vw;
-    margin-bottom: 2.5vw; /* Use vw for consistent spacing */
+    margin-top: 10vw;
+    margin-bottom: 2.25vw; /* Use vw for consistent spacing */
     color: #f5f1f1;
 }
 
+.home-page__button1 {
+    margin-bottom: 8vw; /* Use vw for responsive spacing */
+    margin-top: 4.2vw; /* Use vw for responsive spacing */
+}
+
 .home-page__text {
-    font-size: 3vw; /* Use vw for responsive font size */
+    font-size: 2vw; /* Use vw for responsive font size */
     margin-bottom: 1.5vw; /* Use vw for consistent spacing */
     color: #f5f1f1;
 }
 
-.home-page__button {
-    margin-bottom: 8vw; /* Use vw for responsive spacing */
-    margin-top: 5vw; /* Use vw for responsive spacing */
+.home-page__button2 {
+    margin-bottom: 1vw; /* Use vw for responsive spacing */
+    margin-top: 1.5vw; /* Use vw for responsive spacing */
 }
+
 
 .home-page__link_login{
     color: var(--text-color);
@@ -52,9 +58,9 @@
 .home-page__link_register {
     color: var(--text-color);
     background-color: var(--primary-color);
-    padding: 1.25vw 3vw; /* Use vw for responsive padding */
+    padding: 1vw 2vw; /* Use vw for responsive padding */
     border-radius: 3vw; /* Use vw for responsive border radius */
-    font-size: 1.90vw; /* Use vw for responsive font size */
+    font-size: 1.30vw; /* Use vw for responsive font size */
     text-decoration: none;
     transition: background-color 0.6s ease;
 }
@@ -62,4 +68,22 @@
 .home-page__link_login:hover,
 .home-page__link_register:hover {
     background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .home-page__heading {
+        font-size: 6vw;
+    }
+
+    .home-page__text {
+        font-size: 3.5vw;
+    }
+
+    .home-page__link_login {
+        font-size: 3vw;
+    }
+
+    .home-page__link_register {
+        font-size: 2.25vw;
+    }
 }
