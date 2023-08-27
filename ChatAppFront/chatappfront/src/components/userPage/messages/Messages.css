@@ -11,7 +11,7 @@
     overflow-y: auto;
     padding: 1%;
     margin: 1%;
-    width: calc(100% - 2%); /* Adjust margins and padding accordingly */
+    width: calc(100% - 2%);
 }
 
 .messageList {
@@ -22,7 +22,6 @@
     border-left: #e18893;
     border-left-style: outset;
     border-width: 2px;
-    /* Add this line to adjust the margin */
     margin: 0 25vw 0 25vw;
 }
 
@@ -123,7 +122,6 @@
     max-width: 75px;
     max-height: 35px;
 
-    /* Add these lines for centering */
     display: flex;
     justify-content: center;
     align-items: center;

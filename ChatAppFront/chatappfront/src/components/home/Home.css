@@ -8,11 +8,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Set minimum height to occupy full viewport height */
+    min-height: 100vh;
     background: url("../../images/WorldMapDark.svg");
     background-size: 100% auto;
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -23,44 +23,44 @@
 }
 
 .home-page__heading {
-    font-size: 4.5vw; /* Use vw for responsive font size */
+    font-size: 4.5vw;
     margin-top: 10vw;
-    margin-bottom: 2.25vw; /* Use vw for consistent spacing */
+    margin-bottom: 2.25vw;
     color: #f5f1f1;
 }
 
 .home-page__button1 {
-    margin-bottom: 8vw; /* Use vw for responsive spacing */
-    margin-top: 4.2vw; /* Use vw for responsive spacing */
+    margin-bottom: 8vw;
+    margin-top: 4.2vw;
 }
 
 .home-page__text {
-    font-size: 2vw; /* Use vw for responsive font size */
-    margin-bottom: 1.5vw; /* Use vw for consistent spacing */
+    font-size: 2vw;
+    margin-bottom: 1.5vw;
     color: #f5f1f1;
 }
 
 .home-page__button2 {
-    margin-bottom: 1vw; /* Use vw for responsive spacing */
-    margin-top: 1.5vw; /* Use vw for responsive spacing */
+    margin-bottom: 1vw;
+    margin-top: 1.5vw;
 }
 
 
 .home-page__link_login{
     color: var(--text-color);
     background-color: var(--primary-color);
-    padding: 1.75vw 3.5vw; /* Use vw for responsive padding */
-    border-radius: 3vw; /* Use vw for responsive border radius */
-    font-size: 2.25vw; /* Use vw for responsive font size */
+    padding: 1.75vw 3.5vw;
+    border-radius: 3vw;
+    font-size: 2.25vw;
     text-decoration: none;
     transition: background-color 0.6s ease;
 }
 .home-page__link_register {
     color: var(--text-color);
     background-color: var(--primary-color);
-    padding: 1vw 2vw; /* Use vw for responsive padding */
-    border-radius: 3vw; /* Use vw for responsive border radius */
-    font-size: 1.30vw; /* Use vw for responsive font size */
+    padding: 1vw 2vw;
+    border-radius: 3vw;
+    font-size: 1.30vw;
     text-decoration: none;
     transition: background-color 0.6s ease;
 }

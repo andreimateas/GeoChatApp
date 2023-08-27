@@ -183,10 +183,10 @@ const UserMainPage=()=> {
 
             if (fileInput.files.length > 0) {
                 fileLabel.textContent = fileInput.files[0].name;
-                setContentImage(fileInput.files[0]); // Set contentImage to the image file
+                setContentImage(fileInput.files[0]);
             } else {
                 fileLabel.textContent = 'Select image';
-                setContentImage(null); // Clear contentImage if no file is selected
+                setContentImage(null);
             }
         } catch (e) {
             console.log("Error uploading post image: " + e);

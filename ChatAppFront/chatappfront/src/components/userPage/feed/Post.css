@@ -107,7 +107,7 @@
 }
 
 .user:hover {
-    color: rgba(221, 85, 102, 1); /* Change color on hover */
+    color: rgba(221, 85, 102, 1);
 }
 
 .start-conversation-box {
@@ -121,14 +121,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     width: 150px;
-    visibility: hidden; /* Hide initially */
-    opacity: 0; /* Hide initially */
+    visibility: hidden;
+    opacity: 0;
     transition: opacity 0.3s;
     z-index: 1;
 }
 
 .user-container:hover .start-conversation-box {
-    visibility: visible; /* Show on hover */
+    visibility: visible;
     opacity: 1;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .start-conversation-button:hover {
-    background-color: rgb(239, 232, 232); /* Darker color on hover */
+    background-color: rgb(239, 232, 232);
 }
 
 .post-logged-user{

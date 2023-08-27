@@ -5,7 +5,7 @@
 }
 
 body {
-    overflow-y: auto; /* Always show vertical scrollbar when needed */
+    overflow-y: auto;
 }
 
 .mainDiv {
@@ -14,7 +14,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: var(--background-color);
-    padding: 0 20px; /* Add some horizontal padding to prevent content from touching the edges */
+    padding: 0 20px;
 }
 
 .feed {
@@ -24,8 +24,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     color: var(--text-color);
-    margin: 20vh auto; /* Center the .feed content and add margin only at the top and bottom */
-    overflow-y: auto; /* Show vertical scrollbar when content overflows */
+    margin: 20vh auto;
+    overflow-y: auto;
 }
 
 h1 {

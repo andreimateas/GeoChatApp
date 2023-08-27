@@ -1,8 +1,8 @@
 body {
     background: url("../../images/WorldMapDark.svg");
-    background-size: cover; /* Make the background image cover the entire viewport */
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -11,18 +11,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Use min-height instead of height to avoid scrollbar */
+    min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.90);
     box-sizing: border-box;
     padding: 20px;
     max-width: 400px;
-    margin: 0 auto; /* Center the div horizontally */
+    margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .registerDiv p {
-    margin-top: 20px; /* Add space between buttons and login link */
+    margin-top: 20px;
 }
 
 .registerHeader {

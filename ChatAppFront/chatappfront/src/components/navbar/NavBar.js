@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 import React from "react";
 import {useAuthContext} from "../../auth/AuthProvider";
 
-
-
 const NavBar=() =>{
 
     const { userProfile } = useAuthContext();
