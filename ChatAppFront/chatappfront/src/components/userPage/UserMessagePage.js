@@ -48,11 +48,8 @@ const UserMessagePage=()=> {
             }
         }
 
-
-        console.log("User set: "+userArray);
-
         messages.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
-        console.log("Received messages from server: ", messages);
+        console.log("Received messages from server ");
         setMessageList(messages);
         setUserMessageList(filteredUsers);
 

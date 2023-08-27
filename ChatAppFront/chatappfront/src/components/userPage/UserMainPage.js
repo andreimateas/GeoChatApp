@@ -98,11 +98,11 @@ const UserMainPage=()=> {
         const controller = new FeedPostController();
         let feedPosts = await controller.getFeedPosts();
         console.log("Current county: "+currentCounty.current.textContent);
-        console.log("Received feed posts from server 1: ", feedPosts);
+        console.log("Received feed posts from server 1: ");
         let filteredPosts=[];
         if(currentCounty.current.textContent!==""){
             for(let post of feedPosts){
-                console.log("Location1: "+post.location+" Location2: "+currentCounty.current.textContent);
+
                 if(removeDiacritics(post.location)===removeDiacritics(currentCounty.current.textContent)) {
                     filteredPosts.push(post);
                 }
@@ -111,7 +111,7 @@ const UserMainPage=()=> {
         }
 
         feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
-        console.log("Received feed posts from server 2: ", feedPosts);
+        console.log("Received feed posts from server 2: ");
         setFeedPosts(feedPosts);
         setUsername(user);
     }

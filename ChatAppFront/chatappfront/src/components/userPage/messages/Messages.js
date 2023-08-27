@@ -89,13 +89,8 @@ const Messages = () => {
         let messages = await controller.getMessagesByUsers(user1, user2);
         messages.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
 
-        console.log("Received messages from server: ");
-        messages.forEach(x=>console.log(x.content));
 
         setMessageList(messages);
-
-        console.log("Message List: ");
-        messageList.forEach(x=>console.log(x.content));
 
         const userController = new UserController();
         let receivedUser= await userController.getUser(user2);
@@ -106,7 +101,6 @@ const Messages = () => {
         setImage(receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : "");
         imagePath.current = require(`../../../images/${receivedUser.profilePicture ? receivedUser.profilePicture.split("\\")[2] : ""}`);
 
-        localStorage.setItem('imagePath', JSON.stringify(imagePath));
         setImagePathUpdated(true);
     }
 
@@ -127,11 +121,7 @@ const Messages = () => {
     };
 
     useEffect(() => {
-        const storedImagePath = localStorage.getItem('imagePath');
-        if (storedImagePath) {
-            imagePath.current = JSON.parse(storedImagePath);
             setImagePathUpdated(true);
-        }
     }, []);
 
     async function onSendMessageButtonClicked() {
