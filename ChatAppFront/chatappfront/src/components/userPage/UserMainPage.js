@@ -7,7 +7,7 @@ import {FeedPostController} from "../../controller/FeedPostController";
 import {useAuthContext} from "../../auth/AuthProvider";
 import FeedPost from "../../controller/entities/FeedPost";
 import SockJS from 'sockjs-client';
-import {over} from 'stompjs';
+import Stomp from 'stompjs';
 import MyMap from "./MyMap";
 import Swal from "sweetalert2";
 import User from "../../controller/entities/User";
@@ -19,15 +19,19 @@ const UserMainPage=()=> {
     const image= fields[4].split("\\")[2];
     const userFull= new User(fields[0],"", fields[2], fields[1], image, fields[3]);
     const user= fields[0];
-
     const [message, setMessage] = useState('');
 
+    const [reconnectAttempt, setReconnectAttempt] = useState(0);
+    const MAX_RECONNECT_ATTEMPTS = 5;
+    const RECONNECT_DELAY_MS = 3000;
 
     const socket = new SockJS('http://localhost:3001/ws');
-    const stompClient = over(socket);
+    const stompClient = Stomp.over(socket);
     let isConnected = false;
 
     useEffect(() => {
+
+        let reconnectTimeout;
         const connect = () => {
             stompClient.connect({}, () => {
 
@@ -46,19 +50,32 @@ const UserMainPage=()=> {
                 stompClient.disconnect(() => {
                     isConnected = false;
                     console.log('WebSocket disconnected');
+
+                    if (reconnectAttempt < MAX_RECONNECT_ATTEMPTS) {
+                        console.log('Attempting to reconnect...');
+                        reconnectTimeout = setTimeout(() => {
+                            setReconnectAttempt(reconnectAttempt + 1);
+                            connect();
+                        }, RECONNECT_DELAY_MS);
+                    } else {
+                        console.log('Exceeded maximum reconnect attempts.');
+                    }
                 });
             }
         };
 
         connect();
 
-        return disconnect;
-    }, []);
+        return () => {
+            clearTimeout(reconnectTimeout);
+            disconnect();
+        };
+    }, [reconnectAttempt]);
 
 
     const sendMessage = (message) => {
         if (isConnected) {
-            stompClient.send('/app/sendMessage', {}, JSON.stringify(message));
+            stompClient.send('/app/update', {}, JSON.stringify(message));
         } else {
             console.log('WebSocket connection is not established');
         }

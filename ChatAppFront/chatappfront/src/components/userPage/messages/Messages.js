@@ -6,7 +6,7 @@ import {MessageController} from "../../../controller/MessageController";
 import "./Messages.css";
 import {UserController} from "../../../controller/UserController";
 import SockJS from "sockjs-client";
-import {over} from "stompjs";
+import Stomp from "stompjs";
 import Swal from "sweetalert2";
 import Message from "../../../controller/entities/Message";
 
@@ -43,11 +43,17 @@ const Messages = () => {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
+    const [reconnectAttempt, setReconnectAttempt] = useState(0);
+    const MAX_RECONNECT_ATTEMPTS = 5;
+    const RECONNECT_DELAY_MS = 3000;
+
     const socket = new SockJS('http://localhost:3001/ws');
-    const stompClient = over(socket);
+    const stompClient = Stomp.over(socket);
     let isConnected = false;
 
     useEffect(() => {
+
+        let reconnectTimeout;
         const connect = () => {
             stompClient.connect({}, () => {
 
@@ -66,19 +72,32 @@ const Messages = () => {
                 stompClient.disconnect(() => {
                     isConnected = false;
                     console.log('WebSocket disconnected');
+
+                    if (reconnectAttempt < MAX_RECONNECT_ATTEMPTS) {
+                        console.log('Attempting to reconnect...');
+                        reconnectTimeout = setTimeout(() => {
+                            setReconnectAttempt(reconnectAttempt + 1);
+                            connect();
+                        }, RECONNECT_DELAY_MS);
+                    } else {
+                        console.log('Exceeded maximum reconnect attempts.');
+                    }
                 });
             }
         };
 
         connect();
 
-        return disconnect;
-    }, []);
+        return () => {
+            clearTimeout(reconnectTimeout);
+            disconnect();
+        };
+    }, [reconnectAttempt]);
 
 
     const sendMessage = (message) => {
         if (isConnected) {
-            stompClient.send('/app/sendMessage', {}, JSON.stringify(message));
+            stompClient.send('/app/update', {}, JSON.stringify(message));
         } else {
             console.log('WebSocket connection is not established');
         }
