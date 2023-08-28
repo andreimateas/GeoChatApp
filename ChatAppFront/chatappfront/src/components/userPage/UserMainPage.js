@@ -211,11 +211,11 @@ const UserMainPage=()=> {
     }
 
     return (
-        <div className={"mainDiv1"}>
-            <div className={"feed1"}>
+        <div className={"main-Div_1"}>
+            <div className={"feed_1"}>
 
-                <h1 className={"feedHeader1"}>YOUR FEED</h1>
-                <h2 ref={currentCounty} id={"cityHeader"} ></h2>
+                <h1 className={"feed-header_1"}>YOUR FEED</h1>
+                <h2 ref={currentCounty} id={"city-header"} ></h2>
 
                 <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap initialLocation={userFull.location} onMapChange={fetchMap}/></div>
 
@@ -225,7 +225,7 @@ const UserMainPage=()=> {
                               placeholder="Write your post..."
                     ></textarea>
                     <label className={"file-input-label"}>
-                        <span className={"input-label-text1"} id="fileLabelText">Select image</span>
+                        <span className={"input-label-text_1"} id="fileLabelText">Select image</span>
                         <input onChange={handlePostImageChange} type="file" className={"add-post-file-input"}  />
                     </label>
                     <button type="submit" className={"add-post-button"}  onClick={onAddPostButtonClicked}>Post</button>

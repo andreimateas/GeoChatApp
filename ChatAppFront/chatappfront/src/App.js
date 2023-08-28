@@ -13,8 +13,6 @@ import UserMessagePage from "./components/userPage/UserMessagePage";
 import Messages from "./components/userPage/messages/Messages";
 const App = () => {
 
-
-
   return (
     <>
         <AuthContextProvider>

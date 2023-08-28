@@ -172,36 +172,36 @@ const Messages = () => {
     }
 
     return (
-        <div className="messagePageContainer">
-            <p className="chatTitle"></p>
-            <div className="messageListContainer">
-                <ul className="messageList">
+        <div className="message-page-container">
+            <p className="chat-title"></p>
+            <div className="message-list-container">
+                <ul className="message-list">
                     {messageList.map((messageContent, index) => (
                         <li
                             key={index}
-                            className={`messageBox1 ${
-                                messageContent.sender === user1 ? 'rightMessage' : 'leftMessage'
+                            className={`message-box_1 ${
+                                messageContent.sender === user1 ? 'right-message' : 'left-message'
                             }`}
                         >
-                            <p className="senderTag">{
-                                messageContent.sender === user1 ? '' : <img src={imagePath.current} className={"conversationUserImage"} alt={user2}/>
+                            <p className="sender-tag">{
+                                messageContent.sender === user1 ? '' : <img src={imagePath.current} className={"conversation-user-image"} alt={user2}/>
                             }</p>
                             <div
-                                className={`messageBubble ${
-                                    messageContent.sender === user1 ? 'rightBubble' : 'leftBubble'
+                                className={`message-bubble ${
+                                    messageContent.sender === user1 ? 'right-bubble' : 'left-bubble'
                                 }`}
                             >
-                                <p className="messageContent">{messageContent.content}</p>
-                                <p className="messageDate">{messageContent.date}</p>
+                                <p className="message-content">{messageContent.content}</p>
+                                <p className="message-date">{messageContent.date}</p>
                             </div>
                         </li>
                     ))}
                 </ul>
                 <div ref={messagesEndRef} />
             </div>
-            <div className="messageInputContainer">
-                <textarea value={messageContent} className="messageTextArea" id={"messageText"} placeholder="" onChange={(e)=>setMessageContent(e.target.value)}></textarea>
-                <button type={"submit"} className="sendButton" onClick={onSendMessageButtonClicked}>Send</button>
+            <div className="message-input-container">
+                <textarea value={messageContent} className="message-text-area" id={"messageText"} placeholder="" onChange={(e)=>setMessageContent(e.target.value)}></textarea>
+                <button type={"submit"} className="send-button" onClick={onSendMessageButtonClicked}>Send</button>
             </div>
         </div>
     );

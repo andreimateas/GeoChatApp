@@ -3,17 +3,17 @@
     padding: 0;
 }
 
-.mainDiv {
+.main-div {
     padding: 20px;
 }
 
-.userMessageList {
+.user-message-list {
     list-style: none;
     padding: 0;
     margin: 20vh auto;
 }
 
-.messageBox {
+.message-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,11 +28,11 @@
     background-color: rgba(246, 241, 241, 0.9);
 }
 
-.messageBox:hover {
+.message-box:hover {
     background-color: rgba(241, 235, 235, 0.9);
 }
 
-.messageLink {
+.message-link {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -40,16 +40,16 @@
     flex: 1;
 }
 
-.messagePreview {
+.message-preview {
     flex: 1;
 }
 
-.messageSender {
+.message-sender {
     margin: 0;
     font-weight: bold;
 }
 
-.messageContent1 {
+.message-content_1 {
     margin: 5px 0;
     color: #777;
     overflow: hidden;
@@ -59,7 +59,7 @@
     float: left;
 }
 
-.messageDate {
+.message-date {
     font-size: 14px;
     color: #cccccc;
     margin: 0 0 0 auto;

@@ -9,15 +9,12 @@ const MyMap = ({initialLocation, onMapChange}) => {
 
     const mapContainerRef = useRef(null);
 
-
-
     const [selectedState, setSelectedState] = useState(initialLocation);
-
 
     useEffect(() => {
 
         console.log('Selected State:', selectedState);
-        document.getElementById("cityHeader").textContent=selectedState;
+        document.getElementById("city-header").textContent=selectedState;
         onMapChange();
 
     }, [selectedState]);

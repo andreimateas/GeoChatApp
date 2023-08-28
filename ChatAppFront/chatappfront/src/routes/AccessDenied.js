@@ -8,7 +8,7 @@ const AccessDenied = () => {
     const navigate= useNavigate();
 
     return(<div>
-        <h1 className={"routeText"}>Access denied</h1>
+        <h1 className={"route-text"}>Access denied</h1>
         <button onClick={() => {
             navigate('/');
         }}>

@@ -112,13 +112,13 @@ export default function Login(){
 
     return (
 
-        <div className="loginDiv">
+        <div className="login-div">
 
             {usernameError && <span className="error" >{usernameError}</span>}
             <input required placeholder="Username"
                 type="text"
                 id="inputUsernameLogin"
-                className="inputLogin"
+                className="input-login"
                 value={username}
                 style={{ borderColor: usernameError.length > 0 ? "red" : "" }}
                 onChange={(text) => setUsername(text.target.value)}
@@ -128,7 +128,7 @@ export default function Login(){
             <input required placeholder="Password"
                 type="password"
                 id="inputPasswordLogin"
-                className="inputLogin"
+                className="input-login"
                 value={password}
                 style={{ borderColor: passwordError.length > 0 ? "red" : "" }}
                 onChange={(event) => setPassword(event.target.value)}

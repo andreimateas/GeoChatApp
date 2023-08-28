@@ -15,7 +15,7 @@ body, html {
 
 }
 
-.mainDiv1 {
+.main-Div_1 {
     margin-top: 0;
     padding-top: 0;
     margin-bottom: 0;
@@ -26,7 +26,7 @@ body, html {
     align:center;
 }
 
-.feed1 {
+.feed_1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,13 +37,13 @@ body, html {
     align:center;
 }
 
-.feedHeader1{
+.feed-header_1{
     margin-top: 90px;
     margin-bottom: 0;
     color: #914040;
 }
 
-#cityHeader{
+#city-header{
     margin-bottom: 20px;
     color: #914040;
 }
@@ -63,8 +63,6 @@ body, html {
 .add-post-textarea ::placeholder{
     color: #9D8B8A;
 }
-
-
 
 .add-post-file-input {
     margin-bottom: 10px;
@@ -106,8 +104,6 @@ body, html {
     width: 67%;
 }
 
-
-
 .file-input-label {
     display: inline-block;
     padding: 7px 3px;
@@ -125,6 +121,6 @@ body, html {
     background-color: #faf0f0;
 }
 
-.input-label-text1{
+.input-label-text_1{
     color: #9D8B8A;
 }

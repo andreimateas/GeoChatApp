@@ -12,7 +12,7 @@ const UserProfilePage=()=> {
     const imagePath= require(`../../images/${image}`);
 
     return (
-        <div className={"mainDiv"}>
+        <div className={"main-div"}>
             <div className={"feed"}>
                 <h1>Welcome, {user.username}!</h1>
                 <h2>{user.name}</h2>

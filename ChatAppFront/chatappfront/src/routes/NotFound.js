@@ -7,8 +7,8 @@ const NotFound = () => {
     const navigate= useNavigate();
 
     return(<div>
-        <h1 className={"routeText404"}>404</h1>
-        <h2 className={"routeText"}>Not found</h2>
+        <h1 className={"route-text_404"}>404</h1>
+        <h2 className={"route-text"}>Not found</h2>
         <button onClick={() => {
             navigate('/');
         }}>

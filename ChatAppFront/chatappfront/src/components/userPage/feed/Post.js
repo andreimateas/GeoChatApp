@@ -90,15 +90,15 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
             <div className="post-header">
                 {(user!==loggedUser.username) ? <div className="user-container">
                     <div className={"user"}>
-                        <Link to={`/messages/${user}`} className="messageLink">
-                            <img src={userImagePath.current} className={"userImage"} alt={user}/>
+                        <Link to={`/messages/${user}`} className="message-link">
+                            <img src={userImagePath.current} className={"user-image"} alt={user}/>
                             <div className="post-user">{user}</div>
                         </Link>
                     </div>
                     <div className="start-conversation-box">
                         <button className="start-conversation-button" onClick={onConversationButtonClick}>Send message</button>
                     </div>
-                </div> : <div className={"logged-user-div"}><img src={userImagePath.current} className={"userImage"} alt={user}/>
+                </div> : <div className={"logged-user-div"}><img src={userImagePath.current} className={"user-image"} alt={user}/>
                     <div className="post-logged-user">You</div></div>}
 
                 <div className="post-date">{date}</div>

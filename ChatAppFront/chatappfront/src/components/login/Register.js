@@ -208,14 +208,14 @@ export default function Register() {
     }
 
     return (
-        <div className="registerDiv">
+        <div className="register-div">
 
 
             {usernameError && <span className="error" >{usernameError}</span>}
                 <input required placeholder={"Username"}
                     type="text"
                     id="inputUsername"
-                    className="inputField"
+                    className="input-field"
                     value={username}
                     style={{ borderColor: usernameError.length > 0 ? "red" : "" }}
                     onChange={(e) => setUsername(e.target.value)}
@@ -226,7 +226,7 @@ export default function Register() {
                 <input required placeholder={"Password"}
                     type="password"
                     id="inputPassword"
-                    className="inputField"
+                    className="input-field"
                     value={password}
                     style={{ borderColor: passwordError.length > 0 ? "red" : "" }}
                     onChange={(e) => setPassword(e.target.value)}
@@ -237,7 +237,7 @@ export default function Register() {
                 <input required placeholder={"Email"}
                     type="email"
                     id="inputEmail"
-                    className="inputField"
+                    className="input-field"
                     value={email}
                     style={{ borderColor: emailError.length > 0 ? "red" : "" }}
                     onChange={(e) => setEmail(e.target.value)}
@@ -248,7 +248,7 @@ export default function Register() {
                 <input required placeholder={"Name"}
                     type="text"
                     id="inputName"
-                    className="inputField"
+                    className="input-field"
                     value={name}
                     style={{ borderColor: nameError.length > 0 ? "red" : "" }}
                     onChange={(e) => setName(e.target.value)}
@@ -256,7 +256,7 @@ export default function Register() {
 
 
             {locationError && <span className="error">{locationError}</span>}
-            <select required value={location} className="selectLocation" onChange={(e) => setLocation(e.target.value)}>
+            <select required value={location} className="select-location" onChange={(e) => setLocation(e.target.value)}>
 
                 {counties.map((county, index) => (
                     <option key={index} value={county}>
@@ -273,7 +273,7 @@ export default function Register() {
                 <input required placeholder={"Profile picture"}
                     type="file"
                     id="inputProfilePicture"
-                    className="inputField"
+                    className="input-field"
                     style={{ borderColor: profilePictureError.length > 0 ? "red" : "" }}
                     onChange={handleProfilePictureChange}
                 />
@@ -283,7 +283,7 @@ export default function Register() {
                 Register
             </button>
             <p>Already have an account?</p>
-            <Link to="/login" className="loginLink">
+            <Link to="/login" className="login-link">
                 Login
             </Link>
         </div>

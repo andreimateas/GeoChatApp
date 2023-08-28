@@ -4,7 +4,7 @@ import "./Feed.css";
 
 const Feed = ({ posts , onLikeButtonClick}) => {
     return (
-        <div className={"parentFeed"}>
+        <div className={"parent-feed"}>
             {posts.map((post, index) => (
                 <Post
                     key={post.postId}

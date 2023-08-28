@@ -71,18 +71,18 @@ const UserMessagePage=()=> {
 
 
     return (
-        <div className="mainDiv">
-            <ul className="userMessageList">
+        <div className="main-div">
+            <ul className="user-message-list">
                 {userMessageList.map((currentUser, index) => (
-                    <li key={index} className="messageBox">
+                    <li key={index} className="message-box">
 
-                        <Link to={`/messages/${currentUser[0]}`} className="messageLink">
+                        <Link to={`/messages/${currentUser[0]}`} className="message-link">
 
-                            <div className="messagePreview">
-                                <img src={imagePaths.current[index]} className={"conversationUserImage"} alt={"userProfile"}/>
-                                <p className="messageSender">{currentUser[0]}</p>
-                                <p className="messageContent1">{(currentUser[3]===user.username ? "You:" : "")} {currentUser[1]}</p>
-                                <p className="messageDate">{currentUser[2].replace(/T/g, ' ')}</p>
+                            <div className="message-preview">
+                                <img src={imagePaths.current[index]} className={"conversation-user-image"} alt={"userProfile"}/>
+                                <p className="message-sender">{currentUser[0]}</p>
+                                <p className="message-content_1">{(currentUser[3]===user.username ? "You:" : "")} {currentUser[1]}</p>
+                                <p className="message-date">{currentUser[2].replace(/T/g, ' ')}</p>
                             </div>
 
                         </Link>
