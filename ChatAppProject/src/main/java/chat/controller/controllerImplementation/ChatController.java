@@ -31,11 +31,19 @@ import javax.crypto.NoSuchPaddingException;
 @RestController
 @CrossOrigin(origins = "*")
 public class ChatController {
+
     @Autowired
     private  ChatService chatService;
 
 
     //Users
+
+    /**
+     * Handles user login and generates a JWT token if login was successful.
+     *
+     * @param user The User object containing the login credentials (username and password).
+     * @return ResponseEntity with a JWT token if login is successful, or an error message if the credentials are invalid.
+     */
     @PostMapping(value="/login", produces="application/json")
     public ResponseEntity<?> login(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         System.out.println("Entered login");
@@ -45,11 +53,23 @@ public class ChatController {
         else
             return new ResponseEntity<String>("wrong user credentials",HttpStatus.NOT_FOUND);
     }
+
+    /**
+     * Gets a list of UserDTO objects that represent users in the database.
+     *
+     * @return A List of UserDTO objects containing user information.
+     */
     @GetMapping("/getusers")
     public List<UserDTO> getUsers(){
         return chatService.getUsers();
     }
 
+    /**
+     * Adds a new user to the database and generates a JWT token if the registration was successful.
+     *
+     * @param user The User object that is going to be added to the database.
+     * @return A Token containing the JWT token if registration is successful, or an error token if the user already exists.
+     */
     @PostMapping("/adduser")
     public Token addUser(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         if(chatService.addUser(user)!=null)
@@ -58,6 +78,12 @@ public class ChatController {
             return new Token("user already exists");
     }
 
+    /**
+     * Gets user information based on the provided username.
+     *
+     * @param username The username of the user to get information for.
+     * @return A UserDTO object containing user information, or null if the user is not found.
+     */
     @GetMapping("/getuser")
     public UserDTO getUser(@RequestParam String username){
 
@@ -65,11 +91,24 @@ public class ChatController {
     }
 
     //FeedPosts
+
+    /**
+     * Gets a list of feed posts from the database.
+     *
+     * @return A List of FeedPost objects representing the feed posts.
+     */
     @GetMapping("/getfeedposts")
     public List<FeedPost> getFeedPosts(){
         return chatService.getFeedPosts();
     }
 
+    /**
+     * Adds a feed post to the database and triggers a refresh update for the client if successful.
+     *
+     * @param feedPost The FeedPost object that is going to be added.
+     * @return ResponseEntity with the added FeedPost and a success status code if added successfully,
+     *         or an error message with a not found status code if it fails.
+     */
     @PostMapping("/addfeedpost")
     public ResponseEntity<?> addFeedPost(@RequestBody FeedPost feedPost){
         if(chatService.addFeedPost(feedPost)!=null)
@@ -90,11 +129,24 @@ public class ChatController {
 
 
     //Messages
+
+    /**
+     * Gets a list of messages from the database.
+     *
+     * @return A List of Message objects representing the messages between users.
+     */
     @GetMapping("/getmessages")
     public List<Message> getMessages(){
         return chatService.getMessages();
     }
 
+    /**
+     * Adds a new message to the database and triggers a refresh update for the client if successful.
+     *
+     * @param message The Message object that is going to be added.
+     * @return ResponseEntity with the added Message and a success status code if added successfully,
+     *         or an error message with a not found status code if it fails.
+     */
     @PostMapping("/addmessage")
     public ResponseEntity<?> addMessage(@RequestBody Message message){
         if(chatService.addMessage(message)!=null)
@@ -113,12 +165,17 @@ public class ChatController {
             return new ResponseEntity<String>("cannot add message",HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Gets a list of messages between two specified users.
+     *
+     * @param user1 The username of the first user.
+     * @param user2 The username of the second user.
+     * @return A List of Message objects representing the messages sent between the two users.
+     */
     @GetMapping("/getmessagesbyusers")
     public List<Message> getMessagesByUsers(@RequestParam String user1, @RequestParam String user2){
         return chatService.getMessagesByUsers(user1,user2);
     }
-
-
 
 
     private String getJWTToken(User user) {
