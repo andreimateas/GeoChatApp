@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from "react";
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import {navBarWrapper} from "../../navbar/navBarWrapper";
 import {useAuthContext} from "../../../auth/AuthProvider";
 import {MessageController} from "../../../controller/MessageController";

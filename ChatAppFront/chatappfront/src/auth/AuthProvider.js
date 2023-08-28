@@ -6,6 +6,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }) => {
     const [userProfile, setUserProfile] = useState({
         userString: localStorage.getItem('userProfile') || '',
+        token: localStorage.getItem('token') || '',
 
     });
 
@@ -13,6 +14,7 @@ export const AuthContextProvider = ({ children }) => {
         setUserProfile(userProfile);
         console.log(userProfile);
         localStorage.setItem('userProfile', userProfile.userString);
+        localStorage.setItem('token',userProfile.token);
         console.log(`user: ${userProfile.userString} logged in ${userProfile}`);
     }
 
@@ -20,8 +22,10 @@ export const AuthContextProvider = ({ children }) => {
         console.log(`user: ${userProfile.userString} logged out`);
         setUserProfile({
             userString: '',
+            token: '',
         });
         localStorage.removeItem('userProfile');
+        localStorage.removeItem('token');
 
     }
 

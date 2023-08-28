@@ -15,6 +15,7 @@ export default function Login(){
     const [password, setPassword] =useState('');
     const [passwordError, setPasswordError] = useState('');
     const [userString, setUserString] =useState('');
+    const [token, setToken] = useState('');
     const { login } = useAuthContext();
     const navigate = useNavigate();
     const anyError = useRef(false);
@@ -67,10 +68,11 @@ export default function Login(){
 
                 const controller = new UserController();
                 const user = new User(username, password, '', '', '', '');
-                const token = await controller.login(user);
-                console.log("Received token from server: " + token.string);
+                const serverToken = await controller.login(user);
+                console.log("Received token from server: " + serverToken.string);
+                setToken(serverToken);
 
-                const jsonToken = parseJwt(token.string);
+                const jsonToken = parseJwt(serverToken.string);
                 console.log("Parsed token: " + jsonToken);
 
 
@@ -103,10 +105,10 @@ export default function Login(){
 
     useEffect(() => {
         if (userString !== '') {
-            login({ userString });
+            login({ userString, token: token.string });
             navigate('/userPage');
         }
-    }, [userString, login, navigate]);
+    }, [userString, login, navigate, token]);
 
     return (
 
