@@ -13,6 +13,9 @@ const NavBar=() =>{
     const imagePath= require(`../../images/${image}`);
     const { logout } = useAuthContext();
 
+    /**
+     * Handles the logout action by calling the logout function.
+     */
     function handleLogout(){
         logout();
     }

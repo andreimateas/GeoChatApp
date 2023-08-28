@@ -27,83 +27,87 @@ export default function Register() {
     const anyError = useRef(false);
     const imagePath= require(`../../images/selectImage.png`);
     const counties = [
-        "Alba",
-        "Arad",
-        "Argeș",
-        "Bacău",
-        "Bihor",
-        "Bistrița-Năsăud",
-        "Botoșani",
-        "Brăila",
-        "Brașov",
-        "București",
-        "Buzău",
-        "Călărași",
-        "Caraș-Severin",
-        "Cluj",
-        "Constanța",
-        "Covasna",
-        "Dâmbovița",
-        "Dolj",
-        "Galați",
-        "Giurgiu",
-        "Gorj",
-        "Harghita",
-        "Hunedoara",
-        "Ialomița",
-        "Iași",
-        "Ilfov",
-        "Maramureș",
-        "Mehedinți",
-        "Mureș",
-        "Neamț",
-        "Olt",
-        "Prahova",
-        "Sălaj",
-        "Satu Mare",
-        "Sibiu",
-        "Suceava",
-        "Teleorman",
-        "Timiș",
-        "Tulcea",
-        "Vâlcea",
-        "Vaslui",
-        "Vrancea"
+        "Alba", "Arad", "Argeș", "Bacău", "Bihor", "Bistrița-Năsăud", "Botoșani", "Brăila",
+        "Brașov", "București", "Buzău", "Călărași", "Caraș-Severin", "Cluj", "Constanța",
+        "Covasna", "Dâmbovița", "Dolj", "Galați", "Giurgiu", "Gorj", "Harghita", "Hunedoara",
+        "Ialomița", "Iași", "Ilfov", "Maramureș", "Mehedinți", "Mureș", "Neamț", "Olt",
+        "Prahova", "Sălaj", "Satu Mare", "Sibiu", "Suceava", "Teleorman", "Timiș", "Tulcea",
+        "Vâlcea", "Vaslui", "Vrancea"
     ];
 
+    /**
+     * Resets error flags and clears error messages for different fields.
+     */
     function resetErrorFlags() {
         const errorSetters = [setUsernameError, setPasswordError];
         errorSetters.forEach((val) => val(""));
         anyError.current = false;
     }
 
+    /**
+     * Validates a field value against a regular expression.
+     *
+     * @param {string} fieldValue - The value of the field to validate.
+     * @param {RegExp} regexp - The regular expression to validate against.
+     * @returns {boolean} True if the field value matches the regular expression, otherwise false.
+     */
     const validateField = (fieldValue, regexp) => {
         return regexp.test(fieldValue);
     };
 
+    /**
+     * Validates the username field using a regular expression.
+     *
+     * @returns {boolean} True if the username is valid, otherwise false.
+     */
     function validateUsername() {
 
         return validateField(username, /^[a-z0-9_-]{3,16}$/);
     }
 
+    /**
+     * Validates the password field using a regular expression.
+     *
+     * @returns {boolean} True if the password is valid, otherwise false.
+     */
     function validatePassword() {
         return validateField(password, /^\S{5,50}$/);
     }
 
+    /**
+     * Validates the email field using a regular expression.
+     *
+     * @returns {boolean} True if the email is valid, otherwise false.
+     */
     function validateEmail() {
         return validateField(email, /^[a-zA-Z0-9]{1,50}@[a-zA-Z0-9]{1,50}.[a-zA-Z]{2,5}$/);
     }
 
+    /**
+     * Validates the name field using a regular expression.
+     *
+     * @returns {boolean} True if the name is valid, otherwise false.
+     */
     function validateName() {
         return validateField(name, /^[a-z ,.'-]+$/i);
     }
 
+    /**
+     * Validates the profile picture field.
+     *
+     * @returns {boolean} True if a profile picture is selected, otherwise false.
+     */
     function validateProfilePicture() {
         return profilePicture.length>0;
     }
 
 
-
+    /**
+     * Parses a JSON Web Token to extract the payload.
+     *
+     * @param {string} token - The JWT to parse.
+     * @returns {Object} The parsed JSON payload of the JWT.
+     */
     function parseJwt (token) {
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -113,6 +117,14 @@ export default function Register() {
 
         return JSON.parse(jsonPayload);
     }
+
+    /**
+     * Handles the registration button click event.
+     * Validates input fields, sends a registration request,
+     * and performs necessary actions on success or failure.
+     *
+     * @async
+     */
     async function onRegisterButtonClicked(){
 
         resetErrorFlags();
@@ -182,6 +194,14 @@ export default function Register() {
         }
 
     }
+
+    /**
+     * React hook that navigates to the user page when user data is available.
+     *
+     * @param {string} userString - User information.
+     * @param {function} login - Login function from the authentication context.
+     * @param {function} navigate - Navigation function.
+     */
     useEffect(() => {
         if (userString !== '') {
             login({ userString });
@@ -190,6 +210,11 @@ export default function Register() {
     }, [userString, login, navigate]);
 
 
+    /**
+     * Handles the change event for the profile picture input field.
+     *
+     * @param {Event} e - The change event.
+     */
     function handleProfilePictureChange(e) {
 
         try{
@@ -279,7 +304,7 @@ export default function Register() {
                 />
             </label>
 
-            <button type="submit" id="buttonRegister" onClick={onRegisterButtonClicked}>
+            <button type="submit" id="button-register" onClick={onRegisterButtonClicked}>
                 Register
             </button>
             <p>Already have an account?</p>

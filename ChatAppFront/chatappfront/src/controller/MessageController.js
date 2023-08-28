@@ -1,5 +1,10 @@
 const SERVER_URL = 'http://localhost:3001';
 
+/**
+ * Checks the response status and resolves or rejects the promise accordingly.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise} A promise that resolves if the response status is in the success range, and rejects otherwise.
+ */
 function status(response) {
     if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response);
@@ -8,11 +13,20 @@ function status(response) {
     }
 }
 
+/**
+ * Parses the JSON response of a fetch request.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise<Object>} A promise that resolves to the parsed JSON data.
+ */
 function json(response) {
     return response.json();
 }
 export class MessageController{
 
+    /**
+     * Retrieves all messages from the server.
+     * @returns {Promise<Array>} A promise that resolves to an array of messages.
+     */
     getMessages(){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
@@ -40,6 +54,11 @@ export class MessageController{
             })
     }
 
+    /**
+     * Adds a new message to the server.
+     * @param {Message} message - The message object to be added.
+     * @returns {Promise<Object>} A promise that resolves to the server's response.
+     */
     addMessage(message){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
@@ -69,6 +88,12 @@ export class MessageController{
 
     }
 
+    /**
+     * Retrieves messages between two users from the server.
+     * @param {string} user1 - The username of the first user.
+     * @param {string} user2 - The username of the second user.
+     * @returns {Promise<Array>} A promise that resolves to an array of messages between the users.
+     */
     getMessagesByUsers(user1, user2){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');

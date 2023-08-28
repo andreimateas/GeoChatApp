@@ -20,25 +20,51 @@ export default function Login(){
     const navigate = useNavigate();
     const anyError = useRef(false);
 
+    /**
+     * Resets error flags and clears error messages for username and password fields.
+     */
     function resetErrorFlags() {
         const errorSetters = [setUsernameError, setPasswordError];
         errorSetters.forEach((val) => val(""));
         anyError.current = false;
     }
 
+    /**
+     * Validates a field value against a regular expression.
+     *
+     * @param {string} fieldValue - The value of the field to validate.
+     * @param {RegExp} regexp - The regular expression to validate against.
+     * @returns {boolean} True if the field value matches the regular expression, otherwise false.
+     */
     const validateField = (fieldValue, regexp) => {
         return regexp.test(fieldValue);
     };
 
+    /**
+     * Validates the username field using a regular expression.
+     *
+     * @returns {boolean} True if the username is valid, otherwise false.
+     */
     function validateUsername() {
 
         return validateField(username, /^[a-z0-9_-]{3,16}$/);
     }
 
+    /**
+     * Validates the password field using a regular expression.
+     *
+     * @returns {boolean} True if the password is valid, otherwise false.
+     */
     function validatePassword() {
         return validateField(password, /^\S{5,50}$/);
     }
 
+    /**
+     * Parses a JSON Web Token to extract the payload.
+     *
+     * @param {string} token - The JWT to parse.
+     * @returns {Object} The parsed JSON payload of the JWT.
+     */
     function parseJwt (token) {
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -48,6 +74,14 @@ export default function Login(){
 
         return JSON.parse(jsonPayload);
     }
+
+    /**
+     * Handles the login button click event.
+     * Validates username and password, sends a login request,
+     * and performs necessary actions on success or failure.
+     *
+     * @async
+     */
     async function onLoginButtonClicked(){
 
         resetErrorFlags();
@@ -103,6 +137,14 @@ export default function Login(){
 
     }
 
+    /**
+     * React hook that navigates to the user page when user data is available.
+     *
+     * @param {string} userString - User information.
+     * @param {function} login - Login function from the authentication context.
+     * @param {function} navigate - Navigation function.
+     * @param {object} token - User authentication token.
+     */
     useEffect(() => {
         if (userString !== '') {
             login({ userString, token: token.string });
@@ -134,7 +176,7 @@ export default function Login(){
                 onChange={(event) => setPassword(event.target.value)}
             />
 
-            <button type="submit" id="buttonLogin" onClick={onLoginButtonClicked}>
+            <button type="submit" id="button-login" onClick={onLoginButtonClicked}>
                 Login
             </button>
             <p className="p-register">Don't have an account?</p>

@@ -25,6 +25,9 @@ const UserMessagePage=()=> {
 
     const [imagePathsUpdated, setImagePathsUpdated] = useState(false);
 
+    /**
+     * Fetches messages and user information from the server.
+     */
     async function fetchData() {
         const controller = new MessageController();
         let messages = await controller.getMessages();

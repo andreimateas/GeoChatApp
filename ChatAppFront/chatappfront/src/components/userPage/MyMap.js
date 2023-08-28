@@ -11,6 +11,9 @@ const MyMap = ({initialLocation, onMapChange}) => {
 
     const [selectedState, setSelectedState] = useState(initialLocation);
 
+    /**
+     * Effect that updates the map when the selected state changes.
+     */
     useEffect(() => {
 
         console.log('Selected State:', selectedState);
@@ -19,6 +22,10 @@ const MyMap = ({initialLocation, onMapChange}) => {
 
     }, [selectedState]);
 
+
+    /**
+     * Effect that initializes the map when the component mounts.
+     */
     useEffect(() => {
         const isMapboxSupported = MapboxGlSupported();
 

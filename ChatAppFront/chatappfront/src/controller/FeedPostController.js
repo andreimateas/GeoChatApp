@@ -1,6 +1,12 @@
 
 const SERVER_URL = 'http://localhost:3001';
 
+
+/**
+ * Checks the response status and resolves or rejects the promise accordingly.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise} A promise that resolves if the response status is in the success range, and rejects otherwise.
+ */
 function status(response) {
     if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response);
@@ -9,11 +15,20 @@ function status(response) {
     }
 }
 
+/**
+ * Parses the JSON response of a fetch request.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise<Object>} A promise that resolves to the parsed JSON data.
+ */
 function json(response) {
     return response.json();
 }
 export class FeedPostController{
 
+    /**
+     * Retrieves all feed posts from the server.
+     * @returns {Promise<Array>} A promise that resolves to an array of feed posts.
+     */
     getFeedPosts(){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
@@ -41,6 +56,11 @@ export class FeedPostController{
             })
     }
 
+    /**
+     * Adds a new feed post to the server.
+     * @param {FeedPost} feedPost - The feed post object to be added.
+     * @returns {Promise<Object>} A promise that resolves to the server's response.
+     */
     addFeedPost(feedPost){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');

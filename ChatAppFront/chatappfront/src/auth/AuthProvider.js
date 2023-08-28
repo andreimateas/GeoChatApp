@@ -10,6 +10,10 @@ export const AuthContextProvider = ({ children }) => {
 
     });
 
+    /**
+     * Logs in a user by updating the user profile and token, and storing them in local storage.
+     * @param {Object} userProfile - User profile and token information.
+     */
     function login(userProfile) {
         setUserProfile(userProfile);
         console.log(userProfile);
@@ -18,6 +22,9 @@ export const AuthContextProvider = ({ children }) => {
         console.log(`user: ${userProfile.userString} logged in ${userProfile}`);
     }
 
+    /**
+     * Logs out a user by clearing the user profile and token and removing them from local storage.
+     */
     function logout() {
         console.log(`user: ${userProfile.userString} logged out`);
         setUserProfile({

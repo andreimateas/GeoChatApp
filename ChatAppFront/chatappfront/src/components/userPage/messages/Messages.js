@@ -32,6 +32,11 @@ const Messages = () => {
 
     const [messageContent, setMessageContent] = useState('');
 
+    /**
+     * Formats a given date into a string with a specific format.
+     * @param {Date} date - The date to be formatted.
+     * @returns {string} The formatted date string.
+     */
     function formatDate(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -51,6 +56,9 @@ const Messages = () => {
     const stompClient = Stomp.over(socket);
     let isConnected = false;
 
+    /**
+     * Connects and manages the WebSocket connection with the server.
+     */
     useEffect(() => {
 
         let reconnectTimeout;
@@ -103,6 +111,9 @@ const Messages = () => {
         }
     };
 
+    /**
+     * Fetches messages and user data from the server.
+     */
     async function fetchData() {
         const controller = new MessageController();
         let messages = await controller.getMessagesByUsers(user1, user2);
@@ -123,6 +134,17 @@ const Messages = () => {
         setImagePathUpdated(true);
     }
 
+    /**
+     * Scrolls the message container to the bottom, ensuring the latest messages are visible.
+     */
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "end" });
+
+    };
+
+    /**
+     * Initializes data fetching and scrolling when the component mounts.
+     */
     useEffect(() => {
         document.getElementById("messageText").value="";
         fetchData();
@@ -130,19 +152,23 @@ const Messages = () => {
     }, []);
 
 
+    /**
+     * Scrolls to the bottom of the message container whenever the message list updates.
+     */
     useEffect(() => {
         scrollToBottom();
     }, [messageList]);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "end" });
-
-    };
-
+    /**
+     * Updates the user image path once when the component mounts.
+     */
     useEffect(() => {
             setImagePathUpdated(true);
     }, []);
 
+    /**
+     * Handles the event when the send message button is clicked.
+     */
     async function onSendMessageButtonClicked() {
         if(messageContent.length<1){
             await Swal.fire({

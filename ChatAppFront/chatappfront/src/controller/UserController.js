@@ -2,6 +2,11 @@
 
 const SERVER_URL = 'http://localhost:3001';
 
+/**
+ * Checks the response status and resolves or rejects the promise accordingly.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise} A promise that resolves if the response status is in the success range, and rejects otherwise.
+ */
 function status(response) {
     if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response);
@@ -10,11 +15,21 @@ function status(response) {
     }
 }
 
+/**
+ * Parses the JSON response of a fetch request.
+ * @param {Response} response - The response object from the fetch request.
+ * @returns {Promise<Object>} A promise that resolves to the parsed JSON data.
+ */
 function json(response) {
     return response.json();
 }
 export class UserController{
 
+    /**
+     * Logs in a user.
+     * @param {User} user - The user object containing login credentials.
+     * @returns {Promise<Object>} A promise that resolves to the server's response.
+     */
      login(user){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
@@ -43,6 +58,11 @@ export class UserController{
             })
     }
 
+    /**
+     * Registers a new user.
+     * @param {User} user - The user object to be registered.
+     * @returns {Promise<Object>} A promise that resolves to the server's response.
+     */
     register(user){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');
@@ -71,6 +91,11 @@ export class UserController{
             })
     }
 
+    /**
+     * Retrieves user data based on the username.
+     * @param {string} username - The username of the user to retrieve.
+     * @returns {Promise<Object>} A promise that resolves to the user data.
+     */
     getUser(username){
         const myheaders = new Headers();
         myheaders.append('Accept', 'application/json');

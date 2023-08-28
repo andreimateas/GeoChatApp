@@ -27,6 +27,9 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
     const imageLoggedUser= fields[4].split("\\")[2];
     const loggedUser= new User(fields[0],"", fields[2], fields[1], imageLoggedUser, fields[3]);
 
+    /**
+     * Fetches user data from the server and updates the component's state.
+     */
     async function fetchData(){
         const userController = new UserController();
         let receivedUser= await userController.getUser(user);
@@ -38,11 +41,17 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         setUserImagePathUpdated(true);
     }
 
+    /**
+     * Component effect: Fetches user data and updates user image path.
+     */
     useEffect(() => {
         fetchData();
 
     }, []);
 
+    /**
+     * Component effect: Updates image path when the 'image' prop changes.
+     */
     useEffect(() => {
         if (image) {
             try {
@@ -54,6 +63,9 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }, [image]);
 
+    /**
+     * Handles the like button click event.
+     */
     function handleLikeButtonClick(){
         if(liked===false){
             setLiked(true);
@@ -80,7 +92,9 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }
 
-
+    /**
+     * Handles the start conversation button click event.
+     */
     function onConversationButtonClick() {
         navigate(`/messages/${user}`);
     }

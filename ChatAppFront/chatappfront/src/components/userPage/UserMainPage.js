@@ -29,6 +29,9 @@ const UserMainPage=()=> {
     const stompClient = Stomp.over(socket);
     let isConnected = false;
 
+    /**
+     * Connects and manages the WebSocket connection with the server.
+     */
     useEffect(() => {
 
         let reconnectTimeout;
@@ -86,6 +89,12 @@ const UserMainPage=()=> {
 
 
     const [username, setUsername] =useState('');
+
+    /**
+     * Formats a given date into a string with a specific format.
+     * @param {Date} date - The date to be formatted.
+     * @returns {string} The formatted date string.
+     */
     function formatDate(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -102,7 +111,11 @@ const UserMainPage=()=> {
     const [postLocation, setPostLocation]= useState(userFull.location);
     const currentCounty= useRef(null);
 
-
+    /**
+     * Remove diacritics from a string.
+     * @param {string} str - The string to remove diacritics from.
+     * @returns {string} - The string without diacritics.
+     */
     function removeDiacritics(str) {
         const diacriticsMap = {
             'ă': 'a', 'â': 'a', 'î': 'i', 'ș': 's', 'ț': 't',
@@ -111,6 +124,10 @@ const UserMainPage=()=> {
 
         return str.replace(/[ăâîșțĂÂÎȘȚş]/g, match => diacriticsMap[match]);
     }
+
+    /**
+     * Fetch feed posts from the server based on the current county.
+     */
     async function fetchData() {
         const controller = new FeedPostController();
         let feedPosts = await controller.getFeedPosts();
@@ -139,6 +156,9 @@ const UserMainPage=()=> {
     }, []);
 
 
+    /**
+     * Handles the event where the add post button is clicked
+     */
     async function onAddPostButtonClicked(){
         if(contentText.length<5){
             await Swal.fire({
@@ -167,6 +187,11 @@ const UserMainPage=()=> {
         }
     }
 
+    /**
+     * Update the likes of a feed post.
+     * @param {Object} post - The feed post to update.
+     * @param {boolean} liked - Whether the post was liked or unliked.
+     */
     const updateLikes = async (post,liked) => {
         try {
             const controller= new FeedPostController();
@@ -192,7 +217,10 @@ const UserMainPage=()=> {
         await fetchData();
     }
 
-
+    /**
+     * Handle the change of the post image input.
+     * @param {Event} e - The change event.
+     */
     function handlePostImageChange(e) {
         try {
             const fileInput = e.target;
