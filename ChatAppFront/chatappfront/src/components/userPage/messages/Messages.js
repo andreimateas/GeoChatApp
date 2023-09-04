@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useRef} from "react";
 import { useParams} from "react-router-dom";
-import {navBarWrapper} from "../../navbar/navBarWrapper";
 import {useAuthContext} from "../../../auth/AuthProvider";
 import {MessageController} from "../../../controller/MessageController";
 import "./Messages.css";
@@ -146,6 +145,8 @@ const Messages = () => {
      * Initializes data fetching and scrolling when the component mounts.
      */
     useEffect(() => {
+        const currentPagePath = window.location.pathname;
+        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
         document.getElementById("messageText").value="";
         fetchData();
         scrollToBottom();
@@ -233,5 +234,4 @@ const Messages = () => {
     );
 }
 
-const MessagesWrapped=navBarWrapper(Messages);
-export default MessagesWrapped;
+export default Messages;

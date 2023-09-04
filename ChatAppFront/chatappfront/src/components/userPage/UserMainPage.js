@@ -1,5 +1,5 @@
 
-import {navBarWrapper} from "../navbar/navBarWrapper";
+
 import "./UserMainPage.css";
 import Feed from "./feed/Feed";
 import React, {useEffect, useRef, useState} from "react";
@@ -151,6 +151,8 @@ const UserMainPage=()=> {
     }
 
     useEffect( () => {
+        const currentPagePath = window.location.pathname;
+        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
         document.getElementById("postText").value="";
         fetchData();
     }, []);
@@ -242,7 +244,7 @@ const UserMainPage=()=> {
         <div className={"main-Div_1"}>
             <div className={"feed_1"}>
 
-                <h1 className={"feed-header_1"}>YOUR FEED</h1>
+                <h1 className={"feed-header_1"}>Your feed</h1>
                 <h2 ref={currentCounty} id={"city-header"} ></h2>
 
                 <div id="map" style={{ width: '95%', height: '500px', alignContent: 'center'}}><MyMap initialLocation={userFull.location} onMapChange={fetchMap}/></div>
@@ -267,5 +269,4 @@ const UserMainPage=()=> {
     );
 }
 
-const UserMainPageWrapped = navBarWrapper(UserMainPage);
-export default UserMainPageWrapped;
+export default UserMainPage;

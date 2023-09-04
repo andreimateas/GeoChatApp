@@ -1,6 +1,6 @@
 import "./NavBar.css"
 import {Link} from "react-router-dom";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useAuthContext} from "../../auth/AuthProvider";
 
 const NavBar=() =>{
@@ -17,6 +17,7 @@ const NavBar=() =>{
      * Handles the logout action by calling the logout function.
      */
     function handleLogout(){
+        sessionStorage.removeItem(`currentPage${fields[0]}`);
         logout();
     }
 
@@ -24,10 +25,10 @@ const NavBar=() =>{
 
         <img src={imagePath} alt="Profile" />
 
-        <Link to="/userProfilePage">Profile</Link>
-        <Link to="/userPage">Home</Link>
-        <Link to={"/userMessagePage"}>Messages</Link>
-        <Link  id={"logoutButton"} onClick={handleLogout} to="/">Logout</Link>
+        <Link id={"profile"} to="/userProfilePage">Profile</Link>
+        <Link id={"feed"} to="/userPage">Feed</Link>
+        <Link id={"chats"} to={"/userMessagePage"}>Chats</Link>
+        <Link id={"logoutButton"}  onClick={handleLogout} to="/">Logout</Link>
 
     </div>);
 }

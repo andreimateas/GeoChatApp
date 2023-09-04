@@ -88,3 +88,25 @@
     }
 }
 
+.already-logged-in-text{
+    margin-top: 8vw;
+    font-size: 2vw;
+    margin-bottom: 1.5vw;
+    color: #f5f1f1;
+}
+
+.already-logged-in-button{
+    margin-top: 1vw;
+    color: var(--text-color);
+    background-color: #DD5566FF;
+    padding: 1vw 2vw;
+    border-radius: 3vw;
+    font-size: 1.30vw;
+    text-decoration: none;
+    transition: background-color 0.6s ease;
+}
+
+.already-logged-in-button:hover{
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}

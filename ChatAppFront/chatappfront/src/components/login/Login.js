@@ -146,9 +146,14 @@ export default function Login(){
      * @param {object} token - User authentication token.
      */
     useEffect(() => {
+        const previousPath = sessionStorage.getItem(`currentPage${username}`);
         if (userString !== '') {
             login({ userString, token: token.string });
-            navigate('/userPage');
+            if (previousPath) {
+                navigate(previousPath);
+            } else {
+                navigate('/userPage');
+            }
         }
     }, [userString, login, navigate, token]);
 

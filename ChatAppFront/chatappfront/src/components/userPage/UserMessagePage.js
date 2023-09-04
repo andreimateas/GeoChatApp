@@ -1,6 +1,5 @@
 import "./UserMessagePage.css";
 
-import {navBarWrapper} from "../navbar/navBarWrapper";
 import {useAuthContext} from "../../auth/AuthProvider";
 import User from "../../controller/entities/User";
 import React, {useEffect, useRef, useState} from "react";
@@ -68,6 +67,8 @@ const UserMessagePage=()=> {
     }
 
     useEffect( () => {
+        const currentPagePath = window.location.pathname;
+        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
         fetchData();
     }, []);
 
@@ -76,6 +77,11 @@ const UserMessagePage=()=> {
     return (
         <div className="main-div">
             <ul className="user-message-list">
+                <div className={"title-div"}>
+                    <h1 className={"title-header"}>
+                        Your chats
+                    </h1>
+                </div>
                 {userMessageList.map((currentUser, index) => (
                     <li key={index} className="message-box">
 
@@ -96,5 +102,4 @@ const UserMessagePage=()=> {
     );
 }
 
-const UserMessagePageWrapped = navBarWrapper(UserMessagePage);
-export default UserMessagePageWrapped;
+export default UserMessagePage;

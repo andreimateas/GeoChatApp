@@ -38,8 +38,8 @@ body, html {
 }
 
 .feed-header_1{
-    margin-top: 90px;
-    margin-bottom: 0;
+    margin-top: 85px;
+    margin-bottom: 5px;
     color: #914040;
 }
 
@@ -108,7 +108,7 @@ body, html {
     display: inline-block;
     padding: 7px 3px;
     background-color: #ffffff;
-    color: #9D8B8A;
+    color: #7a6d6c;
     border: 1px solid #D0BEBD;
     border-radius: 8px;
     font-size: 16px;

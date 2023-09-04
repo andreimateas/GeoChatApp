@@ -29,6 +29,8 @@
     font-family: 'Poppins', sans-serif;
     margin-top: 15px;
     border-radius: 16px;
+    margin-left: 3px;
+    margin-right: 3px;
 
 
 }
@@ -37,9 +39,6 @@
     background-color: var(--secondary-color);
 }
 
-.topnav a.active {
-    background-color: var(--secondary-color);
-}
 
 
 .topnav a::after {
@@ -62,6 +61,3 @@
     float: left;
 
 }
-
-
-

@@ -44,7 +44,8 @@
 .post-footer {
     display: flex;
     align-items: center;
-    margin-left: 25px;
+    margin-left: 12px;
+    margin-top: 25px;
 }
 
 .post-like-button {

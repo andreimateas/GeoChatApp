@@ -19,10 +19,11 @@ export default function Register() {
     const [nameError, setNameError] = useState('');
     const [profilePicture, setProfilePicture] =useState('');
     const [profilePictureError, setProfilePictureError] = useState('');
-    const [location, setLocation] =useState('');
+    const [location, setLocation] =useState('Alba');
     const [locationError, ] = useState('');
     const [userString, setUserString] =useState('');
     const { login } = useAuthContext();
+    const [token, setToken] = useState('');
     const navigate = useNavigate();
     const anyError = useRef(false);
     const imagePath= require(`../../images/selectImage.png`);
@@ -161,10 +162,11 @@ export default function Register() {
 
                 const controller = new UserController();
                 const user = new User(username, password, email, name, profilePicture, location);
-                const token = await controller.register(user);
-                console.log("Received token from server: " + token.string);
+                const serverToken = await controller.register(user);
+                console.log("Received token from server: " + serverToken.string);
+                setToken(serverToken);
 
-                const jsonToken = parseJwt(token.string);
+                const jsonToken = parseJwt(serverToken.string);
                 console.log("Parsed token: " + jsonToken);
 
                 console.log("User data as string: " + jsonToken["sub"]);
@@ -204,10 +206,10 @@ export default function Register() {
      */
     useEffect(() => {
         if (userString !== '') {
-            login({ userString });
+            login({ userString, token: token.string  });
             navigate('/userPage');
         }
-    }, [userString, login, navigate]);
+    }, [userString, login, navigate, token]);
 
 
     /**

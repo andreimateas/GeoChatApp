@@ -1,7 +1,7 @@
 import { useAuthContext } from '../../auth/AuthProvider';
 import User from "../../controller/entities/User";
-import {navBarWrapper} from "../navbar/navBarWrapper";
 import "./UserProfilePage.css";
+import {useEffect} from "react";
 
 const UserProfilePage=()=> {
     const { userProfile } = useAuthContext();
@@ -10,6 +10,11 @@ const UserProfilePage=()=> {
     const image= fields[4].split("\\")[2];
     const user= new User(fields[0],"", fields[2], fields[1], image, fields[3]);
     const imagePath= require(`../../images/${image}`);
+
+    useEffect(()=>{
+        const currentPagePath = window.location.pathname;
+        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
+    },[]);
 
     return (
         <div className={"main-div"}>
@@ -24,5 +29,4 @@ const UserProfilePage=()=> {
     );
 }
 
-const UserProfilePageWrapped = navBarWrapper(UserProfilePage);
-export default UserProfilePageWrapped;
+export default UserProfilePage;
