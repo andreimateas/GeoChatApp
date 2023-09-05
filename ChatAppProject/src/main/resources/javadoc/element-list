@@ -1,0 +1,10 @@
+chat
+chat.controller
+chat.controller.controllerImplementation
+chat.domain
+chat.encryption
+chat.repository
+chat.service
+chat.service.serviceImplementation
+chat.websocket
+chatTest
