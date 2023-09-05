@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"chat"},{"l":"chat.controller"},{"l":"chat.controller.controllerImplementation"},{"l":"chat.domain"},{"l":"chat.encryption"},{"l":"chat.repository"},{"l":"chat.service"},{"l":"chat.service.serviceImplementation"},{"l":"chat.websocket"},{"l":"chatTest"}];updateSearchResults();
