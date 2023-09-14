@@ -136,10 +136,47 @@
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] MySQL Database and Spring Boot project creation
+    - [ ] Users, Feed Posts and Messages tables
+- [ ] Java Domain Model creation and object relational mapping using Hibernate
+    - [ ] User, Feed Post and Message entities
+- [ ] Spring Repository and Service development
+    - [ ] User, Feed Post and Message repositories
+    - [ ] Get user, get all users and add user methods
+    - [ ] Get feed posts and add feed posts methods
+    - [ ] Get all messages, add message and get messages between 2 users methods
+- [ ] Adding a REST Controller to the server
+- [ ] Implementing AES Encryption for passwords
+- [ ] React project creation
+- [ ] Home Page creation
+    - [ ] Home component
+    - [ ] Navigate to login or register functionality
+- [ ] Login and register pages development
+    - [ ] Login and Register component creation
+    - [ ] Login and register functionality
+    - [ ] Adding a User REST Controller to the client to handle login and registration
+- [ ] User Page development
+    - [ ] User profile details page
+    - [ ] Feed page
+      - [ ] Map component for region selection using Mapbox API
+      - [ ] Post component that represents a user post
+      - [ ] Feed component that represents all the posts on the page
+      - [ ] Select region functionality
+      - [ ] View feed posts from the selected region functionality
+      - [ ] Add a post functionality
+      - [ ] Adding a Feed Post REST Controller to the client to handle viewing the feed and adding a post
+    - [ ] Chats page
+      - [ ] User Messages Page that contains the recent chats of a user
+      - [ ] Messages component that represents the chat between the current user and a selected user
+      - [ ] Selecting a user to start a chat with functionality
+      - [ ] Sending messages between users functionality
+      - [ ] Adding a Message REST Controller to the client to handle sending messages between users
+- [ ] Creating a NavBar for the User Page to switch between profile, feed and chat pages
+- [ ] Adding a logout functionality
+- [ ] Implementing Web Sockets to update every client when an event happens
+- [ ] Configuring private routes, handling access denied and page not found cases
+- [ ] User input validation and exception handling
+- [ ] Web Session handling
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
