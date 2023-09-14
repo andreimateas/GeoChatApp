@@ -1,5 +1,6 @@
+<a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -10,19 +11,19 @@
   <a href="https://github.com/andreimateas/GeoChatApp">
   </a>
 
-<h3 align="center">GeoChat App</h3>
+<h1 align="center">GeoChat App</h1>
 
-  <p align="center">
+  <h3 align="center">
     Localized social media web application
     <br />
-  </p>
+  </h3>
 </div>
 
 
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary><b"><h3>Table of Contents</h3></b></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -39,10 +40,8 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+
   </ol>
 </details>
 
