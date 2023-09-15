@@ -136,47 +136,46 @@
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] MySQL Database and Spring Boot project creation
-    - [ ] Users, Feed Posts and Messages tables
-- [ ] Java Domain Model creation and object relational mapping using Hibernate
-    - [ ] User, Feed Post and Message entities
-- [ ] Spring Repository and Service development
-    - [ ] User, Feed Post and Message repositories
-    - [ ] Get user, get all users and add user methods
-    - [ ] Get feed posts and add feed posts methods
-    - [ ] Get all messages, add message and get messages between 2 users methods
-- [ ] Adding a REST Controller to the server
-- [ ] Implementing AES Encryption for passwords
-- [ ] React project creation
-- [ ] Home Page creation
-    - [ ] Home component
-    - [ ] Navigate to login or register functionality
-- [ ] Login and register pages development
-    - [ ] Login and Register component creation
-    - [ ] Login and register functionality
-    - [ ] Adding a User REST Controller to the client to handle login and registration
-- [ ] User Page development
-    - [ ] User profile details page
-    - [ ] Feed page
-      - [ ] Map component for region selection using Mapbox API
-      - [ ] Post component that represents a user post
-      - [ ] Feed component that represents all the posts on the page
-      - [ ] Select region functionality
-      - [ ] View feed posts from the selected region functionality
-      - [ ] Add a post functionality
-      - [ ] Adding a Feed Post REST Controller to the client to handle viewing the feed and adding a post
-    - [ ] Chats page
-      - [ ] User Messages Page that contains the recent chats of a user
-      - [ ] Messages component that represents the chat between the current user and a selected user
-      - [ ] Selecting a user to start a chat with functionality
-      - [ ] Sending messages between users functionality
-      - [ ] Adding a Message REST Controller to the client to handle sending messages between users
-- [ ] Creating a NavBar for the User Page to switch between profile, feed and chat pages
-- [ ] Adding a logout functionality
-- [ ] Implementing Web Sockets to update every client when an event happens
-- [ ] Configuring private routes, handling access denied and page not found cases
-- [ ] User input validation and exception handling
-- [ ] Web Session handling
+- [x] MySQL Database and Spring Boot project creation
+    - [x] Users, Feed Posts and Messages tables
+- [x] Java Domain Model creation and object relational mapping using Hibernate
+    - [x] User, Feed Post and Message entities
+- [x] Spring Repository and Service development
+    - [x] User, Feed Post and Message repositories
+    - [x] Get user, get all users and add user methods
+    - [x] Get feed posts and add feed posts methods
+    - [x] Get all messages, add message and get messages between 2 users methods
+- [x] Adding a REST Controller to the server
+- [x] Implementing AES Encryption for passwords
+- [x] React project creation
+- [x] Home Page creation
+    - [x] Home component
+    - [x] Navigate to login or register functionality
+- [x] Login and register pages development
+    - [x] Login and Register component creation
+    - [x] Login and register functionality
+    - [x] Adding a User REST Controller to the client to handle login and registration
+- [x] User Page development
+    - [x] User profile details page
+    - [x] Feed page
+      - [x] Map component for region selection using Mapbox API
+      - [x] Post component that represents a user post
+      - [x] Feed component that represents all the posts on the page
+      - [x] Select region functionality
+      - [x] View feed posts from the selected region functionality
+      - [x] Add a post functionality
+      - [x] Adding a Feed Post REST Controller to the client to handle viewing the feed and adding a post
+    - [x] Chats page
+      - [x] User Messages Page that contains the recent chats of a user
+      - [x] Messages component that represents the chat between the current user and a selected user
+      - [x] Selecting a user to start a chat with functionality
+      - [x] Sending messages between users functionality
+      - [x] Adding a Message REST Controller to the client to handle sending messages between users
+- [x] Creating a NavBar for the User Page to switch between profile, feed and chat pages
+- [x] Adding a logout functionality
+- [x] Implementing Web Sockets to update every client when an event happens
+- [x] Configuring private routes, handling access denied and page not found cases
+- [x] User input validation and exception handling
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
