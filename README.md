@@ -22,7 +22,7 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<details open>
   <summary><b"><h3>Table of Contents</h3></b></summary>
   <ol>
     <li>
