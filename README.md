@@ -27,7 +27,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#description">Project description + Screenshots</a></li>
+        <li><a href="#project-description-and-screenshots">Project description and Screenshots</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -50,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-### Project description + Screenshots
+### Project description and Screenshots
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
