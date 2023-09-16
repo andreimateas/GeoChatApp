@@ -177,7 +177,6 @@ public class ChatController {
         return chatService.getMessagesByUsers(user1,user2);
     }
 
-
     private String getJWTToken(User user) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
