@@ -39,7 +39,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
 
@@ -126,51 +125,34 @@ GeoChat App is a localized social media web application that introduces a unique
 #### Frontend
 
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
+
+* Git
+
 
 #### Backend
 
-...
+* Gradle
+
+* MySQL
+
 
 ### Installation
 
+1. Create a new directory.
+2. Enter that directory and open a terminal.
+3. Use the command ``` git clone https://github.com/andreimateas/GeoChatApp ```
+
 #### Frontend
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/andreimateas/GeoChatApp.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. After the project is downloaded, use the command ``` npm install ``` in the ChatApp/ChatAppFront folder.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #### Backend
 
-...
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-### Frontend
-
-...
-
-
-### Backend
-
-...
+1. Open a console in the root directory of the backend project (ChatApp/ChatAppProject).
+2. Run the command gradle bootJar.
+3. The result of the command is a .jar file that you can find at the following relative path: build/libs.
+4. Make sure the MySQL server is running and has a user with the credentials from application.properties. Use the command ``` java -jar relative/path/to/jar ``` .
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
