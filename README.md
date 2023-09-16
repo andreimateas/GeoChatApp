@@ -52,6 +52,23 @@
 
 ### Project description and Screenshots
 
+GeoChat App is a localized social media web application that introduces a unique feature of localization to the traditional social media platform. The app provides essential functionalities such as user registration, login, a personalized user page with a feed, the ability to select a specific state from a map, view posts from users within that state, create new posts, discover and connect with individuals in the selected area through the private chat. </br></br>
+Here are some screenshots of the application features: 
+
+* Home page 
+
+* Login
+
+* Register
+
+* Feed
+
+* User profile
+
+* Latest chats page
+
+* Private chat
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
