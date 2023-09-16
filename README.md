@@ -16,7 +16,7 @@
 
 <br />
 
-![alt text](AppOverview.png)
+![alt text](screenshots/AppOverview.png)
 
 <br />
 
@@ -27,8 +27,9 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#project-description-and-screenshots">Project description and Screenshots</a></li>
+        <li><a href="#project-description">Project description</a></li>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
       </ul>
     </li>
     <li>
@@ -50,24 +51,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-### Project description and Screenshots
+### Project description
 
 GeoChat App is a localized social media web application that introduces a unique feature of localization to the traditional social media platform. The app provides essential functionalities such as user registration, login, a personalized user page with a feed, the ability to select a specific state from a map, view posts from users within that state, create new posts, discover and connect with individuals in the selected area through the private chat. </br></br>
-Here are some screenshots of the application features: 
 
-* Home page 
-
-* Login
-
-* Register
-
-* Feed
-
-* User profile
-
-* Latest chats page
-
-* Private chat
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,7 +74,23 @@ Here are some screenshots of the application features:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Screenshots
 
+* Home page 
+
+* Login
+
+* Register
+
+* Feed
+
+* User profile
+
+* Latest chats page
+
+* Private chat
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
