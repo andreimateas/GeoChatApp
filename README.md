@@ -19,7 +19,11 @@
   </h3>
 </div>
 
+<br />
 
+![alt text](AppOverview.png)
+
+<br />
 
 <!-- TABLE OF CONTENTS -->
 <details open>
