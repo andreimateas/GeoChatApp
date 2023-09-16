@@ -76,22 +76,44 @@ GeoChat App is a localized social media web application that introduces a unique
 
 ### Screenshots
 
+<br />
+
 * Home page 
 ![alt text](screenshots/Home.png)
+
+<br />
+
 * Login
 ![alt text](screenshots/Login.png)
+
+<br />
+
 * Register
 ![alt text](screenshots/Register.png)
+
+<br />
+
 * Feed
 ![alt text](screenshots/Feed1.png)
 ![alt text](screenshots/Feed2.png)
 ![alt text](screenshots/Feed3.png)
+
+<br />
+
 * User profile
 ![alt text](screenshots/Profile.png)
+
+<br />
+
 * Latest chats page
 ![alt text](screenshots/Chats1.png)
+
+<br />
+
 * Private chat
 ![alt text](screenshots/Chats2.png)
+
+<br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
