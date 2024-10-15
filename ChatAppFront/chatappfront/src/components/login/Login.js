@@ -161,24 +161,24 @@ export default function Login(){
 
         <div className="login-div">
 
-            {usernameError && <span className="error" >{usernameError}</span>}
+            {usernameError && <span className="error">{usernameError}</span>}
             <input required placeholder="Username"
-                type="text"
-                id="inputUsernameLogin"
-                className="input-login"
-                value={username}
-                style={{ borderColor: usernameError.length > 0 ? "red" : "" }}
-                onChange={(text) => setUsername(text.target.value)}
+                   type="text"
+                   id="inputUsernameLogin"
+                   className="input-login"
+                   value={username}
+                   style={{borderColor: usernameError.length > 0 ? "red" : ""}}
+                   onChange={(text) => setUsername(text.target.value)}
             />
 
             {passwordError && <span className="error">{passwordError}</span>}
             <input required placeholder="Password"
-                type="password"
-                id="inputPasswordLogin"
-                className="input-login"
-                value={password}
-                style={{ borderColor: passwordError.length > 0 ? "red" : "" }}
-                onChange={(event) => setPassword(event.target.value)}
+                   type="password"
+                   id="inputPasswordLogin"
+                   className="input-login"
+                   value={password}
+                   style={{borderColor: passwordError.length > 0 ? "red" : ""}}
+                   onChange={(event) => setPassword(event.target.value)}
             />
 
             <button type="submit" id="button-login" onClick={onLoginButtonClicked}>
@@ -186,6 +186,9 @@ export default function Login(){
             </button>
             <p className="p-register">Don't have an account?</p>
             <Link to="/register" className="register-link">Register</Link>
+
+            <p className="p-register">Forgot your password?</p>
+            <Link to="/" className="register-link">Reset password</Link>
 
 
         </div>

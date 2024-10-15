@@ -2,6 +2,7 @@ import "./NavBar.css"
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {useAuthContext} from "../../auth/AuthProvider";
+import {UserController} from "../../controller/UserController";
 
 const NavBar=() =>{
 
@@ -16,9 +17,14 @@ const NavBar=() =>{
     /**
      * Handles the logout action by calling the logout function.
      */
-    function handleLogout(){
+    async function handleLogout(){
+
         sessionStorage.removeItem(`currentPage${fields[0]}`);
+        const controller= new UserController();
+        const token= await controller.logout(userProfile.userString.split(",")[0]);
+        console.log("Logout "+ token);
         logout();
+
     }
 
     return(<div className="topnav">

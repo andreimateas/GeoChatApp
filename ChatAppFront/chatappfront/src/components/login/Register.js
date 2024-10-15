@@ -175,12 +175,7 @@ export default function Register() {
                 const foundUser = new User(fields[0], "", fields[2], fields[1], fields[4], fields[3]);
                 console.log("User registered: " + foundUser);
                 setUserString(jsonToken["sub"]);
-
-
-                console.log("A mers: " + user);
-
-                console.log("go to user page");
-                console.log("changed to user page");
+                navigate('/login');
 
             } catch (exception) {
                 console.log("error");
@@ -196,20 +191,6 @@ export default function Register() {
         }
 
     }
-
-    /**
-     * React hook that navigates to the user page when user data is available.
-     *
-     * @param {string} userString - User information.
-     * @param {function} login - Login function from the authentication context.
-     * @param {function} navigate - Navigation function.
-     */
-    useEffect(() => {
-        if (userString !== '') {
-            login({ userString, token: token.string  });
-            navigate('/userPage');
-        }
-    }, [userString, login, navigate, token]);
 
 
     /**

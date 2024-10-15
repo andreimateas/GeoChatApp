@@ -97,6 +97,13 @@ public class ChatService {
         return null;
     }
 
+    public void login(User user) {
+        userRepository.login(user.getUsername());
+    }
+
+    public void logout(String username) {
+        userRepository.logout(username);
+    }
     /**
      * Gets user information as a UserDTO based on the provided username.
      *
@@ -118,7 +125,15 @@ public class ChatService {
         }
 
     }
+    public User getFullUser(String username){
+        try {
+            User user = userRepository.getOne(username);
+            return user;
+        } catch (EntityNotFoundException exception) {
+            return null;
+        }
 
+    }
     /**
      * Gets a list of UserDTO objects representing all users in the database.
      *
@@ -319,6 +334,7 @@ public class ChatService {
         String plainText = AESEncryption.decrypt(ALGORITHM, password, secretKey, ivParameterSpec);
         return plainText;
     }
+
 
 
 }

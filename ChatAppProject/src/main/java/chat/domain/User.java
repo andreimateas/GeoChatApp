@@ -26,16 +26,19 @@ public class User implements Serializable {
 
     private String location;
 
+    private boolean loggedIn;
+
     public User() {
     }
 
-    public User(String username, String password, String email, String name, String profilePicture, String location) {
+    public User(String username, String password, String email, String name, String profilePicture, String location, boolean loggedIn) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.profilePicture = profilePicture;
         this.location = location;
+        this.loggedIn=false;
     }
 
 
@@ -98,4 +101,13 @@ public class User implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
 }

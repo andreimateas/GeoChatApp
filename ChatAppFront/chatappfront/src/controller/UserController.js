@@ -58,6 +58,33 @@ export class UserController{
             })
     }
 
+    logout(username){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'POST',
+            headers: myheaders,
+            mode: 'cors'
+
+        };
+        const serverUrl = SERVER_URL + '/logout?username='+username;
+
+        console.table('Sending data to server:', username);
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+    }
+
     /**
      * Registers a new user.
      * @param {User} user - The user object to be registered.

@@ -48,10 +48,21 @@ public class ChatController {
     public ResponseEntity<?> login(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         System.out.println("Entered login");
         User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
-        if(foundUser!=null)
-            return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser)),HttpStatus.OK);
+        if(foundUser!=null){
+            if(foundUser.isLoggedIn()) return new ResponseEntity<String>("already logged in",HttpStatus.NOT_FOUND);
+            chatService.login(user);
+            return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser)),HttpStatus.OK);}
         else
             return new ResponseEntity<String>("wrong user credentials",HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value="/logout")
+    public ResponseEntity<?> logout(@RequestParam String username){
+        System.out.println("Entered logout");
+        chatService.logout(username);
+        if(chatService.getFullUser(username).isLoggedIn())
+            return new ResponseEntity<String>("cannot log out",HttpStatus.NOT_FOUND);
+        else return new ResponseEntity<String>("successfully logged out",HttpStatus.OK);
     }
 
     /**
@@ -176,6 +187,8 @@ public class ChatController {
     public List<Message> getMessagesByUsers(@RequestParam String user1, @RequestParam String user2){
         return chatService.getMessagesByUsers(user1,user2);
     }
+
+
 
     private String getJWTToken(User user) {
         String secretKey = "mySecretKey";

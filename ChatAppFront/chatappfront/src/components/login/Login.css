@@ -46,6 +46,7 @@ body {
 .register-link {
     text-decoration: none;
     transition: color 0.3s ease;
+    margin-bottom: 8%;
 }
 
 .register-link:hover {
@@ -56,6 +57,10 @@ body {
 p {
     font-size: 18px;
     margin-bottom: 0.8em;
+}
+
+.p-register{
+    margin-top:5%;
 }
 
 span {

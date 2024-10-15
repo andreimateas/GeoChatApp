@@ -3,6 +3,7 @@ package chat.domain;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 public class Message implements Serializable {
 
     @Id
+    @GeneratedValue
     private int messageId;
     private String sender;
     private String receiver;
