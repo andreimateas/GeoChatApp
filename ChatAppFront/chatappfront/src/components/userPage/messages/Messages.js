@@ -8,6 +8,7 @@ import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import Swal from "sweetalert2";
 import Message from "../../../controller/entities/Message";
+import NavBar from "../../navbar/NavBar";
 
 
 

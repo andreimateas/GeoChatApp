@@ -5,6 +5,7 @@ import chat.service.serviceImplementation.ChatService;
 import chat.websocket.WebSocketConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,11 +47,12 @@ public class ChatController {
      */
     @PostMapping(value="/login", produces="application/json")
     public ResponseEntity<?> login(@RequestBody User user) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        System.out.println("Entered login");
+        System.out.print("Entered login: ");
         User foundUser = chatService.getUser(user.getUsername(),user.getPassword());
         if(foundUser!=null){
-            if(foundUser.isLoggedIn()) return new ResponseEntity<String>("already logged in",HttpStatus.NOT_FOUND);
-            chatService.login(user);
+            int logged= chatService.login(user);
+            System.out.println(logged);
+            if(logged!=1) return new ResponseEntity<String>("already logged in",HttpStatus.NOT_FOUND);
             return  new ResponseEntity<Token>(new Token(getJWTToken(foundUser)),HttpStatus.OK);}
         else
             return new ResponseEntity<String>("wrong user credentials",HttpStatus.NOT_FOUND);
@@ -59,10 +61,9 @@ public class ChatController {
     @PostMapping(value="/logout")
     public ResponseEntity<?> logout(@RequestParam String username){
         System.out.println("Entered logout");
-        chatService.logout(username);
-        if(chatService.getFullUser(username).isLoggedIn())
+        if(chatService.logout(username)!=1)
             return new ResponseEntity<String>("cannot log out",HttpStatus.NOT_FOUND);
-        else return new ResponseEntity<String>("successfully logged out",HttpStatus.OK);
+        else return new ResponseEntity<UserDTO>(new UserDTO(),HttpStatus.OK);
     }
 
     /**
@@ -188,6 +189,23 @@ public class ChatController {
         return chatService.getMessagesByUsers(user1,user2);
     }
 
+    @PostMapping("/addlike")
+    public ResponseEntity<?> addLike(@RequestBody FeedPost feedPost){
+        if(chatService.addLike(feedPost)==1)
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonMessage;
+            try {
+                jsonMessage = objectMapper.writeValueAsString("refresh");
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+
+            chatService.sendUpdate(jsonMessage);
+            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
+        else
+            return new ResponseEntity<String>("cannot add like",HttpStatus.NOT_FOUND);
+    }
 
 
     private String getJWTToken(User user) {

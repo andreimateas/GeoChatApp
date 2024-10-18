@@ -97,13 +97,14 @@ public class ChatService {
         return null;
     }
 
-    public void login(User user) {
-        userRepository.login(user.getUsername());
+    public int login(User user) {
+        return userRepository.login(user.getUsername());
     }
 
-    public void logout(String username) {
-        userRepository.logout(username);
+    public int logout(String username) {
+        return userRepository.logout(username);
     }
+
     /**
      * Gets user information as a UserDTO based on the provided username.
      *
@@ -200,6 +201,16 @@ public class ChatService {
         }
     }
 
+    public int addLike(FeedPost feedPost) {
+        try{
+            return feedPostRepository.addLike(feedPost.getPostId());
+
+        }
+        catch(IllegalArgumentException e){
+            return -1;
+        }
+    }
+
     /**
      * Gets a list of all messages from the database.
      *
@@ -236,7 +247,9 @@ public class ChatService {
         return messageRepository.getMessagesByUsers(user1,user2);
     }
 
-
+    public void logoutAllUsers(){
+        userRepository.logoutAll();
+    }
 
     //encryption methods
 

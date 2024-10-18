@@ -4,13 +4,13 @@ import {useAuthContext} from "../auth/AuthProvider";
 import AccessDenied from "./AccessDenied";
 
 
-const PrivateRoute = ({component: Route }) => {
+const PrivateRoute = ({component: RouteComponent }) => {
 
     const { userProfile } = useAuthContext();
-    const { token } = userProfile;
+    const token = userProfile?.token;
 
     if (token) {
-        return <Route />
+        return <RouteComponent />
     } else {
         return <AccessDenied />
     }

@@ -33,6 +33,7 @@ export const AuthContextProvider = ({ children }) => {
         });
         localStorage.removeItem('userProfile');
         localStorage.removeItem('token');
+        sessionStorage.clear();
 
     }
 

@@ -11,6 +11,7 @@ import Stomp from 'stompjs';
 import MyMap from "./MyMap";
 import Swal from "sweetalert2";
 import User from "../../controller/entities/User";
+import {UserController} from "../../controller/UserController";
 
 const UserMainPage=()=> {
 
@@ -85,10 +86,48 @@ const UserMainPage=()=> {
     };
 
     const [feedPosts, setFeedPosts]= useState([]);
-
-
-
     const [username, setUsername] =useState('');
+    const { logout } = useAuthContext();
+
+    //auto logout when the page is closed
+    useEffect(() => {
+        let isPageBeingClosed = false;
+
+        const handleVisibilityChange = () => {
+
+            if (document.visibilityState === 'hidden') {
+                isPageBeingClosed = true;
+            }
+        };
+
+        const handleBeforeUnload = (event) => {
+
+            if (isPageBeingClosed) {
+                console.log("Tab is being closed, logging out...");
+
+
+                const payload = JSON.stringify({
+                    message: "logout",
+                    timestamp: new Date().toISOString(),
+                });
+                sessionStorage.removeItem(`currentPage${fields[0]}`);
+                logout();
+                navigator.sendBeacon(`http://localhost:3001/logout?username=${user}`, payload);
+            }
+
+
+            isPageBeingClosed = false;
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
 
     /**
      * Formats a given date into a string with a specific format.

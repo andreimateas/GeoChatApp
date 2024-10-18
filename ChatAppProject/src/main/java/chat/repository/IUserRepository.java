@@ -16,11 +16,16 @@ public interface IUserRepository extends JpaRepository<User,String> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.loggedIn=true WHERE u.username=:username")
-    void login(@Param("username") String username);
+    @Query("UPDATE User u SET u.loggedIn=true WHERE u.username=:username AND u.loggedIn=false")
+    int login(@Param("username") String username);
 
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.loggedIn=false WHERE u.username=:username")
-    void logout(String username);
+    @Query("UPDATE User u SET u.loggedIn=false WHERE u.username=:username AND u.loggedIn=true")
+    int logout(String username);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE User u SET u.loggedIn=false WHERE u.loggedIn=true")
+    void logoutAll();
 }

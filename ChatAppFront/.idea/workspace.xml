@@ -4,25 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="">
+    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.71">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/login/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/auth/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/auth/AuthProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/login/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/login/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/navbar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/navbar/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMessagePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMessagePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/controller/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/controller/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/aes.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/aes.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/messages/Messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/messages/Messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/routes/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/routes/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/domain/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/domain/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/repository/IFeedPostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/repository/IFeedPostRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/repository/IUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/repository/IUserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/service/serviceImplementation/ChatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/service/serviceImplementation/ChatService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/domain/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/domain/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IFeedPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IFeedPostRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IMessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IMessageRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" afterDir="false" />
     </list>
@@ -115,10 +114,27 @@
       <workItem from="1728916343604" duration="1174000" />
       <workItem from="1729012934909" duration="1166000" />
       <workItem from="1729014172900" duration="6406000" />
+      <workItem from="1729032467445" duration="289000" />
+      <workItem from="1729114377583" duration="1143000" />
+      <workItem from="1729168539757" duration="5141000" />
+      <workItem from="1729201927740" duration="8737000" />
     </task>
+    <task id="LOCAL-00001" summary="v1.71">
+      <option name="closed" value="true" />
+      <created>1729032631655</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729032631655</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v1.71" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.71" />
   </component>
 </project>

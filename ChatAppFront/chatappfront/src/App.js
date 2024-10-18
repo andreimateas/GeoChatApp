@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import Register from "./components/login/Register";
 import UserMainPage from "./components/userPage/UserMainPage";
 import Home from "./components/home/Home";
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AuthContextProvider} from "./auth/AuthProvider";
 import UserProfilePage from "./components/userPage/UserProfilePage";
 import NotFound from "./routes/NotFound";
@@ -12,7 +12,9 @@ import PrivateRoute from "./routes/PrivateRoute";
 import UserMessagePage from "./components/userPage/UserMessagePage";
 import Messages from "./components/userPage/messages/Messages";
 import NavBar from "./components/navbar/NavBar";
+import {UserController} from "./controller/UserController";
 const App = () => {
+
     return (
         <>
             <AuthContextProvider>
@@ -25,7 +27,7 @@ const App = () => {
                         path="/userPage"
                         element={
                             <>
-                                <NavBar />
+                                <PrivateRoute component={NavBar} />
                                 <PrivateRoute component={UserMainPage} />
                             </>
                         }
@@ -34,7 +36,7 @@ const App = () => {
                         path="/userProfilePage"
                         element={
                             <>
-                                <NavBar />
+                                <PrivateRoute component={NavBar} />
                                 <PrivateRoute component={UserProfilePage} />
                             </>
                         }
@@ -43,7 +45,7 @@ const App = () => {
                         path="/userMessagePage"
                         element={
                             <>
-                                <NavBar />
+                                <PrivateRoute component={NavBar} />
                                 <PrivateRoute component={UserMessagePage} />
                             </>
                         }
@@ -52,7 +54,7 @@ const App = () => {
                         path="/messages/:user2"
                         element={
                             <>
-                                <NavBar />
+                                <PrivateRoute component={NavBar} />
                                 <PrivateRoute component={Messages} />
                             </>
                         }

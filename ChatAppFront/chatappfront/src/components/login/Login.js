@@ -110,7 +110,7 @@ export default function Login(){
                 console.log("Parsed token: " + jsonToken);
 
 
-                console.log("User data as string: " + jsonToken["sub"]);
+                console.log("User data as string: " + jsonToken["sub"] + jsonToken[""]);
 
                 const fields = jsonToken["sub"].split(",");
                 const foundUser = new User(fields[0], "", fields[2], fields[1], fields[4], fields[3]);

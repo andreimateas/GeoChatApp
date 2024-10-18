@@ -2,8 +2,10 @@ package chat.repository;
 
 import chat.domain.FeedPost;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,4 +19,9 @@ public interface IFeedPostRepository extends JpaRepository<FeedPost,String> {
      */
     @Query("SELECT fp FROM FeedPost fp ORDER BY fp.date DESC")
     List<FeedPost> findAllOrderByDate();
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE FeedPost fp SET fp.likes=fp.likes+1 WHERE fp.postId=:feedPost")
+    int addLike(String feedPost);
 }
