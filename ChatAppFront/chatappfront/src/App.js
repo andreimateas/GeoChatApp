@@ -5,7 +5,7 @@ import Register from "./components/login/Register";
 import UserMainPage from "./components/userPage/UserMainPage";
 import Home from "./components/home/Home";
 import React, {useEffect} from 'react';
-import {AuthContextProvider} from "./auth/AuthProvider";
+import {AuthContextProvider, useAuthContext} from "./auth/AuthProvider";
 import UserProfilePage from "./components/userPage/UserProfilePage";
 import NotFound from "./routes/NotFound";
 import PrivateRoute from "./routes/PrivateRoute";

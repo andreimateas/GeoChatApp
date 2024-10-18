@@ -1,0 +1,21 @@
+.access-denied-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 25px;
+    z-index: 1000;
+}
+
+.route-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #A83140FF;
+}
+
+button {
+    margin-top: 14px;
+    padding: 15px 35px;
+    border: none;
+    cursor: pointer;
+    background-color: #DD5566FF;
+}
