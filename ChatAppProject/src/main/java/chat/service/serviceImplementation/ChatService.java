@@ -211,6 +211,16 @@ public class ChatService {
         }
     }
 
+    public int removeLike(FeedPost feedPost) {
+        try{
+            return feedPostRepository.removeLike(feedPost.getPostId());
+
+        }
+        catch(IllegalArgumentException e){
+            return -1;
+        }
+    }
+
     /**
      * Gets a list of all messages from the database.
      *

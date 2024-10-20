@@ -24,4 +24,9 @@ public interface IFeedPostRepository extends JpaRepository<FeedPost,String> {
     @Transactional
     @Query("UPDATE FeedPost fp SET fp.likes=fp.likes+1 WHERE fp.postId=:feedPost")
     int addLike(String feedPost);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE FeedPost fp SET fp.likes=fp.likes-1 WHERE fp.postId=:feedPost")
+    int removeLike(String feedPost);
 }

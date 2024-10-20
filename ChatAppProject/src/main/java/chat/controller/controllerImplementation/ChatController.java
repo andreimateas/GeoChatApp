@@ -2,15 +2,11 @@ package chat.controller.controllerImplementation;
 
 import chat.domain.*;
 import chat.service.serviceImplementation.ChatService;
-import chat.websocket.WebSocketConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -18,7 +14,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -114,6 +109,19 @@ public class ChatController {
         return chatService.getFeedPosts();
     }
 
+    //function used for sending any updates to the client
+    private void sendUpdateToClients(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonMessage;
+        try {
+            jsonMessage = objectMapper.writeValueAsString("refresh");
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        chatService.sendUpdate(jsonMessage);
+    }
+
     /**
      * Adds a feed post to the database and triggers a refresh update for the client if successful.
      *
@@ -125,15 +133,7 @@ public class ChatController {
     public ResponseEntity<?> addFeedPost(@RequestBody FeedPost feedPost){
         if(chatService.addFeedPost(feedPost)!=null)
         {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonMessage;
-            try {
-                jsonMessage = objectMapper.writeValueAsString("refresh");
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-
-            chatService.sendUpdate(jsonMessage);
+            sendUpdateToClients();
             return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
         else
             return new ResponseEntity<String>("cannot add post",HttpStatus.NOT_FOUND);
@@ -163,15 +163,7 @@ public class ChatController {
     public ResponseEntity<?> addMessage(@RequestBody Message message){
         if(chatService.addMessage(message)!=null)
         {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonMessage;
-            try {
-                jsonMessage = objectMapper.writeValueAsString("refresh");
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-
-            chatService.sendUpdate(jsonMessage);
+           sendUpdateToClients();
             return new ResponseEntity<Message>(message,HttpStatus.OK);}
         else
             return new ResponseEntity<String>("cannot add message",HttpStatus.NOT_FOUND);
@@ -193,18 +185,20 @@ public class ChatController {
     public ResponseEntity<?> addLike(@RequestBody FeedPost feedPost){
         if(chatService.addLike(feedPost)==1)
         {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonMessage;
-            try {
-                jsonMessage = objectMapper.writeValueAsString("refresh");
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-
-            chatService.sendUpdate(jsonMessage);
+            sendUpdateToClients();
             return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
         else
             return new ResponseEntity<String>("cannot add like",HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/removelike")
+    public ResponseEntity<?> removeLike(@RequestBody FeedPost feedPost){
+        if(chatService.removeLike(feedPost)==1)
+        {
+            sendUpdateToClients();
+            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
+        else
+            return new ResponseEntity<String>("cannot remove like",HttpStatus.NOT_FOUND);
     }
 
 
