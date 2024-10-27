@@ -161,7 +161,7 @@ const UserMainPage=()=> {
             'Ă': 'A', 'Â': 'A', 'Î': 'I', 'Ș': 'S', 'Ț': 'T', 'ş': 's'
         };
 
-        return str.replace(/[ăâîșțĂÂÎȘȚş]/g, match => diacriticsMap[match]);
+        return str?.replace(/[ăâîșțĂÂÎȘȚş]/g, match => diacriticsMap[match]);
     }
 
     /**
@@ -170,13 +170,13 @@ const UserMainPage=()=> {
     async function fetchData() {
         const controller = new FeedPostController();
         let feedPosts = await controller.getFeedPosts();
-        console.log("Current county: "+currentCounty.current.textContent);
+        console.log("Current county: "+currentCounty.current?.textContent);
         console.log("Received feed posts from server 1: ");
         let filteredPosts=[];
-        if(currentCounty.current.textContent!==""){
+        if(currentCounty.current?.textContent!==""){
             for(let post of feedPosts){
 
-                if(removeDiacritics(post.location)===removeDiacritics(currentCounty.current.textContent)) {
+                if(removeDiacritics(post.location)===removeDiacritics(currentCounty.current?.textContent)) {
                     filteredPosts.push(post);
                 }
             }

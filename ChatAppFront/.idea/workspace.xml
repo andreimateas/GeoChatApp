@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.71">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IFeedPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IFeedPostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +112,8 @@
       <workItem from="1729201927740" duration="8737000" />
       <workItem from="1729286462666" duration="3753000" />
       <workItem from="1729370462988" duration="3187000" />
+      <workItem from="1729986318327" duration="22000" />
+      <workItem from="1730034065645" duration="807000" />
     </task>
     <task id="LOCAL-00001" summary="v1.71">
       <option name="closed" value="true" />
