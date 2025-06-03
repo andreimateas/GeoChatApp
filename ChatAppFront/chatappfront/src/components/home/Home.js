@@ -25,16 +25,22 @@ export default function Home(){
             <div className="home-page__content">
                 <h1 className="home-page__heading">Welcome to GeoChat App!</h1>
 
-                {(sessionStorage.length===0) &&<div className="home-page__button1">
-                    <Link to="/login" className="home-page__link_login">Login</Link>
+                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))) &&
+                <div className="home-page__button1">
+                <Link to="/login" className="home-page__link_login">Login</Link>
                 </div>}
-                {(sessionStorage.length===0) &&
+
+                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))) &&
                 <p className="home-page__text">Don't have an account yet?</p>}
-                {(sessionStorage.length===0) &&
+
+                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))
+                    ) &&
                 <div className="home-page__button2">
                     <Link to="/register" className="home-page__link_register">Register</Link>
                 </div>}
-                {(sessionStorage.length>0) &&
+
+                {(Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))
+                    ) &&
                     <>
                     <p className={"already-logged-in-text"}>You are already logged in</p>
                     <button className={"already-logged-in-button"} onClick={onAlreadyLoggedInClick}>
