@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.75">
+    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.76">
+      <change afterPath="$PROJECT_DIR$/chatappfront/.env.development" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatappfront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/aes.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/aes.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;andreimateas&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/andreimateas/GeoChatApp.git&quot;,
+    &quot;accountId&quot;: &quot;47d73a61-86ce-4d7b-82f0-f1c09ca1070c&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -146,6 +157,7 @@
       <workItem from="1737310989985" duration="380000" />
       <workItem from="1748722030393" duration="1271000" />
       <workItem from="1748955744678" duration="2119000" />
+      <workItem from="1755542540430" duration="867000" />
     </task>
     <task id="LOCAL-00001" summary="v1.71">
       <option name="closed" value="true" />
@@ -176,6 +188,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
