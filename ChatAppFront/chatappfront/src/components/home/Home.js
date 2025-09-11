@@ -10,7 +10,7 @@ export default function Home(){
     const navigate = useNavigate();
 
     function onAlreadyLoggedInClick() {
-        const previousPath = sessionStorage.getItem(`currentPage${fields[0]}`);
+        const previousPath = localStorage.getItem(`currentPage${fields[0]}`);
 
         if (previousPath) {
                 navigate(previousPath);
@@ -25,21 +25,21 @@ export default function Home(){
             <div className="home-page__content">
                 <h1 className="home-page__heading">Welcome to GeoChat App!</h1>
 
-                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))) &&
+                {(!Object.keys(localStorage).some(key => key.startsWith('currentPage'))) &&
                 <div className="home-page__button1">
                 <Link to="/login" className="home-page__link_login">Login</Link>
                 </div>}
 
-                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))) &&
+                {(!Object.keys(localStorage).some(key => key.startsWith('currentPage'))) &&
                 <p className="home-page__text">Don't have an account yet?</p>}
 
-                {(!Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))
+                {(!Object.keys(localStorage).some(key => key.startsWith('currentPage'))
                     ) &&
                 <div className="home-page__button2">
                     <Link to="/register" className="home-page__link_register">Register</Link>
                 </div>}
 
-                {(Object.keys(sessionStorage).some(key => key.startsWith('currentPage'))
+                {(Object.keys(localStorage).some(key => key.startsWith('currentPage'))
                     ) &&
                     <>
                     <p className={"already-logged-in-text"}>You are already logged in</p>

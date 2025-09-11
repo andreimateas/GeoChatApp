@@ -146,7 +146,7 @@ export default function Login(){
      * @param {object} token - User authentication token.
      */
     useEffect(() => {
-        const previousPath = sessionStorage.getItem(`currentPage${username}`);
+        const previousPath = localStorage.getItem(`currentPage${username}`);
         if (userString !== '') {
             login({ userString, token: token.string });
             if (previousPath) {

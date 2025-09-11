@@ -19,7 +19,7 @@ const NavBar=() =>{
      */
     async function handleLogout(){
 
-        sessionStorage.removeItem(`currentPage${fields[0]}`);
+        localStorage.removeItem(`currentPage${fields[0]}`);
         const controller= new UserController();
         const token= await controller.logout(userProfile.userString.split(",")[0]);
         console.log("Logout "+ token);

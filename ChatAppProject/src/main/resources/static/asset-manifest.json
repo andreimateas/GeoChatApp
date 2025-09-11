@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8301f0c0.css",
+    "main.js": "/static/js/main.ce927c40.js",
+    "static/js/592.ec84e5e7.chunk.js": "/static/js/592.ec84e5e7.chunk.js",
+    "static/media/ro_judete_poligon.geojson": "/static/media/ro_judete_poligon.2ee978f68d9aebfba608.geojson",
+    "static/media/miki.png": "/static/media/miki.69c7f7f1b7ac2df7a2a6.png",
+    "static/media/post3.jpg": "/static/media/post3.44554e8461af42cdbfbb.jpg",
+    "static/media/post2.jpg": "/static/media/post2.d92d7a8002c2fcd4ad96.jpg",
+    "static/media/tuh-img.png": "/static/media/tuh-img.7a537659ceb79f373268.png",
+    "static/media/post1.jpg": "/static/media/post1.321212e135af9b172542.jpg",
+    "static/media/WorldMapDark.svg": "/static/media/WorldMapDark.666fce3b6580bf13a481.svg",
+    "static/media/WorldMap.svg": "/static/media/WorldMap.9259d9bbb3e8438487cc.svg",
+    "index.html": "/index.html",
+    "main.8301f0c0.css.map": "/static/css/main.8301f0c0.css.map",
+    "main.ce927c40.js.map": "/static/js/main.ce927c40.js.map",
+    "592.ec84e5e7.chunk.js.map": "/static/js/592.ec84e5e7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8301f0c0.css",
+    "static/js/main.ce927c40.js"
+  ]
+}

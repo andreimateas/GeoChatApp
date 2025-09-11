@@ -110,7 +110,7 @@ const UserMainPage=()=> {
                     message: "logout",
                     timestamp: new Date().toISOString(),
                 });
-                sessionStorage.removeItem(`currentPage${fields[0]}`);
+                localStorage.removeItem(`currentPage${fields[0]}`);
                 logout();
                 navigator.sendBeacon(`http://localhost:3001/logout?username=${user}`, payload);
             }
@@ -191,7 +191,7 @@ const UserMainPage=()=> {
 
     useEffect( () => {
         const currentPagePath = window.location.pathname;
-        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
+        localStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
         document.getElementById("postText").value="";
         fetchData();
     }, []);

@@ -147,7 +147,7 @@ const Messages = () => {
      */
     useEffect(() => {
         const currentPagePath = window.location.pathname;
-        sessionStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
+        localStorage.setItem(`currentPage${fields[0]}`, currentPagePath);
         document.getElementById("messageText").value="";
         fetchData();
         scrollToBottom();
