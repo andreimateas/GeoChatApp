@@ -12,6 +12,7 @@ import MyMap from "./MyMap";
 import Swal from "sweetalert2";
 import User from "../../controller/entities/User";
 import {UserController} from "../../controller/UserController";
+import UserLike from "../../controller/entities/UserLike";
 
 const UserMainPage=()=> {
 
@@ -240,13 +241,14 @@ const UserMainPage=()=> {
             const date= new Date(feedPost.date);
             feedPost.date=formatDate(date).replace(' ', 'T');
             if(liked===true){
-                feedPost.likes++;
+                const token= await controller.addUserLike(new UserLike(1, userFull,feedPost));
+                console.log("Received token from server: "+token.string);
             }
             else{
-                feedPost.likes--;
+                const token= await controller.removeUserLike(new UserLike(1, userFull,feedPost));
+                console.log("Received token from server: "+token.string);
             }
-            const token= await controller.addFeedPost(feedPost);
-            console.log("Received token from server: "+token.string);
+
             fetchData();
 
         } catch (exception) {

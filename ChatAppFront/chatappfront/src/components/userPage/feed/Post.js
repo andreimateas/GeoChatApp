@@ -4,6 +4,7 @@ import {UserController} from "../../../controller/UserController";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuthContext} from "../../../auth/AuthProvider";
 import User from "../../../controller/entities/User";
+import {FeedPostController} from "../../../controller/FeedPostController";
 
 
 const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont,onLikeButtonClick}) => {
@@ -67,6 +68,7 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
      * Handles the like button click event.
      */
     function handleLikeButtonClick(){
+
         if(liked===false){
             setLiked(true);
             document.getElementById("btnLike"+cont).style.background="rgb(128,30,42)";

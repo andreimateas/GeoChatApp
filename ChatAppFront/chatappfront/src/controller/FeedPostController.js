@@ -90,4 +90,91 @@ export class FeedPostController{
 
     }
 
+    getUserLikeByUsername(username){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'GET',
+            headers: myheaders,
+            mode: 'cors'
+
+        };
+        const serverUrl = SERVER_URL + '/getUserLikeByUsername/?username=' + username;
+
+        console.table('Sending data to server: request all user likes');
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+    }
+
+    addUserLike(userLike){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'POST',
+            headers: myheaders,
+            mode: 'cors',
+            body: JSON.stringify(userLike),
+
+        };
+        const serverUrl = SERVER_URL + '/addUserLike';
+
+        console.table('Sending data to server:', userLike);
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+
+    }
+
+    removeUserLike(userLike){
+        const myheaders = new Headers();
+        myheaders.append('Accept', 'application/json');
+        myheaders.append('Content-Type', 'application/json');
+
+        const header = {
+            method: 'DELETE',
+            headers: myheaders,
+            mode: 'cors',
+            body: JSON.stringify(userLike),
+
+        };
+        const serverUrl = SERVER_URL + '/removeUserLike';
+
+        console.table('Sending data to server:', userLike);
+        return fetch(serverUrl, header)
+            .then(status)
+            .then(json)
+            .then((data) => {
+                console.log('Request succeeded with JSON response', data);
+                return data;
+            })
+            .catch(error=>{
+                console.error('Error:',error);
+                throw error;
+            })
+
+    }
+
+
+
 }
