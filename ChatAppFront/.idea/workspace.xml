@@ -5,31 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.77">
-      <change afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/domain/UserLike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IUserLikeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/bootJarMainClassName" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/bootScripts/ChatAppProject" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/bootScripts/ChatAppProject.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/domain/UserLike.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/repository/IUserLikeRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/webconfig/WebConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/distributions/ChatAppProject-1.0-SNAPSHOT.tar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/distributions/ChatAppProject-1.0-SNAPSHOT.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/distributions/ChatAppProject-boot-1.0-SNAPSHOT.tar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/distributions/ChatAppProject-boot-1.0-SNAPSHOT.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/libs/ChatAppProject-1.0-SNAPSHOT-plain.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/libs/ChatAppProject-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/asset-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/css/main.8301f0c0.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/css/main.8301f0c0.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/js/592.ec84e5e7.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/js/592.ec84e5e7.chunk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/js/main.22d6a8d7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/js/main.22d6a8d7.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/js/main.22d6a8d7.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/WorldMap.9259d9bbb3e8438487cc.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/WorldMapDark.666fce3b6580bf13a481.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/miki.69c7f7f1b7ac2df7a2a6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/post1.321212e135af9b172542.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/post2.d92d7a8002c2fcd4ad96.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/post3.44554e8461af42cdbfbb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/ro_judete_poligon.2ee978f68d9aebfba608.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/resources/main/static/static/media/tuh-img.7a537659ceb79f373268.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/scripts/ChatAppProject" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/scripts/ChatAppProject.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.22d6a8d7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.22d6a8d7.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.22d6a8d7.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/service/serviceImplementation/ChatService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/service/serviceImplementation/ChatService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IUserLikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/repository/IUserLikeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/service/serviceImplementation/ChatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/css/main.8301f0c0.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/css/main.8301f0c0.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/592.ec84e5e7.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/592.ec84e5e7.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.ce927c40.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.ce927c40.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/js/main.ce927c40.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/WorldMap.9259d9bbb3e8438487cc.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/WorldMapDark.666fce3b6580bf13a481.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/miki.69c7f7f1b7ac2df7a2a6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/post1.321212e135af9b172542.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/post2.d92d7a8002c2fcd4ad96.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/post3.44554e8461af42cdbfbb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/ro_judete_poligon.2ee978f68d9aebfba608.geojson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/resources/static/static/media/tuh-img.7a537659ceb79f373268.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +209,9 @@
       <workItem from="1757948981878" duration="1966000" />
       <workItem from="1770127614769" duration="8014000" />
       <workItem from="1771336571993" duration="1354000" />
-      <workItem from="1771628181372" duration="1905000" />
+      <workItem from="1771628181372" duration="1962000" />
+      <workItem from="1771688795963" duration="66000" />
+      <workItem from="1771691778407" duration="925000" />
     </task>
     <task id="LOCAL-00001" summary="v1.71">
       <option name="closed" value="true" />

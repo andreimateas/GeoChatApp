@@ -201,25 +201,7 @@ public class ChatService {
         }
     }
 
-    public int addLike(FeedPost feedPost) {
-        try{
-            return feedPostRepository.addLike(feedPost.getPostId());
 
-        }
-        catch(IllegalArgumentException e){
-            return -1;
-        }
-    }
-
-    public int removeLike(FeedPost feedPost) {
-        try{
-            return feedPostRepository.removeLike(feedPost.getPostId());
-
-        }
-        catch(IllegalArgumentException e){
-            return -1;
-        }
-    }
 
     /**
      * Gets a list of all messages from the database.
@@ -261,6 +243,26 @@ public class ChatService {
         userRepository.logoutAll();
     }
 
+    public int addLike(FeedPost feedPost) {
+        try{
+            return feedPostRepository.addLike(feedPost.getPostId());
+
+        }
+        catch(IllegalArgumentException e){
+            return -1;
+        }
+    }
+
+    public int removeLike(FeedPost feedPost) {
+        try{
+            return feedPostRepository.removeLike(feedPost.getPostId());
+
+        }
+        catch(IllegalArgumentException e){
+            return -1;
+        }
+    }
+
     public UserLike addUserLike(UserLike userLike){
         try{
             return userLikeRepository.save(userLike);
@@ -273,6 +275,10 @@ public class ChatService {
 
     public void removeUserLike(UserLike userLike){
             userLikeRepository.deleteUserLike(userLike.getUser(),userLike.getFeedPost());
+    }
+
+    public List<UserLike> getUserLikeByUsername(String username){
+        return userLikeRepository.getUserLikeByUsername(username);
     }
 
 

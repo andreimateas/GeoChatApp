@@ -181,7 +181,7 @@ public class ChatController {
         return chatService.getMessagesByUsers(user1,user2);
     }
 
-    @PostMapping("/addlike")
+    @PostMapping("/addlike")//TO BE REMOVED
     public ResponseEntity<?> addLike(@RequestBody FeedPost feedPost){
         if(chatService.addLike(feedPost)==1)
         {
@@ -191,7 +191,7 @@ public class ChatController {
             return new ResponseEntity<String>("cannot add like",HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/removelike")
+    @PostMapping("/removelike")//TO BE REMOVED
     public ResponseEntity<?> removeLike(@RequestBody FeedPost feedPost){
         if(chatService.removeLike(feedPost)==1)
         {
@@ -203,7 +203,7 @@ public class ChatController {
 
     @PostMapping("/addUserLike")
     public ResponseEntity<?> addUserLike(@RequestBody UserLike userLike){
-        if(chatService.addUserLike(userLike)!=null)
+        if(chatService.addUserLike(userLike)!=null && chatService.addLike(userLike.getFeedPost())==1)
         {
             sendUpdateToClients();
             return new ResponseEntity<UserLike>(userLike,HttpStatus.OK);}
@@ -215,12 +215,20 @@ public class ChatController {
     public ResponseEntity<?> removeUserLike(@RequestBody UserLike userLike){
         try{
             chatService.removeUserLike(userLike);
+            chatService.removeLike(userLike.getFeedPost());
             sendUpdateToClients();
             return new ResponseEntity<UserLike>(userLike,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<String>("cannot remove user like",HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/getUserLikeByUsername")
+    public List<UserLike> getUserLikeByUsername(@RequestParam String username){
+        return chatService.getUserLikeByUsername(username);
+    }
+
+
 
     private String getJWTToken(User user) {
         String secretKey = "mySecretKey";
