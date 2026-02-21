@@ -201,6 +201,26 @@ public class ChatController {
             return new ResponseEntity<String>("cannot remove like",HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping("/addUserLike")
+    public ResponseEntity<?> addUserLike(@RequestBody UserLike userLike){
+        if(chatService.addUserLike(userLike)!=null)
+        {
+            sendUpdateToClients();
+            return new ResponseEntity<UserLike>(userLike,HttpStatus.OK);}
+        else
+            return new ResponseEntity<String>("cannot add user like",HttpStatus.NOT_FOUND);
+    }
+    
+    @DeleteMapping("/removeUserLike")
+    public ResponseEntity<?> removeUserLike(@RequestBody UserLike userLike){
+        try{
+            chatService.removeUserLike(userLike);
+            sendUpdateToClients();
+            return new ResponseEntity<UserLike>(userLike,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<String>("cannot remove user like",HttpStatus.NOT_FOUND);
+        }
+    }
 
     private String getJWTToken(User user) {
         String secretKey = "mySecretKey";

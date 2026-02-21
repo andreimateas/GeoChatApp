@@ -1,11 +1,9 @@
 package chat.service.serviceImplementation;
 
-import chat.domain.FeedPost;
-import chat.domain.Message;
-import chat.domain.User;
-import chat.domain.UserDTO;
+import chat.domain.*;
 import chat.repository.IFeedPostRepository;
 import chat.repository.IMessageRepository;
+import chat.repository.IUserLikeRepository;
 import chat.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -39,6 +37,8 @@ public class ChatService {
     private IMessageRepository messageRepository;
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
+    @Autowired
+    private IUserLikeRepository userLikeRepository;
 
     private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
     private static final int KEY_SIZE = 128;
@@ -260,6 +260,21 @@ public class ChatService {
     public void logoutAllUsers(){
         userRepository.logoutAll();
     }
+
+    public UserLike addUserLike(UserLike userLike){
+        try{
+            return userLikeRepository.save(userLike);
+        }
+        catch(IllegalArgumentException e){
+
+            return null;
+        }
+    }
+
+    public void removeUserLike(UserLike userLike){
+            userLikeRepository.deleteUserLike(userLike.getUser(),userLike.getFeedPost());
+    }
+
 
     //encryption methods
 
