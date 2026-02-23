@@ -181,25 +181,6 @@ public class ChatController {
         return chatService.getMessagesByUsers(user1,user2);
     }
 
-    /*@PostMapping("/addlike")//TO BE REMOVED
-    public ResponseEntity<?> addLike(@RequestBody FeedPost feedPost){
-        if(chatService.addLike(feedPost)==1)
-        {
-            sendUpdateToClients();
-            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
-        else
-            return new ResponseEntity<String>("cannot add like",HttpStatus.NOT_FOUND);
-    }
-
-    @PostMapping("/removelike")//TO BE REMOVED
-    public ResponseEntity<?> removeLike(@RequestBody FeedPost feedPost){
-        if(chatService.removeLike(feedPost)==1)
-        {
-            sendUpdateToClients();
-            return new ResponseEntity<FeedPost>(feedPost,HttpStatus.OK);}
-        else
-            return new ResponseEntity<String>("cannot remove like",HttpStatus.NOT_FOUND);
-    }*/
 
     @PostMapping("/addUserLike")
     public ResponseEntity<?> addUserLike(@RequestBody UserLike userLike){

@@ -5,11 +5,12 @@ import {Link, useNavigate} from "react-router-dom";
 import {useAuthContext} from "../../../auth/AuthProvider";
 import User from "../../../controller/entities/User";
 import {FeedPostController} from "../../../controller/FeedPostController";
+import UserLike from "../../../controller/entities/UserLike";
 
 
-const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont,onLikeButtonClick}) => {
+const Post = ({ post,postId,user, date, content, imagePath, likes, location, cont, isLiked}) => {
 
-    const [liked, setLiked] =useState(false);
+    const [liked, setLiked] =useState(isLiked);
     const [hasImage,setHasImage]= useState(false);
     const image = imagePath ? imagePath.split("\\")[2] : '';
     const imageFoundPathRef = useRef('');
@@ -64,32 +65,29 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
         }
     }, [image]);
 
+
+    useEffect(() => {
+        setLiked(isLiked);
+    }, [isLiked]);
+
     /**
      * Handles the like button click event.
      */
-    function handleLikeButtonClick(){
+    async function handleLikeButtonClick() {
 
-        if(liked===false){
-            setLiked(true);
-            document.getElementById("btnLike"+cont).style.background="rgb(128,30,42)";
-            document.getElementById("btnLike"+cont).textContent="Liked";
-            document.getElementById("btnLike"+cont).style.textAlign="center";
+        const controller = new FeedPostController();
+        const feedPost = post;
+        const date = new Date(feedPost.date);
+        feedPost.date = formatDate(date).replace(' ', 'T');
 
-            document.getElementById("txtLike"+cont).textContent=likes + 1;
+        if (liked === false) {
+            setLiked(true)
+            const token = await controller.addUserLike(new UserLike(1, loggedUser, feedPost));
 
-            onLikeButtonClick(post,true);
 
-        }
-        else
-        {
+        } else {
             setLiked(false);
-            document.getElementById("btnLike"+cont).style.background="rgba(221, 85, 102, 1)";
-            document.getElementById("btnLike"+cont).textContent="Like";
-            document.getElementById("btnLike"+cont).style.textAlign="center";
-
-            document.getElementById("txtLike"+cont).textContent=likes;
-
-            onLikeButtonClick(post,false);
+            const token = await controller.removeUserLike(new UserLike(1, loggedUser, feedPost));
 
         }
     }
@@ -99,6 +97,17 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
      */
     function onConversationButtonClick() {
         navigate(`/messages/${user}`);
+    }
+
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
     return (
@@ -123,7 +132,8 @@ const Post = ({ post,postId,user, date, content, imagePath, likes, location, con
             <div className="post-content">{content}</div>
             {hasImage && <img src={imageFoundPathRef.current} alt={"Post"} className={"post-image"} />}
             <div className="post-footer">
-                <button className="post-like-button" id={"btnLike"+cont} onClick={handleLikeButtonClick}>Like</button>
+                {!liked && <button className="post-like-button-like" id={"btnLike"+cont} onClick={handleLikeButtonClick}>Like</button>}
+                {liked && <button className="post-like-button-liked" id={"btnLike"+cont} onClick={handleLikeButtonClick}>Liked</button>}
                 <span className="post-likes" id={"txtLike"+cont}>{likes}</span>
             </div>
         </div>

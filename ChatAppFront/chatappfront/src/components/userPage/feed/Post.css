@@ -48,8 +48,23 @@
     margin-top: 25px;
 }
 
-.post-like-button {
+.post-like-button-like {
     background-color: rgba(221, 85, 102, 1);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    outline: none;
+    width: 67.5px;
+    text-align: center;
+}
+
+.post-like-button-liked {
+    background-color: rgb(142, 39, 52);
     color: #ffffff;
     padding: 10px 16px;
     border-radius: 50px;

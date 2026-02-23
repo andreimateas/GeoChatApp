@@ -8,5 +8,6 @@ export default class FeedPost{
         this.date=date;
         this.likes=likes;
         this.location=location;
+        this.isLiked=false;
     }
 }

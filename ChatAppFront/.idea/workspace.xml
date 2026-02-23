@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.77">
+    <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.78">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.css" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/controller/FeedPostController.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/controller/FeedPostController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/controller/entities/UserLike.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/controller/entities/UserLike.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/src/main/java/chat/controller/controllerImplementation/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatappfront/src/controller/entities/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/controller/entities/FeedPost.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,35 +53,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/andrei/Documents/GitHub/GeoChatApp/ChatAppFront",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Users/andrei/AppData/Roaming/JetBrains/IntelliJIdea2025.1/node/versions/22.16.0/node",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/andrei/Documents/GitHub/GeoChatApp/ChatAppFront&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/andrei/AppData/Roaming/JetBrains/IntelliJIdea2025.1/node/versions/22.16.0/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.1.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\andrei\Documents\GitHub\GeoChatApp\ChatAppFront\chatappfront\src\images" />
@@ -172,7 +171,9 @@
       <workItem from="1771336571993" duration="1354000" />
       <workItem from="1771628181372" duration="1962000" />
       <workItem from="1771688795963" duration="66000" />
-      <workItem from="1771691778407" duration="6879000" />
+      <workItem from="1771691778407" duration="7145000" />
+      <workItem from="1771714484541" duration="10381000" />
+      <workItem from="1771772533993" duration="18333000" />
     </task>
     <task id="LOCAL-00001" summary="v1.71">
       <option name="closed" value="true" />
@@ -206,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757342402536</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v1.78">
+      <option name="closed" value="true" />
+      <created>1771699175260</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1771699175260</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +239,8 @@
     <MESSAGE value="v1.71" />
     <MESSAGE value="v1.75" />
     <MESSAGE value="v1.77" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.77" />
+    <MESSAGE value="v1.78" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.78" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

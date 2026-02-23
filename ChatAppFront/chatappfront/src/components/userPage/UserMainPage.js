@@ -1,5 +1,3 @@
-
-
 import "./UserMainPage.css";
 import Feed from "./feed/Feed";
 import React, {useEffect, useRef, useState} from "react";
@@ -88,6 +86,7 @@ const UserMainPage=()=> {
 
     const [feedPosts, setFeedPosts]= useState([]);
     const [username, setUsername] =useState('');
+    const [userLikes,setUserLikes]=useState([]);
     const { logout } = useAuthContext();
 
     //auto logout when the page is closed
@@ -171,8 +170,8 @@ const UserMainPage=()=> {
     async function fetchData() {
         const controller = new FeedPostController();
         let feedPosts = await controller.getFeedPosts();
-        console.log("Current county: "+currentCounty.current?.textContent);
-        console.log("Received feed posts from server 1: ");
+        //console.log("Current county: "+currentCounty.current?.textContent);
+       // console.log("Received feed posts from server 1: ");
         let filteredPosts=[];
         if(currentCounty.current?.textContent!==""){
             for(let post of feedPosts){
@@ -185,9 +184,25 @@ const UserMainPage=()=> {
         }
 
         feedPosts.forEach((x) => (x.date = x.date.replace(/T/g, ' ')));
-        console.log("Received feed posts from server 2: ");
+        //console.log("Received feed posts from server 2: ");
         setFeedPosts(feedPosts);
         setUsername(user);
+        let user_likes=await controller.getUserLikeByUsername(user);
+        setUserLikes(user_likes);
+        console.log("Received userLikes from server: "+JSON.stringify(userLikes, null, 2));
+
+        const postsWithLikes = feedPosts.map(post => {
+
+            const isLiked = user_likes.some(like => like.feedPost.postId === post.postId);
+
+            return {
+                ...post,
+                isLiked: isLiked
+            };
+        });
+
+        setFeedPosts(postsWithLikes);
+        console.log("Feed posts + likes: ", JSON.stringify(postsWithLikes, null, 2));
     }
 
     useEffect( () => {
@@ -229,32 +244,6 @@ const UserMainPage=()=> {
         }
     }
 
-    /**
-     * Update the likes of a feed post.
-     * @param {Object} post - The feed post to update.
-     * @param {boolean} liked - Whether the post was liked or unliked.
-     */
-    const updateLikes = async (post,liked) => {
-        try {
-            const controller= new FeedPostController();
-            const feedPost= post;
-            const date= new Date(feedPost.date);
-            feedPost.date=formatDate(date).replace(' ', 'T');
-            if(liked===true){
-                const token= await controller.addUserLike(new UserLike(1, userFull,feedPost));
-                console.log("Received token from server: "+token.string);
-            }
-            else{
-                const token= await controller.removeUserLike(new UserLike(1, userFull,feedPost));
-                console.log("Received token from server: "+token.string);
-            }
-
-            fetchData();
-
-        } catch (exception) {
-            console.log("error like post"+exception);
-        }
-    }
 
     const fetchMap = async (post,liked) => {
         await fetchData();
@@ -303,7 +292,8 @@ const UserMainPage=()=> {
 
                 </div>
 
-                <Feed posts={feedPosts} onLikeButtonClick={updateLikes}/>
+                <Feed posts={feedPosts}/>
+
 
             </div>
         </div>

@@ -117,10 +117,10 @@ export default function Login(){
                 console.log("User that logged in: " + foundUser);
 
                 setUserString(jsonToken["sub"]);
-                console.log("A mers: " + user);
+                //console.log("A mers: " + user);
 
-                console.log("go to user page");
-                console.log("changed to user page");
+                //console.log("go to user page");
+                //console.log("changed to user page");
 
             } catch (exception) {
                 console.log(exception);
