@@ -191,6 +191,7 @@ GeoChat App is a localized social media web application that introduces a unique
       - [x] View feed posts from the selected region functionality
       - [x] Add a post functionality
       - [x] Adding a Feed Post REST Controller to the client to handle viewing the feed and adding a post
+      - [x] Like button functionality for posts
     - [x] Chats page
       - [x] User Messages Page that contains the recent chats of a user
       - [x] Messages component that represents the chat between the current user and a selected user
