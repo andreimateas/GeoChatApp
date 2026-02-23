@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="066ab3da-11fe-4e0a-a680-70ddd199e632" name="Changes" comment="v1.78">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/UserMainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.css" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/components/userPage/feed/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatappfront/src/controller/entities/FeedPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/chatappfront/src/controller/entities/FeedPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/classes/java/main/chat/controller/controllerImplementation/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatAppProject/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +169,8 @@
       <workItem from="1771688795963" duration="66000" />
       <workItem from="1771691778407" duration="7145000" />
       <workItem from="1771714484541" duration="10381000" />
-      <workItem from="1771772533993" duration="18333000" />
+      <workItem from="1771772533993" duration="18928000" />
+      <workItem from="1771864307377" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="v1.71">
       <option name="closed" value="true" />
